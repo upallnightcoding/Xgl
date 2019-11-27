@@ -6,6 +6,8 @@
 
 /*****************************************************************************
 class XglProgram
+
+This class is used to read token from a source input, one token at a time.
 *****************************************************************************/
 
 class XglProgram
@@ -30,6 +32,10 @@ private:
 	XglToken *getNumber();
 
 	XglNumber getInteger();
+
+	XglToken *getSingleToken();
+	XglToken *getDoubleToken();
+	XglTokenSymbolType getDoubleCharSymbol(char character, XglTokenSymbolType first, XglTokenSymbolType second);
 
 private:
 	size_t currentChar;

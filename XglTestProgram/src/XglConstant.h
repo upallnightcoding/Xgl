@@ -1,10 +1,10 @@
 #pragma once
 
-class XglConstants
+class XglConstant
 {
 public:
-	XglConstants();
-	virtual ~XglConstants();
+	XglConstant();
+	virtual ~XglConstant();
 
 public:
 	static const char POUND_CHAR;

@@ -4,6 +4,6 @@
 #include <iostream>
 #include <math.h>
 
-#include "XglConstants.h"
+#include "XglConstant.h"
 
 using namespace std;

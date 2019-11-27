@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Xgl.h"
+#include "XglToken.h"
+#include "XglNumber.h"
 
 /*****************************************************************************
 class XglProgram
@@ -13,14 +15,21 @@ public:
 	virtual ~XglProgram();
 
 public:
-	void addSourceCode(string code);
+	void add(string source);
+	XglToken *getToken();
+	bool isEop();
 
 private:
 	bool isChar(char character);
 	void moveToNextChar();
 	char getCurrentChar();
 	void skipBlanks();
-	bool isEop();
+
+	XglToken *getString();
+
+	XglToken *getNumber();
+
+	XglNumber getInteger();
 
 private:
 	size_t currentChar;

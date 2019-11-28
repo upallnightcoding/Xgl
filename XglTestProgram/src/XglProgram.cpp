@@ -10,8 +10,9 @@ XglProgram::XglProgram()
 	eop = false;
 	currentChar = 0;
 
-	add("  123  345  +- * /  'this is a test' 678 ");
-	add("333  88    < ! >= () = ==  90909 123.456 'String ending a line'   ");
+	add("  123  345  while +- * /  'this is a test' 678 ");
+	add("for end integer real ");
+	add("333  88 < ! >= () = ==  90909 123.456 'String ending a line'   ");
 	add(" 'String at the start' 0678.0999 0.00543 ");
 
 	skipBlanks();
@@ -43,8 +44,11 @@ XglToken *XglProgram::getToken()
 		// Search for general token types
 		//-------------------------------
 		if (token == NULL) {
-			if (isdigit(getCurrentChar()) || isChar(XglConstant::DOT_CHAR)) {
+			if (isdigit(peekChar()) || isChar(XglConstant::DOT_CHAR)) {
 				token = getNumber();
+			}
+			else if (isalpha(peekChar())) {
+				token = getKeyword();
 			}
 			else if (isChar(XglConstant::SINGLE_QUOTE)) {
 				token = getString();
@@ -65,7 +69,7 @@ XglToken *XglProgram::getDoubleToken()
 	XglTokenSymbolType symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
 	XglToken *token = NULL;
 
-	switch (getCurrentChar()) {
+	switch (peekChar()) {
 	case '<':
 		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::TOKEN_SYMBOL_LT, XglTokenSymbolType::TOKEN_SYMBOL_LE);
 		break;
@@ -111,7 +115,7 @@ XglToken *XglProgram::getSingleToken()
 {
 	XglTokenSymbolType symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
 
-	switch (getCurrentChar()) {
+	switch (peekChar()) {
 	case '~':
 		symbol = XglTokenSymbolType::TOKEN_SYMBOL_TILDE;
 		break;
@@ -158,6 +162,29 @@ XglToken *XglProgram::getSingleToken()
 }
 
 /*****************************************************************************
+getKeyword() -
+*****************************************************************************/
+XglToken *XglProgram::getKeyword()
+{
+	string value = "";
+
+	char keywordChar = peekChar();
+
+	// Read all characters into a string constant until the end of keyword
+	//--------------------------------------------------------------------
+	while (isalnum(keywordChar)) {
+		value += toupper(keywordChar);
+		moveToNextChar();
+
+		keywordChar = peekChar();
+	}
+
+	// Create token object
+	//--------------------
+	return(new XglToken(XglTokenType::KEYWORD, value));
+}
+
+/*****************************************************************************
 getString() - Returns a string token to the caller.  A string is setoff by
 a single quote, followed by a string of printable characters and then
 ended with a terminating single quote.
@@ -173,7 +200,7 @@ XglToken *XglProgram::getString()
 	// Read all characters into the string constant until the ending quote
 	//--------------------------------------------------------------------
 	while (!isChar(XglConstant::SINGLE_QUOTE)) {
-		value += getCurrentChar();
+		value += peekChar();
 		moveToNextChar();
 	}
 
@@ -181,6 +208,8 @@ XglToken *XglProgram::getString()
 	//------------------------------------
 	moveToNextChar();
 
+	// Create token object
+	//--------------------
 	return(new XglToken(XglTokenType::STRING, value));
 }
 
@@ -222,8 +251,8 @@ XglNumber XglProgram::getInteger()
 
 	// Read integer values, one digit at a time
 	//-----------------------------------------
-	while ((!isEop()) && (isdigit(getCurrentChar()))) {
-		value = (10 * value) + (getCurrentChar() - '0');
+	while ((!isEop()) && (isdigit(peekChar()))) {
+		value = (10 * value) + (peekChar() - '0');
 
 		ndigits++;
 
@@ -251,7 +280,7 @@ void XglProgram::skipBlanks()
 	bool skipping = true;
 
 	while (skipping) {
-		while ((!isEop()) && (isspace(getCurrentChar()))) {
+		while ((!isEop()) && (isspace(peekChar()))) {
 			moveToNextChar();
 		}
 
@@ -279,7 +308,7 @@ same as the parameter passed.  It returns false otherwise.
 *****************************************************************************/
 bool XglProgram::isChar(char character)
 {
-	return(character == getCurrentChar());
+	return(character == peekChar());
 }
 
 /*****************************************************************************
@@ -299,7 +328,7 @@ void XglProgram::moveToNextChar()
 /*****************************************************************************
 getCurrentChar() - Returns the current active character in the source code.
 *****************************************************************************/
-char XglProgram::getCurrentChar()
+char XglProgram::peekChar()
 {
 	return(program.at(currentChar));
 }

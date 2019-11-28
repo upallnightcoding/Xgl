@@ -7,7 +7,7 @@
 /*****************************************************************************
 class XglProgram
 
-This class is used to read token from a source input, one token at a time.
+This class is used to read tokens from a source input, one token at a time.
 *****************************************************************************/
 
 class XglProgram
@@ -19,22 +19,22 @@ public:
 public:
 	void add(string source);
 	XglToken *getToken();
-	bool isEop();
 
 private:
 	bool isChar(char character);
 	void moveToNextChar();
-	char getCurrentChar();
+	char peekChar();
 	void skipBlanks();
+	bool isEop();
 
 	XglToken *getString();
-
+	XglToken *getKeyword();
+	XglToken *getSingleToken();
+	XglToken *getDoubleToken();
 	XglToken *getNumber();
 
 	XglNumber getInteger();
 
-	XglToken *getSingleToken();
-	XglToken *getDoubleToken();
 	XglTokenSymbolType getDoubleCharSymbol(char character, XglTokenSymbolType first, XglTokenSymbolType second);
 
 private:

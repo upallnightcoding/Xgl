@@ -157,6 +157,13 @@
     <ClInclude Include="src\XglProgram.h" />
     <ClInclude Include="src\XglNumber.h" />
     <ClInclude Include="src\XglToken.h" />
+    <ClInclude Include="src\XglValue.h" />
+    <ClInclude Include="src\XglInterpreter.h" />
+    <ClInclude Include="src\XglCommand.h" />
+    <ClInclude Include="src\XglNode.h" />
+    <ClInclude Include="src\XglCommandPrint.h" />
+    <ClInclude Include="src\XglNodePrint.h" />
+    <ClInclude Include="src\XglNodeValue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -170,6 +177,13 @@
     <ClCompile Include="src\XglProgram.cpp" />
     <ClCompile Include="src\XglNumber.cpp" />
     <ClCompile Include="src\XglToken.cpp" />
+    <ClCompile Include="src\XglValue.cpp" />
+    <ClCompile Include="src\XglInterpreter.cpp" />
+    <ClCompile Include="src\XglCommand.cpp" />
+    <ClCompile Include="src\XglNode.cpp" />
+    <ClCompile Include="src\XglCommandPrint.cpp" />
+    <ClCompile Include="src\XglNodePrint.cpp" />
+    <ClCompile Include="src\XglNodeValue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

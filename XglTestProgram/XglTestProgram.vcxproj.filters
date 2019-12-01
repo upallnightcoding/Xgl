@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="node">
+      <UniqueIdentifier>{776c89b4-7148-4fa1-b26b-a7e06e2bcbd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="command">
+      <UniqueIdentifier>{e90e0494-7261-4fb5-a0b0-0d851b7c22bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\XglTestProgram.cpp">
@@ -33,6 +39,27 @@
     <ClCompile Include="src\XglConstant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglInterpreter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNode.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodePrint.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeValue.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCommandPrint.cpp">
+      <Filter>command</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCommand.cpp">
+      <Filter>command</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -52,6 +79,27 @@
     </ClInclude>
     <ClInclude Include="src\XglConstant.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglInterpreter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNode.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodePrint.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeValue.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCommandPrint.h">
+      <Filter>command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCommand.h">
+      <Filter>command</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

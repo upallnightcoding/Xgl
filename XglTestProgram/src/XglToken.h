@@ -66,6 +66,16 @@ public:
 
 	virtual ~XglToken();
 
+public:
+	bool isEos();
+
+	XglTokenType getType();
+
+	long getInteger();
+	bool getBoolean();
+	double getReal();
+	string getString();
+
 private:
 	XglTokenType type;
 	XglTokenSymbolType symbol;
@@ -73,5 +83,6 @@ private:
 	long lvalue;
 	double dvalue;
 	string svalue;
+	bool bvalue;
 };
 

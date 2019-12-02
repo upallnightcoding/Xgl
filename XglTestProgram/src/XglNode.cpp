@@ -10,3 +10,13 @@ XglNode::XglNode()
 XglNode::~XglNode()
 {
 }
+
+void XglNode::add(XglNode *node)
+{
+	attributes.push_back(node);
+}
+
+list<XglNode*> XglNode::getAttributes()
+{
+	return(attributes);
+}

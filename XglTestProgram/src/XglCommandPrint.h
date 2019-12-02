@@ -1,5 +1,7 @@
 #pragma once
 #include "XglCommand.h"
+#include "XglInterpreterAbstract.h"
+
 class XglCommandPrint :
 	public XglCommand
 {
@@ -8,6 +10,6 @@ public:
 	virtual ~XglCommandPrint();
 
 public:
-	virtual XglNode *execute(XglInterpreter &interpreter);
+	virtual XglNode *execute(XglInterpreterAbstract *interpreter);
 };
 

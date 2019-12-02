@@ -17,8 +17,11 @@ class XglValue
 {
 public:
 	XglValue();
-	XglValue(XglToken &token);
+	XglValue(XglToken *token);
 	virtual ~XglValue();
+
+public:
+	void print();
 
 private:
 	XglValueType type;

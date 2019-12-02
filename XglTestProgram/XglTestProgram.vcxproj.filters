@@ -60,6 +60,9 @@
     <ClCompile Include="src\XglCommand.cpp">
       <Filter>command</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglInterpreterAbstract.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="src\XglCommand.h">
       <Filter>command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglInterpreterAbstract.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

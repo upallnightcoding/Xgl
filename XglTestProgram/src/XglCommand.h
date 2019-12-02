@@ -1,15 +1,20 @@
 #pragma once
 
-#include "XglInterpreter.h"
+#include "XglInterpreterAbstract.h"
 #include "XglNode.h"
 
 class XglCommand
 {
 public:
-	XglCommand();
+	XglCommand(string name);
 	virtual ~XglCommand();
 
 public:
-	virtual XglNode *execute(XglInterpreter &interpreter) = 0;
+	virtual XglNode *execute(XglInterpreterAbstract *interpreter) = 0;
+
+	string getName();
+
+private:
+	string name;
 };
 

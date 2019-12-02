@@ -5,13 +5,20 @@
 #include <iostream>
 
 #include "XglProgram.h"
+#include "XglInterpreter.h"
 
 int main()
 {
 	XglProgram program;
-	XglToken *token = NULL;
+	XglInterpreter interpreter(program);
+	XglNode *node = NULL;
 
-	do {
-		token = program.getToken();
-	} while (token != NULL);
+	node = interpreter.parseStatement();
+
+	node->execute();
+
+	node = interpreter.parseStatement();
+
+	node->execute();
+
 }

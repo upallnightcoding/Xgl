@@ -10,12 +10,15 @@ XglProgram::XglProgram()
 	eop = false;
 	currentChar = 0;
 
-	add("  123  345  while +- * /  'this is a test' 678 ");
-	add("for end integer real ");
-	add("333  88 < ! >= () = ==  90909 123.456 'String ending a line'   ");
-	add(" 'String at the start' 0678.0999 0.00543 ");
-
 	skipBlanks();
+
+	//add("  123  345  while +- * /  'this is a test' 678 ");
+	//add("for end integer real ");
+	//add("333  88 < ! >= () = ==  90909 123.456 'String ending a line'   ");
+	//add(" 'String at the start' 0678.0999 0.00543 ");
+
+	add("print 10, 20, 30;");
+	add("print 40, 50, 60;");
 }
 
 

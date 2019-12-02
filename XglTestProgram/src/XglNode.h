@@ -2,7 +2,7 @@
 
 #include "Xgl.h"
 
-#include "XglNode.h"
+//#include "XglNode.h"
 #include "XglValue.h"
 
 enum class XglNodeType
@@ -20,6 +20,10 @@ public:
 
 public:
 	virtual XglValue *execute() = 0;
+
+	void add(XglNode *node);
+
+	list<XglNode*> getAttributes();
 
 private:
 	list<XglNode*> attributes;

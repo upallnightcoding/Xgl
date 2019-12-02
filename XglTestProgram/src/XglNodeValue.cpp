@@ -2,11 +2,17 @@
 #include "XglNodeValue.h"
 
 
-XglNodeValue::XglNodeValue()
+XglNodeValue::XglNodeValue(XglValue *value)
 {
+	this->value = value;
 }
 
 
 XglNodeValue::~XglNodeValue()
 {
+}
+
+XglValue *XglNodeValue::execute()
+{
+	return(value);
 }

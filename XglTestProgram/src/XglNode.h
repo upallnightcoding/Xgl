@@ -52,12 +52,12 @@ public:
 
 	void add(XglNode *node);
 
-	vector<XglNode*> getAttributes();
+	vector<XglNode*> getCodeBlock();
 
 	bool isEnd();
 
 private:
-	vector<XglNode*> attributes;
+	vector<XglNode*> codeBlock;
 	XglNodeType type;
 };
 

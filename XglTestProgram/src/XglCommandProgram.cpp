@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "XglCommandProgram.h"
-#include "XglNodeExecute.h"
+#include "XglNodeCodeBlock.h"
 #include "XglNodeProgram.h"
 
 XglCommandProgram::XglCommandProgram() 
@@ -13,11 +13,15 @@ XglCommandProgram::~XglCommandProgram()
 {
 }
 
+
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglNode *XglCommandProgram::execute(XglInterpreterAbstract *interpreter)
 {
 	interpreter->getToken();
 
-	XglNode *code = new XglNodeExecute();
+	XglNode *code = new XglNodeCodeBlock();
 
 	XglNode *statement = interpreter->parseStatement();
 

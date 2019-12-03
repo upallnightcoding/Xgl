@@ -14,17 +14,17 @@ XglNode::~XglNode()
 /*****************************************************************************
 add() -
 *****************************************************************************/
-void XglNode::add(XglNode *node)
+void XglNode::add(XglNode *code)
 {
-	attributes.push_back(node);
+	codeBlock.push_back(code);
 }
 
 /*****************************************************************************
 getAttributes() -
 *****************************************************************************/
-vector<XglNode*> XglNode::getAttributes()
+vector<XglNode*> XglNode::getCodeBlock()
 {
-	return(attributes);
+	return(codeBlock);
 }
 
 /*****************************************************************************
@@ -47,5 +47,5 @@ evaluate() -
 *****************************************************************************/
 XglValue *XglNode::evaluate(int index) 
 {
-	return(attributes[index]->execute()); 
+	return(codeBlock[index]->execute()); 
 }

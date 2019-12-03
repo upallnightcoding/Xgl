@@ -1,11 +1,11 @@
 #pragma once
 #include "XglNode.h"
-class XglNodeExecute :
+class XglNodeCodeBlock :
 	public XglNode
 {
 public:
-	XglNodeExecute();
-	virtual ~XglNodeExecute();
+	XglNodeCodeBlock();
+	virtual ~XglNodeCodeBlock();
 
 public:
 	virtual XglValue *execute();

@@ -1,3 +1,5 @@
+# Xgl - Xg Integration Language
+
 ## Introduction
 
 Xgl is the integration language used by the Xg Game Engine.  It is a free format language that resembles "c-Language" and "Java" syntax.  
@@ -16,7 +18,7 @@ end;
 
 ## Variables & Types
 
-Xgl supports standard variable names.  All variable names must begin with a letter, either "a" through "z" or "A" through "Z".  The name can then contain, numbers "0" through "9", or "_".  Any other characters are not allowed.  Variables in Xgl are **not** case sensitive.  Therefore, the variables ~~CAR~~, ~car~, ~Car~, ~caR~ are all equal and will reference the same variable.  Keywords are not allowed to be used as variables.
+Xgl supports standard variable names.  All variable names must begin with a letter, either "a" through "z" or "A" through "Z".  The name can then contain, numbers "0" through "9", or "_".  Any other characters are not allowed.  Variables in Xgl are **not** case sensitive.  Therefore, the variables *CAR*, *car*, *Car*, *caR* are all equal and will reference the same variable.  Keywords are not allowed to be used as variables, these are concidered reserved words and should only be used as commands and sub-commands.
 
 Examples of legal variable names:
 Priority1

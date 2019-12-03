@@ -2,7 +2,8 @@
 #include "XglNodeValue.h"
 
 
-XglNodeValue::XglNodeValue(XglValue *value)
+XglNodeValue::XglNodeValue(XglValue *value) 
+	: XglNode(XglNodeType::NODE_VALUE)
 {
 	this->value = value;
 }

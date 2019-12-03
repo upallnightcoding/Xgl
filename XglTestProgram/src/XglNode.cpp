@@ -2,21 +2,50 @@
 #include "XglNode.h"
 
 
-XglNode::XglNode()
+XglNode::XglNode(XglNodeType type)
 {
-	this->type = XglNodeType::NODE_UNKNOWN;
+	this->type = type;
 }
 
 XglNode::~XglNode()
 {
 }
 
+/*****************************************************************************
+add() -
+*****************************************************************************/
 void XglNode::add(XglNode *node)
 {
 	attributes.push_back(node);
 }
 
-list<XglNode*> XglNode::getAttributes()
+/*****************************************************************************
+getAttributes() -
+*****************************************************************************/
+vector<XglNode*> XglNode::getAttributes()
 {
 	return(attributes);
+}
+
+/*****************************************************************************
+isEnd() -
+*****************************************************************************/
+bool XglNode::isEnd() {
+	return(type == XglNodeType::NODE_END);
+}
+
+/*****************************************************************************
+evaluate() -
+*****************************************************************************/
+XglValue *XglNode::evaluate() 
+{
+	return(execute());
+}
+
+/*****************************************************************************
+evaluate() -
+*****************************************************************************/
+XglValue *XglNode::evaluate(int index) 
+{
+	return(attributes[index]->execute()); 
 }

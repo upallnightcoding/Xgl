@@ -165,6 +165,11 @@
     <ClInclude Include="src\XglNodePrint.h" />
     <ClInclude Include="src\XglNodeValue.h" />
     <ClInclude Include="src\XglInterpreterAbstract.h" />
+    <ClInclude Include="src\XglCommandProgram.h" />
+    <ClInclude Include="src\XglNodeExecute.h" />
+    <ClInclude Include="src\XglNodeProgram.h" />
+    <ClInclude Include="src\XglCommandEnd.h" />
+    <ClInclude Include="src\XglNodeEnd.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -186,6 +191,11 @@
     <ClCompile Include="src\XglNodePrint.cpp" />
     <ClCompile Include="src\XglNodeValue.cpp" />
     <ClCompile Include="src\XglInterpreterAbstract.cpp" />
+    <ClCompile Include="src\XglCommandProgram.cpp" />
+    <ClCompile Include="src\XglNodeExecute.cpp" />
+    <ClCompile Include="src\XglNodeProgram.cpp" />
+    <ClCompile Include="src\XglCommandEnd.cpp" />
+    <ClCompile Include="src\XglNodeEnd.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

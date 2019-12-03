@@ -16,9 +16,4 @@ int main()
 	node = interpreter.parseStatement();
 
 	node->execute();
-
-	node = interpreter.parseStatement();
-
-	node->execute();
-
 }

@@ -2,7 +2,7 @@
 #include "XglNodePrint.h"
 
 
-XglNodePrint::XglNodePrint()
+XglNodePrint::XglNodePrint() : XglNode(XglNodeType::NODE_PRINT)
 {
 }
 

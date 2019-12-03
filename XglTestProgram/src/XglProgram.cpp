@@ -10,15 +10,17 @@ XglProgram::XglProgram()
 	eop = false;
 	currentChar = 0;
 
-	skipBlanks();
-
 	//add("  123  345  while +- * /  'this is a test' 678 ");
 	//add("for end integer real ");
 	//add("333  88 < ! >= () = ==  90909 123.456 'String ending a line'   ");
 	//add(" 'String at the start' 0678.0999 0.00543 ");
 
-	add("print 10, 20, 30;");
-	add("print 40, 50, 60;");
+	add("program;");
+	add("print 'Hello, World ', 10, ' ', 20, ' ', 30;");
+	add("print 40, ' ', 50, ' ', 60;");
+	add("end;");
+
+	skipBlanks();
 }
 
 
@@ -65,13 +67,23 @@ XglToken *XglProgram::getToken()
 }
 
 /*****************************************************************************
-getDoubleCharSymbol() -
+getDoubleCharSymbol() - Returns a token object that represents a double
+token.  A double token is defined as a token that can be made up of one or
+two characters.  This function determines if the first character is a 
+double token candidate.  If it is not, the token is ignored.  If it is, the
+second token it checked.
+
+Example:
+	< or <=
+	> or >=
 *****************************************************************************/
 XglToken *XglProgram::getDoubleToken() 
 {
 	XglTokenSymbolType symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
 	XglToken *token = NULL;
 
+	// Search for the first character of a double token
+	//-------------------------------------------------
 	switch (peekChar()) {
 	case '<':
 		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::TOKEN_SYMBOL_LT, XglTokenSymbolType::TOKEN_SYMBOL_LE);
@@ -87,6 +99,8 @@ XglToken *XglProgram::getDoubleToken()
 		break;
 	}
 
+	// If a double token has been found, return a token object
+	//--------------------------------------------------------
 	if (symbol != XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN) {
 		token = new XglToken(symbol);
 	}

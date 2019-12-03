@@ -3,6 +3,8 @@
 #include "XglNodeValue.h"
 
 #include "XglCommandPrint.h"
+#include "XglCommandProgram.h"
+#include "XglCommandEnd.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -10,6 +12,8 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 	this->program = program;
 
 	add(new XglCommandPrint());
+	add(new XglCommandProgram());
+	add(new XglCommandEnd());
 }
 
 

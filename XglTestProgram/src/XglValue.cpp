@@ -49,19 +49,19 @@ XglValue::~XglValue()
 void XglValue::print() {
 	switch (type) {
 	case XglValueType::VALUE_INTEGER:
-		cout << lvalue << " ";
+		cout << lvalue;
 		break;
 	case XglValueType::VALUE_REAL:
-		cout << dvalue << " ";
+		cout << dvalue;
 		break;
 	case XglValueType::VALUE_STRING:
-		cout << svalue << " ";
+		cout << svalue;
 		break;
 	case XglValueType::VALUE_KEYWORD:
-		cout << variable << " ";
+		cout << variable;
 		break;
 	case XglValueType::VALUE_BOOLEAN:
-		cout << bvalue << " ";
+		cout << bvalue;
 		break;
 	}
 }

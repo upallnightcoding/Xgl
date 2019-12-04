@@ -18,9 +18,20 @@ class XglValue
 public:
 	XglValue();
 	XglValue(XglToken *token);
+	XglValue(double dvalue);
+	XglValue(string value);
+	XglValue(long value);
+	XglValue(bool value);
 	virtual ~XglValue();
 
 public:
+	double getReal();
+	string getString();
+	bool getBool();
+	long getInteger();
+
+	XglValueType getType();
+
 	void print();
 
 private:

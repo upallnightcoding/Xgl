@@ -11,7 +11,7 @@ XglNodeEnd::~XglNodeEnd()
 {
 }
 
-XglValue *XglNodeEnd::execute()
+XglValue *XglNodeEnd::execute(XglContext &context)
 {
 	return(NULL);
 }

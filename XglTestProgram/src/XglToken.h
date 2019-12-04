@@ -68,6 +68,8 @@ public:
 
 public:
 	bool isEos();
+	bool isEndExpression();
+	bool isComma();
 
 	XglTokenType getType();
 

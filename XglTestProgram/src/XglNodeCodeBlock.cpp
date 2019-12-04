@@ -12,10 +12,10 @@ XglNodeCodeBlock::~XglNodeCodeBlock()
 {
 }
 
-XglValue *XglNodeCodeBlock::execute()
+XglValue *XglNodeCodeBlock::execute(XglContext &context)
 {
 	for (XglNode *attribute : getCodeBlock()) {
-		attribute->evaluate();
+		attribute->evaluate(context);
 	}
 
 	return(NULL);

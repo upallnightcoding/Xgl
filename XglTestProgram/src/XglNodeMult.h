@@ -1,13 +1,14 @@
 #pragma once
 #include "XglNode.h"
+#include "XglValue.h"
 #include "XglContext.h"
 
-class XglNodeCodeBlock :
+class XglNodeMult :
 	public XglNode
 {
 public:
-	XglNodeCodeBlock();
-	virtual ~XglNodeCodeBlock();
+	XglNodeMult();
+	virtual ~XglNodeMult();
 
 public:
 	virtual XglValue *execute(XglContext &context);

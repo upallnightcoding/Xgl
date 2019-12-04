@@ -1,14 +1,13 @@
 #pragma once
 #include "XglNode.h"
-#include "XglValue.h"
 #include "XglContext.h"
 
-class XglNodeEnd :
+class XglNodeSub :
 	public XglNode
 {
 public:
-	XglNodeEnd();
-	virtual ~XglNodeEnd();
+	XglNodeSub();
+	virtual ~XglNodeSub();
 
 public:
 	XglValue *execute(XglContext &context);

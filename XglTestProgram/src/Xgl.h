@@ -6,6 +6,7 @@
 #include <list>
 #include <map>
 #include <vector>
+#include <stack>
 
 #include "XglConstant.h"
 

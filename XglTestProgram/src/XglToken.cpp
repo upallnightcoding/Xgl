@@ -47,6 +47,30 @@ XglToken::~XglToken()
 {
 }
 
+/*****************************************************************************
+isComma() - Returns true if the token is a comma ","
+*****************************************************************************/
+bool XglToken::isComma() {
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_COMMA));
+}
+
+/*****************************************************************************
+isEos() - Returns true if the token is a semi colon ";"
+*****************************************************************************/
+bool XglToken::isEos() {
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_SEMI));
+}
+
+/*****************************************************************************
+isEndExpression() - Returns true if the token represents the end of an 
+expression.  This is used to determine the end of an expression that could 
+be in a comma separated list.  The expression is complete if the token is
+a comma or semi-colon.
+*****************************************************************************/
+bool XglToken::isEndExpression() {
+	return(isComma() || isEos());
+}
+
 bool XglToken::getBoolean() {
 	return(bvalue);
 }
@@ -91,11 +115,6 @@ double XglToken::getReal() {
 	}
 
 	return(value);
-}
-
-bool XglToken::isEos()
-{
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_SEMI));
 }
 
 XglTokenType XglToken::getType()

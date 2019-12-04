@@ -1,6 +1,8 @@
 #pragma once
 #include "XglNode.h"
 #include "XglValue.h"
+#include "XglContext.h"
+
 class XglNodeValue :
 	public XglNode
 {
@@ -9,7 +11,7 @@ public:
 	virtual ~XglNodeValue();
 
 public:
-	virtual XglValue *execute();
+	virtual XglValue *execute(XglContext &context);
 
 private:
 	XglValue *value;

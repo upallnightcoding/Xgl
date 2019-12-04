@@ -2,12 +2,12 @@
 #include "XglNode.h"
 #include "XglContext.h"
 
-class XglNodeCodeBlock :
+class XglNodeDivide :
 	public XglNode
 {
 public:
-	XglNodeCodeBlock();
-	virtual ~XglNodeCodeBlock();
+	XglNodeDivide();
+	virtual ~XglNodeDivide();
 
 public:
 	virtual XglValue *execute(XglContext &context);

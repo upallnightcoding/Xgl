@@ -11,10 +11,10 @@ XglNodePrint::~XglNodePrint()
 {
 }
 
-XglValue *XglNodePrint::execute()
+XglValue *XglNodePrint::execute(XglContext &context)
 {
 	for (XglNode *node : getCodeBlock()) {
-		node->execute()->print();
+		node->execute(context)->print();
 	}
 
 	cout << "\n";

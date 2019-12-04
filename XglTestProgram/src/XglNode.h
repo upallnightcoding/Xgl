@@ -3,6 +3,7 @@
 #include "Xgl.h"
 
 #include "XglValue.h"
+#include "XglContext.h"
 
 enum class XglNodeType
 {
@@ -45,10 +46,10 @@ public:
 	virtual ~XglNode();
 
 public:
-	virtual XglValue *execute() = 0;
+	virtual XglValue *execute(XglContext &context) = 0;
 
-	XglValue *evaluate();
-	XglValue *evaluate(int index);
+	XglValue *evaluate(XglContext &context);
+	XglValue *evaluate(int index, XglContext &context);
 
 	void add(XglNode *node);
 

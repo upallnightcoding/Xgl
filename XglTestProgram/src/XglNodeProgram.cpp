@@ -11,9 +11,9 @@ XglNodeProgram::~XglNodeProgram()
 {
 }
 
-XglValue *XglNodeProgram::execute()
+XglValue *XglNodeProgram::execute(XglContext &context)
 {
-	evaluate(0);
+	evaluate(0, context);
 
 	return(NULL);
 }

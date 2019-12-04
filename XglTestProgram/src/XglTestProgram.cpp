@@ -6,14 +6,16 @@
 
 #include "XglProgram.h"
 #include "XglInterpreter.h"
+#include "XglContext.h"
 
 int main()
 {
+	XglContext context;
 	XglProgram program;
 	XglInterpreter interpreter(program);
 	XglNode *node = NULL;
 
 	node = interpreter.parseStatement();
 
-	node->execute();
+	node->execute(context);
 }

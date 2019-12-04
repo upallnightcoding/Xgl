@@ -37,15 +37,15 @@ bool XglNode::isEnd() {
 /*****************************************************************************
 evaluate() -
 *****************************************************************************/
-XglValue *XglNode::evaluate() 
+XglValue *XglNode::evaluate(XglContext &context) 
 {
-	return(execute());
+	return(execute(context));
 }
 
 /*****************************************************************************
 evaluate() -
 *****************************************************************************/
-XglValue *XglNode::evaluate(int index) 
+XglValue *XglNode::evaluate(int index, XglContext &context) 
 {
-	return(codeBlock[index]->execute()); 
+	return(codeBlock[index]->execute(context)); 
 }

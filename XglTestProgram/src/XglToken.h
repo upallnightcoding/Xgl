@@ -48,10 +48,16 @@ enum class XglTokenSymbolType {
 	TOKEN_SYMBOL_LBRACE,
 	TOKEN_SYMBOL_RBRACE,
 
+	// Variable assignment operator
+	//-----------------------------
 	TOKEN_SYMBOL_ASSIGN,
 
+	// Statement separator token
+	//--------------------------
 	TOKEN_SYMBOL_SEMI,
 
+	// Expression separator token
+	//---------------------------
 	TOKEN_SYMBOL_COMMA
 };
 
@@ -67,11 +73,19 @@ public:
 	virtual ~XglToken();
 
 public:
+	int rank();
+
 	bool isEos();
 	bool isEndExpression();
 	bool isComma();
+	bool isLeftParen();
+	bool isRightParen();
+	bool isEOE();
+	bool isConstant();
+	bool isOperator();
 
 	XglTokenType getType();
+	XglTokenSymbolType getSymbol();
 
 	long getInteger();
 	bool getBoolean();

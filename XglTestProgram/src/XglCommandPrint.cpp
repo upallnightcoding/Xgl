@@ -16,17 +16,15 @@ XglNode *XglCommandPrint::execute(XglInterpreterAbstract *interpreter)
 {
 	XglNode *command = new XglNodePrint();
 
-	XglToken *separator = new XglToken();
+	XglToken *lastToken = new XglToken();
 
-	while (!separator->isEos()) { 
+	while (!lastToken->isEos()) {
 		XglNode *attribute = interpreter->parseExpression();
+
 		command->add(attribute);
 
-		delete separator;
-		separator = interpreter->getToken();
+		lastToken = interpreter->getLastToken();
 	}
-
-	delete separator;
 
 	return(command);
 }

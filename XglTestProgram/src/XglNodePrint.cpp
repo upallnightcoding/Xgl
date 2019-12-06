@@ -14,7 +14,8 @@ XglNodePrint::~XglNodePrint()
 XglValue *XglNodePrint::execute(XglContext &context)
 {
 	for (XglNode *node : getCodeBlock()) {
-		node->execute(context)->print();
+		XglValue *value = node->execute(context);
+		value->print();
 	}
 
 	cout << "\n";

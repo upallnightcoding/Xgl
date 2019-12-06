@@ -55,18 +55,12 @@ XglToken *XglInterpreter::getToken()
 
 XglNode *XglInterpreter::parseExpression()
 {
-	XglNode *node = NULL;
-	bool interpreting = true;
+	return(expression.parse(program));
+}
 
-	//while (interpreting) {
-		XglToken *token = program.getToken();
-		XglValue *value = new XglValue(token);
-		node = new XglNodeValue(value);
-
-		interpreting = false;
-	//}
-
-	return(node);
+XglToken *XglInterpreter::getLastToken()
+{
+	return(expression.getLastToken());
 }
 
 /*****************************************************************************

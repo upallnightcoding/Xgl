@@ -13,5 +13,6 @@ public:
 	virtual XglNode *parseStatement() = 0;
 	virtual XglNode *parseExpression() = 0;
 	virtual XglToken *getToken() = 0;
+	virtual XglToken *getLastToken() = 0;
 };
 

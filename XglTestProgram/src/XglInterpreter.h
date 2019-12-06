@@ -5,6 +5,7 @@
 #include "XglNode.h"
 #include "XglCommand.h"
 #include "XglInterpreterAbstract.h"
+#include "XglExpression.h"
 
 class XglInterpreter : public XglInterpreterAbstract
 {
@@ -13,6 +14,8 @@ public:
 	virtual ~XglInterpreter();
 
 public:
+	virtual XglToken *getLastToken();
+
 	XglNode *parseStatement();
 	XglNode *parseExpression();
 
@@ -24,5 +27,6 @@ private:
 private:
 	XglProgram program;
 	map<string, XglCommand*> commandMap;
+	XglExpression expression;
 };
 

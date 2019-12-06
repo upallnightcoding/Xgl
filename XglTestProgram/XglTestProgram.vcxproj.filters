@@ -63,38 +63,44 @@
     <ClCompile Include="src\XglInterpreterAbstract.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglCommandProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglCommandEnd.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeEnd.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeCodeBlock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\XglExpression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeAdd.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\XglCommandProgram.cpp">
+      <Filter>command</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeMult.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\XglCommandEnd.cpp">
+      <Filter>command</Filter>
     </ClCompile>
     <ClCompile Include="src\XglNodeSub.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeProgram.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeNot.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeNeg.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeMult.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeEnd.cpp">
+      <Filter>node</Filter>
     </ClCompile>
     <ClCompile Include="src\XglNodeDivide.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeCodeBlock.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeAdd.cpp">
+      <Filter>node</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,38 +146,44 @@
     <ClInclude Include="src\XglInterpreterAbstract.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglCommandProgram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeProgram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglCommandEnd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeEnd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeCodeBlock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XglExpression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeAdd.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\XglCommandEnd.h">
+      <Filter>command</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeMult.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\XglCommandProgram.h">
+      <Filter>command</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeSub.h">
-      <Filter>Header Files</Filter>
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeProgram.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeNot.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeNeg.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeMult.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeEnd.h">
+      <Filter>node</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeDivide.h">
-      <Filter>Header Files</Filter>
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeCodeBlock.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeAdd.h">
+      <Filter>node</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

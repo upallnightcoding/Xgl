@@ -26,7 +26,7 @@ XglValue *XglNodeAdd::execute(XglContext &context)
 		value = new XglValue(value1->getReal() + value2->getReal());
 		break;
 	case XglValueType::VALUE_STRING:
-		value = new XglValue(value->getString() + value2->getString());
+		value = new XglValue(value1->getString() + value2->getString());
 		break;
 	case XglValueType::VALUE_BOOLEAN:
 		value = new XglValue(value1->getBool() && value2->getBool());

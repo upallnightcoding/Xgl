@@ -176,6 +176,8 @@
     <ClInclude Include="src\XglNodeMult.h" />
     <ClInclude Include="src\XglNodeSub.h" />
     <ClInclude Include="src\XglNodeDivide.h" />
+    <ClInclude Include="src\XglNodeNot.h" />
+    <ClInclude Include="src\XglNodeNeg.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -208,6 +210,8 @@
     <ClCompile Include="src\XglNodeMult.cpp" />
     <ClCompile Include="src\XglNodeSub.cpp" />
     <ClCompile Include="src\XglNodeDivide.cpp" />
+    <ClCompile Include="src\XglNodeNot.cpp" />
+    <ClCompile Include="src\XglNodeNeg.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

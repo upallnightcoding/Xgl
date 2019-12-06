@@ -6,11 +6,20 @@
 class XglExpression
 {
 public:
-	XglExpression(XglProgram &program);
+	XglExpression();
 	virtual ~XglExpression();
 
 public:
-	XglNode *parse();
+	XglNode *parse(XglProgram &program);
+
+	XglToken *getLastToken();
+
+private:
+	//XglNode *parse();
+	void popOprStack();
+	void pushOperOnStack(XglToken *token);
+	void popUntilRightParen();
+	void emptyOprStack();
 
 private:
 	// Expression Stack
@@ -19,7 +28,7 @@ private:
 	// Operator Stack
 	stack<XglToken*> oprStack;
 
+	XglToken *lastToken;
 	XglProgram program;
-
 };
 

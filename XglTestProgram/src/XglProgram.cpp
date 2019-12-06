@@ -16,8 +16,18 @@ XglProgram::XglProgram()
 	//add(" 'String at the start' 0678.0999 0.00543 ");
 
 	add("program;");
-	add("print 'Hello, World ', 10, ' ', 20, ' ', 30;");
-	add("print 40, ' ', 50, ' ', 60;");
+	add("	print '123=', 123;");
+	add("	print '87=', 12 + 45 + 30;");
+	add("	print '3=', (10 - 9) * 3;");
+	add("	print '40=', 8 * 5;");
+	add("	print '12.5=', 5.0 * 2.5;");
+	add("	print 'AB=', 'A' + 'B';");
+	add("	print '0=', 1 / 3;");
+	add("	print '0.333=', 1.0 / 3;");
+	add("	print '0=', 1 / 3.0;");
+	add("	print 'z123m=', 'z' + 123 + 'm';");
+	add("	print '-3=', ~3;");
+	add("	print '3=', ~(~3);");
 	add("end;");
 
 	skipBlanks();

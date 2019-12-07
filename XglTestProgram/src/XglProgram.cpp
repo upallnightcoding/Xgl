@@ -10,11 +10,6 @@ XglProgram::XglProgram()
 	eop = false;
 	currentChar = 0;
 
-	//add("  123  345  while +- * /  'this is a test' 678 ");
-	//add("for end integer real ");
-	//add("333  88 < ! >= () = ==  90909 123.456 'String ending a line'   ");
-	//add(" 'String at the start' 0678.0999 0.00543 ");
-
 	add("program;");
 	add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
@@ -28,6 +23,33 @@ XglProgram::XglProgram()
 	add("	print 'z123m=', 'z' + 123 + 'm';");
 	add("	print '-3=', ~3;");
 	add("	print '3=', ~(~3);");
+	add("	print '==================';");
+	add("	print 'TRUE=', 1 < 3;");
+	add("	print 'FALSE=', 3 < 1;");
+	add("	print 'TRUE=', 'a' < 'b';");
+	add("	print 'FALSE=', 3.45 < 1.9;");
+	add("	print '==================';");
+	add("	print 'FALSE=', 1 > 3;");
+	add("	print 'TRUE=', 3 > 1;");
+	add("	print 'FALSE=', 'a' > 'b';");
+	add("	print 'TRUE=', 3.45 > 1.9;");
+	add("	print '==================';");
+	add("	print 'FALSE=', 1 == 3;");
+	add("	print 'TRUE=', 3 == 3;");
+	add("	print 'FALSE=', 'a' == 'b';");
+	add("	print 'TRUE=', 1.9 == 1.9;");
+	add("	print '==================';");
+	add("	print 'TRUE=', 1 <= 3;");
+	add("	print 'FALSE=', 3 <= 1;");
+	add("	print 'TRUE=', 'b' <= 'b';");
+	add("	print 'FALSE=', 3.45 <= 1.9;");
+	add("	print '==================';");
+	add("	print 'FALSE=', 1 >= 3;");
+	add("	print 'TRUE=', 3 >= 1;");
+	add("	print 'TRUE=', 'b' >= 'b';");
+	add("	print 'TRUE=', 3.45 >= 1.9;");
+	add("	print 'FALSE=', !(3.45 >= 1.9);");
+	add("	print '==================';");
 	add("end;");
 
 	skipBlanks();
@@ -136,12 +158,16 @@ XglTokenSymbolType XglProgram::getDoubleCharSymbol(char character, XglTokenSymbo
 }
 
 /*****************************************************************************
-getSingleToken() -
+getSingleToken() - Returns an object that represents a single token.  A single
+token is defined as a single character.  This function identifies the 
+character and moves off the character.
 *****************************************************************************/
 XglToken *XglProgram::getSingleToken()
 {
 	XglTokenSymbolType symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
 
+	// Identify the single token character
+	//------------------------------------
 	switch (peekChar()) {
 	case '~':
 		symbol = XglTokenSymbolType::TOKEN_SYMBOL_TILDE;
@@ -180,6 +206,8 @@ XglToken *XglProgram::getSingleToken()
 
 	XglToken *token = NULL;
 
+	// Verify the token and create the token object
+	//---------------------------------------------
 	if (symbol != XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN) {
 		token = new XglToken(symbol);
 		moveToNextChar();

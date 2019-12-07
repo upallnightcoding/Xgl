@@ -239,6 +239,14 @@ int XglToken::rank()
 	case XglTokenSymbolType::TOKEN_SYMBOL_MINUS:
 		value = 10;
 		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_EQ:
+	case XglTokenSymbolType::TOKEN_SYMBOL_NE:
+	case XglTokenSymbolType::TOKEN_SYMBOL_GT:
+	case XglTokenSymbolType::TOKEN_SYMBOL_LT:
+	case XglTokenSymbolType::TOKEN_SYMBOL_GE:
+	case XglTokenSymbolType::TOKEN_SYMBOL_LE:
+		value = 5;
+		break;
 	case XglTokenSymbolType::TOKEN_SYMBOL_LPAREN:
 		value = 1;
 		break;

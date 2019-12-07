@@ -102,6 +102,24 @@
     <ClCompile Include="src\XglNodeAdd.cpp">
       <Filter>node</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglNodeGt.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeLt.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeEq.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeNe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeGe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeLe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -184,6 +202,24 @@
     </ClInclude>
     <ClInclude Include="src\XglNodeAdd.h">
       <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeLt.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeGt.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeEq.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeNe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeGe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeLe.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

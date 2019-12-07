@@ -7,6 +7,12 @@
 #include "XglNodeValue.h"
 #include "XglNodeNot.h"
 #include "XglNodeNeg.h"
+#include "XglNodeLt.h"
+#include "XglNodeGt.h"
+#include "XglNodeEq.h"
+#include "XglNodeNe.h"
+#include "XglNodeGe.h"
+#include "XglNodeLe.h"
 
 XglExpression::XglExpression()
 {
@@ -144,6 +150,24 @@ void XglExpression::popOprStack()
 		break;
 	case XglTokenSymbolType::TOKEN_SYMBOL_NOT:
 		expression = new XglNodeNot();
+		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_LT:
+		expression = new XglNodeLt();
+		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_GT:
+		expression = new XglNodeGt();
+		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_EQ:
+		expression = new XglNodeEq();
+		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_NE:
+		expression = new XglNodeNe();
+		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_GE:
+		expression = new XglNodeGe();
+		break;
+	case XglTokenSymbolType::TOKEN_SYMBOL_LE:
+		expression = new XglNodeLe();
 		break;
 	}
 

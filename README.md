@@ -16,9 +16,18 @@ program;
 end;
 ```
 
-## Variables & Types
+## Variables 
 
-Xgl supports standard variable names.  All variable names must begin with a letter, either "a" through "z" or "A" through "Z".  The name can then contain, numbers "0" through "9", or "_".  Any other characters are not allowed.  Variables in Xgl are **not** case sensitive.  Therefore, the variables *CAR*, *car*, *Car*, *caR* are all equal and will reference the same variable.  Keywords are not allowed to be used as variables, these are concidered reserved words and should only be used as commands and sub-commands.
+Xgl supports standard variable names.  All variable names must begin with a letter, either "a" through "z" or "A" through "Z".  The name can then contain, numbers "0" through "9", or an "_".  Any other characters are not allowed.  Variables in Xgl are **not** case sensitive.  Therefore, the variables *CAR*, *car*, *Car*, *caR* are all equal and will reference the same variable.  Keywords are not allowed to be used as variables, these are concidered reserved words and should only be used as commands and sub-commands.
+
+## Types
+
+Xgl supports four native types: 
+
+- [integer]
+- [real]
+- [string]
+- [boolean]
 
 Examples of legal variable names:
 Priority1

@@ -16,15 +16,15 @@ add() -
 *****************************************************************************/
 void XglNode::add(XglNode *code)
 {
-	codeBlock.push_back(code);
+	children.push_back(code);
 }
 
 /*****************************************************************************
 getAttributes() -
 *****************************************************************************/
-vector<XglNode*> XglNode::getCodeBlock()
+vector<XglNode*> XglNode::getChildren()
 {
-	return(codeBlock);
+	return(children);
 }
 
 /*****************************************************************************
@@ -47,5 +47,5 @@ evaluate() -
 *****************************************************************************/
 XglValue *XglNode::evaluate(int index, XglContext &context) 
 {
-	return(codeBlock[index]->execute(context)); 
+	return(children[index]->execute(context)); 
 }

@@ -5,7 +5,7 @@
 
 enum class XglValueType
 {
-	VALUE_UNKNOWN,
+	UNKNOWN,
 	VALUE_INTEGER,
 	VALUE_REAL,
 	VALUE_STRING,

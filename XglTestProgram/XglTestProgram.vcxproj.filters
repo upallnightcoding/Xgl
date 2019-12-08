@@ -108,16 +108,34 @@
     <ClCompile Include="src\XglNodeLt.cpp">
       <Filter>node</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeEq.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglNodeNe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeGe.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>node</Filter>
     </ClCompile>
     <ClCompile Include="src\XglNodeLe.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeGe.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeEq.cpp">
+      <Filter>node</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCommandConst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeConst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeConstVar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglSymbolTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglSymbolTableRec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglVarScope.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -209,16 +227,34 @@
     <ClInclude Include="src\XglNodeGt.h">
       <Filter>node</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeEq.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglNodeNe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeGe.h">
-      <Filter>Header Files</Filter>
+      <Filter>node</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeLe.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeEq.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeGe.h">
+      <Filter>node</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCommandConst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeConst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeConstVar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglSymbolTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglSymbolTableRec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglVarScope.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

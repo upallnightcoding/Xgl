@@ -5,6 +5,7 @@
 #include "XglCommandPrint.h"
 #include "XglCommandProgram.h"
 #include "XglCommandEnd.h"
+#include "XglCommandConst.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -14,6 +15,7 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 	add(new XglCommandPrint());
 	add(new XglCommandProgram());
 	add(new XglCommandEnd());
+	add(new XglCommandConst());
 }
 
 

@@ -50,6 +50,7 @@ XglProgram::XglProgram()
 	add("	print 'TRUE=', 3.45 >= 1.9;");
 	add("	print 'FALSE=', !(3.45 >= 1.9);");
 	add("	print '==================';");
+	//add("	const integer a = 1;");
 	add("end;");
 
 	skipBlanks();

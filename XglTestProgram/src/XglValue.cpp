@@ -9,7 +9,7 @@ XglValue::XglValue()
 	svalue = "";
 	variable = "";
 	bvalue = false;
-	type = XglValueType::VALUE_UNKNOWN;
+	type = XglValueType::UNKNOWN;
 }
 
 XglValue::XglValue(bool value) {
@@ -57,7 +57,7 @@ XglValue::XglValue(XglToken *token)
 		bvalue = token->getBoolean();
 		break;
 	default:
-		type = XglValueType::VALUE_UNKNOWN;
+		type = XglValueType::UNKNOWN;
 		break;
 	}
 }

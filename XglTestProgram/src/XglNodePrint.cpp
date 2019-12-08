@@ -13,7 +13,7 @@ XglNodePrint::~XglNodePrint()
 
 XglValue *XglNodePrint::execute(XglContext &context)
 {
-	for (XglNode *node : getCodeBlock()) {
+	for (XglNode *node : getChildren()) {
 		XglValue *value = node->execute(context);
 		value->print();
 	}

@@ -19,6 +19,8 @@ enum class XglNodeType
 	NODE_END,
 	NODE_ELSE,
 	NODE_DECLARE_VARIABLE,
+	NODE_CONST,
+	NODE_CONST_VARIABLE,
 
 	NODE_EQ,
 	NODE_NE,
@@ -53,12 +55,12 @@ public:
 
 	void add(XglNode *node);
 
-	vector<XglNode*> getCodeBlock();
+	vector<XglNode*> getChildren();
 
 	bool isEnd();
 
 private:
-	vector<XglNode*> codeBlock;
+	vector<XglNode*> children;
 	XglNodeType type;
 };
 

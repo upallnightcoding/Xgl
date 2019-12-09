@@ -2,11 +2,17 @@
 #include "XglContext.h"
 
 
-XglContext::XglContext()
+XglContext::XglContext(XglSymbolTable *symbolTable)
 {
+	this->symbolTable = symbolTable;
 }
 
 
 XglContext::~XglContext()
 {
+}
+
+XglSymbolTable *XglContext::getSymbolTable()
+{
+	return(symbolTable);
 }

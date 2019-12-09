@@ -1,0 +1,11 @@
+#pragma once
+
+enum class XglValueType
+{
+	UNKNOWN,
+	VALUE_INTEGER,
+	VALUE_REAL,
+	VALUE_STRING,
+	VALUE_BOOLEAN,
+	VALUE_KEYWORD
+};

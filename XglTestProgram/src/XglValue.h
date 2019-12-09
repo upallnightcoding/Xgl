@@ -2,16 +2,7 @@
 
 #include "Xgl.h"
 #include "XglToken.h"
-
-enum class XglValueType
-{
-	UNKNOWN,
-	VALUE_INTEGER,
-	VALUE_REAL,
-	VALUE_STRING,
-	VALUE_BOOLEAN,
-	VALUE_KEYWORD
-};
+#include "XglValueType.h"
 
 class XglValue
 {

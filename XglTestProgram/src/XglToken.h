@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Xgl.h"
+#include "XglValueType.h"
 
 enum class XglTokenType {
 	UNKNOWN,
@@ -86,6 +87,7 @@ public:
 
 	XglTokenType getType();
 	XglTokenSymbolType getSymbol();
+	XglValueType getTypeFromKeyword();
 
 	long getInteger();
 	bool getBoolean();

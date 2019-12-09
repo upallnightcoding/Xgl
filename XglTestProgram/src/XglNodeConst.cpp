@@ -13,5 +13,9 @@ XglNodeConst::~XglNodeConst()
 
 XglValue *XglNodeConst::execute(XglContext &context)
 {
+	for (XglNode *node : getChildren()) {
+		node->execute(context);
+	}
+
 	return(NULL);
 }

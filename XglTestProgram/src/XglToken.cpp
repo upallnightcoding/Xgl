@@ -51,6 +51,23 @@ XglToken::~XglToken()
 {
 }
 
+XglValueType XglToken::getTypeFromKeyword() 
+{
+	XglValueType type = XglValueType::UNKNOWN;
+
+	if (svalue == "INTEGER") {
+		type = XglValueType::VALUE_INTEGER;
+	} else if (svalue == "REAL") {
+		type = XglValueType::VALUE_REAL;
+	} else if (svalue == "STRING") {
+		type = XglValueType::VALUE_STRING;
+	} else if (svalue == "BOOLEAN") {
+		type = XglValueType::VALUE_BOOLEAN;
+	}
+
+	return(type);
+}
+
 /*****************************************************************************
 isComma() - Returns true if the token is a comma ","
 *****************************************************************************/

@@ -2,23 +2,26 @@
 
 #include "Xgl.h"
 #include "XglValue.h"
-#include "XglNode.h"
 
-enum class XglSymbolTableRecDes {
+class XglNode;
+
+enum class XglSymbolTableRecDesType {
 	UNKNOWN,
-	SCALER
+	SCALER,
+	CONSTANT
 };
 
 class XglSymbolTableRec
 {
 public:
-	XglSymbolTableRec();
+	XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression);
 	virtual ~XglSymbolTableRec();
 
 private:
 	string name;
 	XglValueType type;
-	XglSymbolTableRecDes designation;
+	XglSymbolTableRecDesType designation;
 	XglNode *expression;
 };
 
+#include "XglNode.h"

@@ -34,5 +34,5 @@ XglNode *XglCommandConst::execute(XglInterpreterAbstract *interpreter)
 
 	} while (!separator->isEos());
 
-	return(NULL);
+	return(command);
 }

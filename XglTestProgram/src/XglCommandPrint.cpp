@@ -12,6 +12,9 @@ XglCommandPrint::~XglCommandPrint()
 {
 }
 
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglNode *XglCommandPrint::execute(XglInterpreterAbstract *interpreter)
 {
 	XglNode *command = new XglNodePrint();
@@ -19,9 +22,9 @@ XglNode *XglCommandPrint::execute(XglInterpreterAbstract *interpreter)
 	XglToken *lastToken = new XglToken();
 
 	while (!lastToken->isEos()) {
-		XglNode *attribute = interpreter->parseExpression();
+		XglNode *expression = interpreter->parseExpression();
 
-		command->add(attribute);
+		command->add(expression);
 
 		lastToken = interpreter->getLastToken();
 	}

@@ -10,7 +10,7 @@
 
 int main()
 {
-	XglContext context;
+	XglContext context(new XglSymbolTable());
 	XglProgram program;
 	XglInterpreter interpreter(program);
 	XglNode *node = NULL;

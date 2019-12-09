@@ -11,10 +11,15 @@ XglNodePrint::~XglNodePrint()
 {
 }
 
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglValue *XglNodePrint::execute(XglContext &context)
 {
 	for (XglNode *node : getChildren()) {
+
 		XglValue *value = node->execute(context);
+
 		value->print();
 	}
 

@@ -16,7 +16,7 @@ execute() -
 *****************************************************************************/
 XglValue *XglNodePrint::execute(XglContext &context)
 {
-	for (XglNode *node : getChildren()) {
+	for (XglNode *node : getAttributes()) {
 
 		XglValue *value = node->execute(context);
 

@@ -13,22 +13,22 @@ XglValue::XglValue()
 }
 
 XglValue::XglValue(bool value) {
-	type = XglValueType::VALUE_BOOLEAN;
+	type = XglValueType::BOOLEAN;
 	bvalue = value;
 }
 
 XglValue::XglValue(long value) {
-	type = XglValueType::VALUE_INTEGER;
+	type = XglValueType::INTEGER;
 	lvalue = value;
 }
 
 XglValue::XglValue(double value) {
-	type = XglValueType::VALUE_REAL;
+	type = XglValueType::REAL;
 	dvalue = value;
 }
 
 XglValue::XglValue(string value) {
-	type = XglValueType::VALUE_STRING;
+	type = XglValueType::STRING;
 	svalue = value;
 }
 
@@ -37,23 +37,23 @@ XglValue::XglValue(XglToken *token)
 
 	switch (token->getType()) {
 	case XglTokenType::INTEGER:
-		type = XglValueType::VALUE_INTEGER;
+		type = XglValueType::INTEGER;
 		lvalue = token->getInteger();
 		break;
 	case XglTokenType::REAL:
-		type = XglValueType::VALUE_REAL;
+		type = XglValueType::REAL;
 		dvalue = token->getReal();
 		break;
 	case XglTokenType::STRING:
-		type = XglValueType::VALUE_STRING;
+		type = XglValueType::STRING;
 		svalue = token->getString();
 		break;
 	case XglTokenType::KEYWORD:
-		type = XglValueType::VALUE_KEYWORD;
+		type = XglValueType::KEYWORD;
 		variable = token->getString();
 		break;
 	case XglTokenType::BOOLEAN:
-		type = XglValueType::VALUE_BOOLEAN;
+		type = XglValueType::BOOLEAN;
 		bvalue = token->getBoolean();
 		break;
 	default:
@@ -66,6 +66,17 @@ XglValue::~XglValue()
 {
 }
 
+/*****************************************************************************
+getVariableName() -
+*****************************************************************************/
+string XglValue::getVariableName()
+{
+	return(variable);
+}
+
+/*****************************************************************************
+getType() -
+*****************************************************************************/
 XglValueType XglValue::getType()
 {
 	return(type);
@@ -78,16 +89,16 @@ double XglValue::getReal() {
 	double value = 0.0;
 
 	switch (type) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::INTEGER:
 		value = lvalue;
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		value = dvalue;
 		break;
-	case XglValueType::VALUE_STRING:
+	case XglValueType::STRING:
 		value = atof(svalue.c_str());
 		break;
-	case XglValueType::VALUE_BOOLEAN:
+	case XglValueType::BOOLEAN:
 		value = (bvalue) ? 1.0 : 0.0;
 		break;
 	default:
@@ -104,16 +115,19 @@ string XglValue::getString() {
 	string value = "";
 
 	switch (type) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::KEYWORD:
+		value = variable;
+		break;
+	case XglValueType::INTEGER:
 		value = to_string(lvalue);
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		value = to_string(dvalue);
 		break;
-	case XglValueType::VALUE_STRING:
+	case XglValueType::STRING:
 		value = svalue;
 		break;
-	case XglValueType::VALUE_BOOLEAN:
+	case XglValueType::BOOLEAN:
 		value = (bvalue) ? "TRUE" : "FALSE";
 		break;
 	default:
@@ -130,15 +144,15 @@ bool XglValue::getBool() {
 	bool value = false;
 
 	switch (type) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::INTEGER:
 		value = (lvalue == 0) ? false : true;
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		value = (dvalue > 0.0) ? true : false;
 		break;
-	case XglValueType::VALUE_STRING:
+	case XglValueType::STRING:
 		break;
-	case XglValueType::VALUE_BOOLEAN:
+	case XglValueType::BOOLEAN:
 		value = bvalue;
 		break;
 	default:
@@ -155,16 +169,16 @@ long XglValue::getInteger() {
 	long value = 0;
 
 	switch (type) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::INTEGER:
 		value = lvalue;
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		value = (long) dvalue;
 		break;
-	case XglValueType::VALUE_STRING:
+	case XglValueType::STRING:
 		value = stol(svalue);
 		break;
-	case XglValueType::VALUE_BOOLEAN:
+	case XglValueType::BOOLEAN:
 		value = (bvalue) ? 1 : 0;
 		break;
 	default:
@@ -179,19 +193,19 @@ print() -
 *****************************************************************************/
 void XglValue::print() {
 	switch (type) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::INTEGER:
 		cout << lvalue;
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		cout << dvalue;
 		break;
-	case XglValueType::VALUE_STRING:
+	case XglValueType::STRING:
 		cout << svalue;
 		break;
-	case XglValueType::VALUE_KEYWORD:
+	case XglValueType::KEYWORD:
 		cout << variable;
 		break;
-	case XglValueType::VALUE_BOOLEAN:
+	case XglValueType::BOOLEAN:
 		cout << bvalue;
 		break;
 	}

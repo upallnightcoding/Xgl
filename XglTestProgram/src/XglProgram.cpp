@@ -11,7 +11,7 @@ XglProgram::XglProgram()
 	currentChar = 0;
 
 	add("program;");
-	add("	print '123=', 123;");
+	/*add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
 	add("	print '3=', (10 - 9) * 3;");
 	add("	print '40=', 8 * 5;");
@@ -49,8 +49,13 @@ XglProgram::XglProgram()
 	add("	print 'TRUE=', 'b' >= 'b';");
 	add("	print 'TRUE=', 3.45 >= 1.9;");
 	add("	print 'FALSE=', !(3.45 >= 1.9);");
-	add("	print '==================';");
-	add("	const integer a = 1;");
+	add("	print '==================';");*/
+	
+	add("	const integer a = 11;");
+	add("	const string b = 'Constant';");
+	add("	print 'Value: ', a;");
+	add("   print 'Value: * 2 ', a * 2;");
+	add("   print 'Const Value: ', b + ' value';");
 	add("end;");
 
 	skipBlanks();

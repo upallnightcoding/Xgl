@@ -13,6 +13,7 @@
 #include "XglNodeNe.h"
 #include "XglNodeGe.h"
 #include "XglNodeLe.h"
+#include "XglNodeVariable.h"
 
 XglExpression::XglExpression()
 {
@@ -61,9 +62,9 @@ XglNode *XglExpression::parse(XglProgram &program)
 		else if (token->isConstant()) {
 			expStack.push(new XglNodeValue(new XglValue(token)));
 		}
-		//else if (token->isKeyword()) {
-			//pushKeywordOnExpStack(token);
-		//}
+		else if (token->isKeyword()) {
+			pushKeywordOnExpStack(token);
+		}
 		else if (token->isLeftParen()) {
 			balance++;
 			oprStack.push(token);
@@ -84,6 +85,32 @@ XglNode *XglExpression::parse(XglProgram &program)
 	emptyOprStack();
 
 	return (expStack.top());
+}
+
+void XglExpression::pushKeywordOnExpStack(XglToken *token) 
+{
+	XglValue *variable = new XglValue(token);
+	XglNode *value = new XglNodeVariable(variable);
+
+	//XglSymbolTableRec *record = symbolTable->find(variable);
+	//XglNode *value = NULL;
+
+	/*if (record != NULL) {
+		if (record->isConstant()) {
+			value = new XglNodeValue(record->getValue());
+		}
+		//else if (record->isVariable()) {
+			//value = new XglNodeValue(variable);
+		//}
+		//else if (record->isSystemFunction()) {
+			//value = new XglNodeSystemFunction(record, parseArguments());
+		//}
+	}
+	else {
+		value = new XglNodeValue(variable);
+	}*/
+
+	expStack.push(value);
 }
 
 /*****************************************************************************

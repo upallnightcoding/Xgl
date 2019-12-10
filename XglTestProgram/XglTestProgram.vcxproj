@@ -191,6 +191,7 @@
     <ClInclude Include="src\XglSymbolTableRec.h" />
     <ClInclude Include="src\XglValueType.h" />
     <ClInclude Include="src\XglVarScope.h" />
+    <ClInclude Include="src\XglNodeVariable.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -237,9 +238,7 @@
     <ClCompile Include="src\XglSymbolTable.cpp" />
     <ClCompile Include="src\XglSymbolTableRec.cpp" />
     <ClCompile Include="src\XglVarScope.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClCompile Include="src\XglNodeVariable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

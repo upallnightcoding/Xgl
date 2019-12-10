@@ -22,7 +22,7 @@ void XglNode::add(XglNode *code)
 /*****************************************************************************
 getAttributes() -
 *****************************************************************************/
-vector<XglNode*> XglNode::getChildren()
+vector<XglNode*> XglNode::getAttributes()
 {
 	return(children);
 }

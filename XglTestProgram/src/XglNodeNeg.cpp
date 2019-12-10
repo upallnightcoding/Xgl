@@ -17,10 +17,10 @@ XglValue *XglNodeNeg::execute(XglContext &context)
 	XglValue *value = NULL;
 
 	switch (target->getType()) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::INTEGER:
 		value = new XglValue(-target->getInteger());
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		value = new XglValue(-target->getReal());
 		break;
 	default:

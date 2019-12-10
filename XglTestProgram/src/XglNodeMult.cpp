@@ -19,10 +19,10 @@ XglValue *XglNodeMult::execute(XglContext &context)
 	XglValue *value2 = evaluate(1, context);
 
 	switch (value1->getType()) {
-	case XglValueType::VALUE_INTEGER:
+	case XglValueType::INTEGER:
 		value = new XglValue(value1->getInteger() * value2->getInteger());
 		break;
-	case XglValueType::VALUE_REAL:
+	case XglValueType::REAL:
 		value = new XglValue(value1->getReal() * value2->getReal());
 		break;
 	default:

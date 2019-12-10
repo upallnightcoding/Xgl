@@ -20,6 +20,7 @@ enum class XglNodeType
 	NODE_ELSE,
 	NODE_DECLARE_VARIABLE,
 	NODE_CONST,
+	NODE_DECLARE_CONST_VARIABLE,
 	NODE_CONST_VARIABLE,
 
 	NODE_EQ,
@@ -55,7 +56,7 @@ public:
 
 	void add(XglNode *node);
 
-	vector<XglNode*> getChildren();
+	vector<XglNode*> getAttributes();
 
 	bool isEnd();
 

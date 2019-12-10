@@ -56,16 +56,21 @@ XglValueType XglToken::getTypeFromKeyword()
 	XglValueType type = XglValueType::UNKNOWN;
 
 	if (svalue == "INTEGER") {
-		type = XglValueType::VALUE_INTEGER;
+		type = XglValueType::INTEGER;
 	} else if (svalue == "REAL") {
-		type = XglValueType::VALUE_REAL;
+		type = XglValueType::REAL;
 	} else if (svalue == "STRING") {
-		type = XglValueType::VALUE_STRING;
+		type = XglValueType::STRING;
 	} else if (svalue == "BOOLEAN") {
-		type = XglValueType::VALUE_BOOLEAN;
+		type = XglValueType::BOOLEAN;
 	}
 
 	return(type);
+}
+
+bool XglToken::isKeyword() 
+{
+	return(type == XglTokenType::KEYWORD);
 }
 
 /*****************************************************************************

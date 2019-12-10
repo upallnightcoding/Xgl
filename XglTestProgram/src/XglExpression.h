@@ -20,6 +20,7 @@ private:
 	void pushOperOnStack(XglToken *token);
 	void popUntilRightParen();
 	void emptyOprStack();
+	void pushKeywordOnExpStack(XglToken *token);
 
 private:
 	// Expression Stack

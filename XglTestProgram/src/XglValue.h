@@ -20,6 +20,7 @@ public:
 	string getString();
 	bool getBool();
 	long getInteger();
+	string getVariableName();
 
 	XglValueType getType();
 

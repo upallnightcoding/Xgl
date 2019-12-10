@@ -3,7 +3,7 @@
 
 
  XglNodeConstVar::XglNodeConstVar(XglToken *type, XglToken *variable, XglNode *expression) 
-	 : XglNode(XglNodeType::NODE_CONST_VARIABLE)
+	 : XglNode(XglNodeType::NODE_DECLARE_CONST_VARIABLE)
 {
 	 this->type = type;
 	 this->variable = variable;

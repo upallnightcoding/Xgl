@@ -20,7 +20,7 @@ a programming scope.
 *****************************************************************************/
 XglValue *XglNodeCodeBlock::execute(XglContext &context)
 {
-	for (XglNode *attribute : getChildren()) {
+	for (XglNode *attribute : getAttributes()) {
 		attribute->evaluate(context);
 	}
 

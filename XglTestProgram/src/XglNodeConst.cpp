@@ -11,9 +11,12 @@ XglNodeConst::~XglNodeConst()
 {
 }
 
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglValue *XglNodeConst::execute(XglContext &context)
 {
-	for (XglNode *node : getChildren()) {
+	for (XglNode *node : getAttributes()) {
 		node->execute(context);
 	}
 

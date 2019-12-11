@@ -20,6 +20,7 @@ public:
 
 public:
 	XglValue *getValue(XglContext &context);
+	string getVariableName();
 
 	bool isConstant();
 

@@ -51,11 +51,13 @@ XglProgram::XglProgram()
 	add("	print 'FALSE=', !(3.45 >= 1.9);");
 	add("	print '==================';");*/
 	
-	add("	const integer a = 11;");
-	add("	const string b = 'Constant';");
-	add("	print 'Value: ', a;");
-	add("   print 'Value: * 2 ', a * 2;");
-	add("   print 'Const Value: ', b + ' value';");
+	add("	const ");
+	add("		integer a = 11,");
+	add("		real c = 23.45,");
+	add("		string b = 'Constant';");
+	add("	print 'Value: a=11=', a;");
+	add("   print 'Value: c=23.45=', c;");
+	add("   print 'Value: b=Constant=', b;");
 	add("end;");
 
 	skipBlanks();

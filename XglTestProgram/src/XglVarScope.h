@@ -9,6 +9,10 @@ public:
 	XglVarScope();
 	virtual ~XglVarScope();
 
+public:
+	void add(XglSymbolTableRec *record);
+	XglSymbolTableRec *get(string name);
+
 private:
 	map<string, XglSymbolTableRec*> scope;
 };

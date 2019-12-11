@@ -1,7 +1,12 @@
 #pragma once
 
 #include "Xgl.h"
-#include "XglVarScope.h"
+#include "XglNode.h"
+#include "XglToken.h"
+#include "XglValue.h"
+#include "XglSymbolTableRec.h"
+
+class XglVarScope;
 
 class XglSymbolTable
 {
@@ -14,8 +19,9 @@ public:
 	XglSymbolTableRec *find(XglValue *variable);
 
 private:
-	//stack<XglVarScope*> variables;
-	map<string, XglSymbolTableRec*> variables;
-	
+	XglVarScope *variables;
+
+	int varScopePtr = 0;
 };
 
+#include "XglVarScope.h"

@@ -4,11 +4,13 @@
 
 XglSymbolTable::XglSymbolTable()
 {
+	variables = new XglVarScope[10];
 }
 
 
 XglSymbolTable::~XglSymbolTable()
 {
+	delete variables;
 }
 
 /*****************************************************************************
@@ -18,7 +20,7 @@ void XglSymbolTable::addConst(XglToken *type, XglToken *variable, XglNode *expre
 {
 	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, expression);
 
-	variables[variable->getString()] = record;
+	variables[varScopePtr].add(record);
 }
 
 /*****************************************************************************
@@ -27,7 +29,8 @@ find() -
 XglSymbolTableRec *XglSymbolTable::find(XglValue *variable)
 {
 	string variableName = variable->getVariableName();
-	XglSymbolTableRec *record = variables[variableName];
+
+	XglSymbolTableRec *record = variables[varScopePtr].get(variableName);
 
 	return(record);
 }

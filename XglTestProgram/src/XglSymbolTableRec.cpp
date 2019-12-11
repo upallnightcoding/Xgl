@@ -17,11 +17,21 @@ XglSymbolTableRec::~XglSymbolTableRec()
 }
 
 /*****************************************************************************
+getVariableName() -
+*****************************************************************************/
+string XglSymbolTableRec::getVariableName()
+{
+	return(name);
+}
+
+/*****************************************************************************
 getValue() - 
 *****************************************************************************/
 XglValue *XglSymbolTableRec::getValue(XglContext &context)
 {
-	value = expression->execute(context);
+	if (value == NULL) {
+		value = expression->execute(context);
+	}
 
 	return(value);
 }

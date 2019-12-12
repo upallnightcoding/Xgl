@@ -4,11 +4,29 @@
 
 XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression)
 {
-	this->name = variable->getString();
+	this->variable = variable->getString();
 	this->type = type->getTypeFromKeyword();
 	this->designation = XglSymbolTableRecDesType::CONSTANT;
 	this->expression = expression;
 	this->value = NULL;
+}
+
+XglSymbolTableRec::XglSymbolTableRec(string variable, bool value)
+{
+	this->variable = variable;
+	this->type = XglValueType::BOOLEAN;
+	this->designation = XglSymbolTableRecDesType::CONSTANT;
+	this->expression = NULL;
+	this->value = new XglValue(value);
+}
+
+XglSymbolTableRec::XglSymbolTableRec(string variable, double value)
+{
+	this->variable = variable;
+	this->type = XglValueType::REAL;
+	this->designation = XglSymbolTableRecDesType::CONSTANT;
+	this->expression = NULL;
+	this->value = new XglValue(value);
 }
 
 
@@ -21,7 +39,7 @@ getVariableName() -
 *****************************************************************************/
 string XglSymbolTableRec::getVariableName()
 {
-	return(name);
+	return(variable);
 }
 
 /*****************************************************************************

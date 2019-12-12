@@ -58,6 +58,11 @@ XglProgram::XglProgram()
 	add("	print 'Value: a=11=', a;");
 	add("   print 'Value: c=23.45=', c;");
 	add("   print 'Value: b=Constant=', b;");
+	add("   print 'Value: true=', TRUE;");
+	add("   print 'Value: false=', FALSE;");
+	add("   print 'Value: PI=', PI;");
+	add("   print 'Value: 2.0*PI=', 2.0*PI;");
+	add("   print 'Value: 2*PI=', 2*PI;");
 	add("end;");
 
 	skipBlanks();

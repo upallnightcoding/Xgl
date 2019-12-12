@@ -15,8 +15,14 @@ public:
 	virtual ~XglSymbolTable();
 
 public:
-	void addConst(XglToken *type, XglToken *variable, XglNode *expression);
+	void add(string variable, bool value);
+	void add(string variable, double value);
+	void add(XglToken *type, XglToken *variable, XglNode *expression);
+
 	XglSymbolTableRec *find(XglValue *variable);
+
+	void createScope();
+	void deleteScope();
 
 private:
 	XglVarScope *variables;

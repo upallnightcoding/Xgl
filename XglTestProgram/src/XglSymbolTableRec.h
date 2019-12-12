@@ -15,6 +15,8 @@ enum class XglSymbolTableRecDesType {
 class XglSymbolTableRec
 {
 public:
+	XglSymbolTableRec(string variable, bool value);
+	XglSymbolTableRec(string variable, double value);
 	XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression);
 	virtual ~XglSymbolTableRec();
 
@@ -25,7 +27,7 @@ public:
 	bool isConstant();
 
 private:
-	string name;
+	string variable;
 	XglValueType type;
 	XglSymbolTableRecDesType designation;
 	XglNode *expression;

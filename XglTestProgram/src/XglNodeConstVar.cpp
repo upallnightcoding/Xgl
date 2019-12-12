@@ -19,7 +19,7 @@ XglValue *XglNodeConstVar::execute(XglContext &context)
 {
 	XglSymbolTable *symbolTable = context.getSymbolTable();
 
-	symbolTable->addConst(type, variable, expression);
+	symbolTable->add(type, variable, expression);
 
 	return(NULL);
 }

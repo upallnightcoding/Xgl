@@ -159,7 +159,7 @@
     <ClInclude Include="src\XglToken.h" />
     <ClInclude Include="src\XglValue.h" />
     <ClInclude Include="src\XglInterpreter.h" />
-    <ClInclude Include="src\XglCommand.h" />
+    <ClInclude Include="src\XglCmd.h" />
     <ClInclude Include="src\XglNode.h" />
     <ClInclude Include="src\XglCommandPrint.h" />
     <ClInclude Include="src\XglNodePrint.h" />
@@ -168,7 +168,7 @@
     <ClInclude Include="src\XglCommandProgram.h" />
     <ClInclude Include="src\XglNodeCodeBlock.h" />
     <ClInclude Include="src\XglNodeProgram.h" />
-    <ClInclude Include="src\XglCommandEnd.h" />
+    <ClInclude Include="src\XglCmdEnd.h" />
     <ClInclude Include="src\XglNodeEnd.h" />
     <ClInclude Include="src\XglContext.h" />
     <ClInclude Include="src\XglExpression.h" />
@@ -184,7 +184,7 @@
     <ClInclude Include="src\XglNodeNe.h" />
     <ClInclude Include="src\XglNodeGe.h" />
     <ClInclude Include="src\XglNodeLe.h" />
-    <ClInclude Include="src\XglCommandConst.h" />
+    <ClInclude Include="src\XglCmdConst.h" />
     <ClInclude Include="src\XglNodeConst.h" />
     <ClInclude Include="src\XglNodeConstVar.h" />
     <ClInclude Include="src\XglSymbolTable.h" />
@@ -192,8 +192,10 @@
     <ClInclude Include="src\XglValueType.h" />
     <ClInclude Include="src\XglVarScope.h" />
     <ClInclude Include="src\XglNodeVariable.h" />
-    <ClInclude Include="src\XglCommandDeclare.h" />
+    <ClInclude Include="src\XglCmdDeclare.h" />
     <ClInclude Include="src\XglNodeDeclare.h" />
+    <ClInclude Include="src\XglNodeDeclareVar.h" />
+    <ClInclude Include="src\XglSymbolTableData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -209,7 +211,7 @@
     <ClCompile Include="src\XglToken.cpp" />
     <ClCompile Include="src\XglValue.cpp" />
     <ClCompile Include="src\XglInterpreter.cpp" />
-    <ClCompile Include="src\XglCommand.cpp" />
+    <ClCompile Include="src\XglCmd.cpp" />
     <ClCompile Include="src\XglNode.cpp" />
     <ClCompile Include="src\XglCommandPrint.cpp" />
     <ClCompile Include="src\XglNodePrint.cpp" />
@@ -218,7 +220,7 @@
     <ClCompile Include="src\XglCommandProgram.cpp" />
     <ClCompile Include="src\XglNodeCodeBlock.cpp" />
     <ClCompile Include="src\XglNodeProgram.cpp" />
-    <ClCompile Include="src\XglCommandEnd.cpp" />
+    <ClCompile Include="src\XglCmdEnd.cpp" />
     <ClCompile Include="src\XglNodeEnd.cpp" />
     <ClCompile Include="src\XglContext.cpp" />
     <ClCompile Include="src\XglExpression.cpp" />
@@ -234,15 +236,17 @@
     <ClCompile Include="src\XglNodeNe.cpp" />
     <ClCompile Include="src\XglNodeGe.cpp" />
     <ClCompile Include="src\XglNodeLe.cpp" />
-    <ClCompile Include="src\XglCommandConst.cpp" />
+    <ClCompile Include="src\XglCmdConst.cpp" />
     <ClCompile Include="src\XglNodeConst.cpp" />
     <ClCompile Include="src\XglNodeConstVar.cpp" />
     <ClCompile Include="src\XglSymbolTable.cpp" />
     <ClCompile Include="src\XglSymbolTableRec.cpp" />
     <ClCompile Include="src\XglVarScope.cpp" />
     <ClCompile Include="src\XglNodeVariable.cpp" />
-    <ClCompile Include="src\XglCommandDeclare.cpp" />
+    <ClCompile Include="src\XglCmdDeclare.cpp" />
     <ClCompile Include="src\XglNodeDeclare.cpp" />
+    <ClCompile Include="src\XglNodeDeclareVar.cpp" />
+    <ClCompile Include="src\XglSymbolTableData.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

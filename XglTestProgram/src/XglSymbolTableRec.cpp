@@ -11,6 +11,16 @@ XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode
 	this->value = NULL;
 }
 
+XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, int size, XglNode *expression)
+{
+	this->variable = variable->getString();
+	this->type = type->getTypeFromKeyword();
+	this->designation = XglSymbolTableRecDesType::SCALER;
+	this->expression = expression;
+	this->value = NULL;
+	this->size = size;
+}
+
 XglSymbolTableRec::XglSymbolTableRec(string variable, bool value)
 {
 	this->variable = variable;

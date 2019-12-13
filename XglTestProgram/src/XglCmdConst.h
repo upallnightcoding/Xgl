@@ -1,5 +1,5 @@
 #pragma once
-#include "XglCommand.h"
+#include "XglCmd.h"
 #include "XglInterpreterAbstract.h"
 
 /*****************************************************************************
@@ -12,12 +12,12 @@ const
 	integer MAX_VALUE = 100;
 *****************************************************************************/
 
-class XglCommandConst :
-	public XglCommand
+class XglCmdConst :
+	public XglCmd
 {
 public:
-	XglCommandConst();
-	virtual ~XglCommandConst();
+	XglCmdConst();
+	virtual ~XglCmdConst();
 
 
 public:

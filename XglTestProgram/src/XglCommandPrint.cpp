@@ -3,7 +3,7 @@
 #include "XglNodePrint.h"
 
 
-XglCommandPrint::XglCommandPrint() : XglCommand("PRINT")
+XglCommandPrint::XglCommandPrint() : XglCmd("PRINT")
 {
 }
 

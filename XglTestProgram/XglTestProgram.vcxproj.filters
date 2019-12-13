@@ -57,9 +57,6 @@
     <ClCompile Include="src\XglCommandPrint.cpp">
       <Filter>command</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglCommand.cpp">
-      <Filter>command</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglInterpreterAbstract.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -70,9 +67,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\XglCommandProgram.cpp">
-      <Filter>command</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglCommandEnd.cpp">
       <Filter>command</Filter>
     </ClCompile>
     <ClCompile Include="src\XglNodeSub.cpp">
@@ -120,9 +114,6 @@
     <ClCompile Include="src\XglNodeEq.cpp">
       <Filter>node</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglCommandConst.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglNodeConst.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -141,10 +132,25 @@
     <ClCompile Include="src\XglNodeVariable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglCommandDeclare.cpp">
+    <ClCompile Include="src\XglNodeDeclare.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeDeclare.cpp">
+    <ClCompile Include="src\XglCmd.cpp">
+      <Filter>command</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCmdConst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCmdEnd.cpp">
+      <Filter>command</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCmdDeclare.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeDeclareVar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglSymbolTableData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,9 +191,6 @@
     <ClInclude Include="src\XglCommandPrint.h">
       <Filter>command</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglCommand.h">
-      <Filter>command</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglInterpreterAbstract.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -196,9 +199,6 @@
     </ClInclude>
     <ClInclude Include="src\XglExpression.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglCommandEnd.h">
-      <Filter>command</Filter>
     </ClInclude>
     <ClInclude Include="src\XglCommandProgram.h">
       <Filter>command</Filter>
@@ -248,9 +248,6 @@
     <ClInclude Include="src\XglNodeGe.h">
       <Filter>node</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglCommandConst.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglNodeConst.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -272,10 +269,25 @@
     <ClInclude Include="src\XglNodeVariable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglCommandDeclare.h">
+    <ClInclude Include="src\XglNodeDeclare.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeDeclare.h">
+    <ClInclude Include="src\XglCmd.h">
+      <Filter>command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdConst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdEnd.h">
+      <Filter>command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdDeclare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeDeclareVar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglSymbolTableData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

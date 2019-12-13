@@ -1,18 +1,18 @@
 #include "pch.h"
-#include "XglCommandConst.h"
+#include "XglCmdConst.h"
 #include "XglNodeConst.h"
 #include "XglNodeConstVar.h"
 
-XglCommandConst::XglCommandConst() : XglCommand("CONST")
+XglCmdConst::XglCmdConst() : XglCmd("CONST")
 {
 }
 
 
-XglCommandConst::~XglCommandConst()
+XglCmdConst::~XglCmdConst()
 {
 }
 
-XglNode *XglCommandConst::execute(XglInterpreterAbstract *interpreter)
+XglNode *XglCmdConst::execute(XglInterpreterAbstract *interpreter)
 {
 	XglNode *command = new XglNodeConst();
 

@@ -16,7 +16,9 @@ execute() -
 *****************************************************************************/
 XglValue *XglNodeDeclare::execute(XglContext &context)
 {
-	XglNode *command = NULL;
+	for (XglNode *node : getAttributes()) {
+		node->execute(context);
+	}
 
 	return(NULL);
 }

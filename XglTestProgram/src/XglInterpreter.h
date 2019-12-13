@@ -3,7 +3,7 @@
 #include "Xgl.h"
 #include "XglProgram.h"
 #include "XglNode.h"
-#include "XglCommand.h"
+#include "XglCmd.h"
 #include "XglInterpreterAbstract.h"
 #include "XglExpression.h"
 
@@ -22,11 +22,11 @@ public:
 	XglToken *getToken();
 
 private:
-	void add(XglCommand *command);
+	void add(XglCmd *command);
 
 private:
 	XglProgram program;
-	map<string, XglCommand*> commandMap;
+	map<string, XglCmd*> commandMap;
 	XglExpression expression;
 };
 

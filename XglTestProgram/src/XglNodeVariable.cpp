@@ -2,7 +2,7 @@
 #include "XglNodeVariable.h"
 
 
-XglNodeVariable::XglNodeVariable(XglValue *variable) : XglNode(XglNodeType::NODE_CONST_VARIABLE)
+XglNodeVariable::XglNodeVariable(XglValue *variable) : XglNode(XglNodeType::NODE_VARIABLE)
 {
 	this->variable = variable;
 }

@@ -1,9 +1,9 @@
 #pragma once
-#include "XglCommand.h"
+#include "XglCmd.h"
 #include "XglInterpreterAbstract.h"
 
 class XglCommandPrint :
-	public XglCommand
+	public XglCmd
 {
 public:
 	XglCommandPrint();

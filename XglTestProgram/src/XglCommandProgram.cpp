@@ -4,7 +4,7 @@
 #include "XglNodeProgram.h"
 
 XglCommandProgram::XglCommandProgram() 
-	: XglCommand("PROGRAM")
+	: XglCmd("PROGRAM")
 {
 }
 

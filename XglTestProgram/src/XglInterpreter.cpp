@@ -4,8 +4,9 @@
 
 #include "XglCommandPrint.h"
 #include "XglCommandProgram.h"
-#include "XglCommandEnd.h"
-#include "XglCommandConst.h"
+#include "XglCmdEnd.h"
+#include "XglCmdConst.h"
+#include "XglCmdDeclare.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -14,8 +15,9 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 
 	add(new XglCommandPrint());
 	add(new XglCommandProgram());
-	add(new XglCommandEnd());
-	add(new XglCommandConst());
+	add(new XglCmdEnd());
+	add(new XglCmdConst());
+	add(new XglCmdDeclare());
 }
 
 
@@ -36,7 +38,7 @@ XglNode *XglInterpreter::parseStatement()
 		string keyword = token->getString();
 
 		if (!keyword.empty()) {
-			XglCommand *command = commandMap[keyword];
+			XglCmd *command = commandMap[keyword];
 
 			if (command != NULL) {
 				node = command->execute(this);
@@ -68,7 +70,7 @@ XglToken *XglInterpreter::getLastToken()
 /*****************************************************************************
 add() -
 *****************************************************************************/
-void XglInterpreter::add(XglCommand *command)
+void XglInterpreter::add(XglCmd *command)
 {
 	commandMap[command->getName()] = command;
 }

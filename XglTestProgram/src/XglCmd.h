@@ -3,11 +3,11 @@
 #include "XglInterpreterAbstract.h"
 #include "XglNode.h"
 
-class XglCommand
+class XglCmd
 {
 public:
-	XglCommand(string name);
-	virtual ~XglCommand();
+	XglCmd(string name);
+	virtual ~XglCmd();
 
 public:
 	virtual XglNode *execute(XglInterpreterAbstract *interpreter) = 0;

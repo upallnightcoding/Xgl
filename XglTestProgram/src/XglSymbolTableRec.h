@@ -2,6 +2,7 @@
 
 #include "Xgl.h"
 #include "XglValue.h"
+#include "XglSymbolTableData.h"
 
 class XglNode;
 class XglContext;
@@ -18,6 +19,7 @@ public:
 	XglSymbolTableRec(string variable, bool value);
 	XglSymbolTableRec(string variable, double value);
 	XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression);
+	XglSymbolTableRec(XglToken *type, XglToken *variable, int size, XglNode *expression);
 	virtual ~XglSymbolTableRec();
 
 public:
@@ -32,6 +34,8 @@ private:
 	XglSymbolTableRecDesType designation;
 	XglNode *expression;
 	XglValue *value;
+	XglSymbolTableData *data;
+	int size;
 };
 
 #include "XglNode.h"

@@ -17,6 +17,7 @@ public:
 public:
 	void add(string variable, bool value);
 	void add(string variable, double value);
+	void add(XglToken *type, XglToken *variable);
 	void add(XglToken *type, XglToken *variable, XglNode *expression);
 
 	XglSymbolTableRec *find(XglValue *variable);

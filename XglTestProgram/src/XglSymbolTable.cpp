@@ -57,6 +57,13 @@ void XglSymbolTable::add(XglToken *type, XglToken *variable, XglNode *expression
 	variables[varScopePtr].add(record);
 }
 
+void XglSymbolTable::add(XglToken *type, XglToken *variable)
+{
+	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, 1, NULL);
+
+	variables[varScopePtr].add(record);
+}
+
 /*****************************************************************************
 find() -
 *****************************************************************************/

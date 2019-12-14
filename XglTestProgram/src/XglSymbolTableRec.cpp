@@ -17,8 +17,9 @@ XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, int siz
 	this->type = type->getTypeFromKeyword();
 	this->designation = XglSymbolTableRecDesType::SCALER;
 	this->expression = expression;
-	this->value = NULL;
 	this->size = size;
+	this->data = new XglSymbolTableData(this->type, size);
+	this->value = NULL;
 }
 
 XglSymbolTableRec::XglSymbolTableRec(string variable, bool value)
@@ -57,11 +58,26 @@ getValue() -
 *****************************************************************************/
 XglValue *XglSymbolTableRec::getValue(XglContext &context)
 {
-	if (value == NULL) {
-		value = expression->execute(context);
-	}
+	XglValue *returnValue = NULL;
 
-	return(value);
+	switch (designation) {
+	case XglSymbolTableRecDesType::CONSTANT:
+		if (value == NULL) {
+			value = expression->execute(context);
+		}
+		returnValue = value;
+		break;
+	case XglSymbolTableRecDesType::SCALER:
+		if (expression != NULL) {
+			value = expression->execute(context);
+			data->set(0, value);
+		}
+
+		returnValue = data->getValue();
+		break;
+	}
+	
+	return(returnValue);
 }
 
 /*****************************************************************************

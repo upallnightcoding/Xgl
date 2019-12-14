@@ -12,24 +12,48 @@ XglValue::XglValue()
 	type = XglValueType::UNKNOWN;
 }
 
-XglValue::XglValue(bool value) {
-	type = XglValueType::BOOLEAN;
-	bvalue = value;
+XglValue::XglValue(bool value) 
+{
+	set(value);
 }
 
-XglValue::XglValue(long value) {
+XglValue::XglValue(long value) 
+{
+	set(value);
+}
+
+XglValue::XglValue(double value) 
+{
+	set(value);
+}
+
+XglValue::XglValue(string value) 
+{
+	set(value);
+}
+
+void XglValue::set(long value)
+{
 	type = XglValueType::INTEGER;
 	lvalue = value;
 }
 
-XglValue::XglValue(double value) {
+void XglValue::set(string value)
+{
+	type = XglValueType::STRING;
+	svalue = value;
+}
+
+void XglValue::set(double value)
+{
 	type = XglValueType::REAL;
 	dvalue = value;
 }
 
-XglValue::XglValue(string value) {
-	type = XglValueType::STRING;
-	svalue = value;
+void XglValue::set(bool value)
+{
+	type = XglValueType::BOOLEAN;
+	bvalue = value;
 }
 
 XglValue::XglValue(XglToken *token) 

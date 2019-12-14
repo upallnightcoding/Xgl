@@ -13,6 +13,9 @@ XglCmdDeclare::~XglCmdDeclare()
 {
 }
 
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglNode *XglCmdDeclare::execute(XglInterpreterAbstract *interpreter)
 {
 	XglNodeDeclare *command = new XglNodeDeclare();
@@ -26,10 +29,12 @@ XglNode *XglCmdDeclare::execute(XglInterpreterAbstract *interpreter)
 	do {
 		type = interpreter->getToken();
 		variable = interpreter->getToken();
+		equalSign = interpreter->getToken();
+		expression = interpreter->parseExpression();
 
-		command->add(new XglNodeDeclareVar(type, variable));
+		command->add(new XglNodeDeclareVar(type, variable, expression));
 
-		separator = interpreter->getToken();
+		separator = interpreter->getLastToken();
 
 	} while (!separator->isEos());
 

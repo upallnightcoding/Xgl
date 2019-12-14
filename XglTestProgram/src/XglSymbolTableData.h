@@ -1,15 +1,19 @@
 #pragma once
 
 #include "Xgl.h"
-#include "XglValueType.h"
+#include "XglValue.h"
 
 class XglSymbolTableData
 {
 public:
-	XglSymbolTableData();
+	XglSymbolTableData(XglValueType type, int size);
 	virtual ~XglSymbolTableData();
 
 public:
+	XglValue *getValue();
+	void set(int index, XglValue *value);
+
+private:
 	void allocateData(XglValueType type, int size);
 
 private:
@@ -17,5 +21,8 @@ private:
 	long *lvalue;
 	double *dvalue;
 	bool *bvalue;
+
+	XglValue *value;
+	XglValueType type;
 };
 

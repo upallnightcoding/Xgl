@@ -6,7 +6,7 @@ class XglNodeDeclareVar :
 	public XglNode
 {
 public:
-	XglNodeDeclareVar(XglToken *type, XglToken *variable);
+	XglNodeDeclareVar(XglToken *type, XglToken *variable, XglNode *expression);
 	virtual ~XglNodeDeclareVar();
 
 public:
@@ -15,5 +15,6 @@ public:
 private:
 	XglToken *type;
 	XglToken *variable;
+	XglNode *expression;
 };
 

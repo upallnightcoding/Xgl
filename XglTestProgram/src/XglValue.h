@@ -22,6 +22,11 @@ public:
 	long getInteger();
 	string getVariableName();
 
+	void set(bool value);
+	void set(double value);
+	void set(string value);
+	void set(long value);
+
 	XglValueType getType();
 
 	void print();

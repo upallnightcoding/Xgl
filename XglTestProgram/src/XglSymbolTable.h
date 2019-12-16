@@ -21,6 +21,7 @@ public:
 	void add(XglToken *type, XglToken *variable, XglNode *expression);
 
 	XglSymbolTableRec *find(XglValue *variable);
+	XglSymbolTableRec *find(string variableName);
 
 	void createScope();
 	void deleteScope();

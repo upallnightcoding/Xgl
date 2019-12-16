@@ -20,7 +20,10 @@ XglSymbolTableData::~XglSymbolTableData()
 {
 }
 
-void XglSymbolTableData::set(int index, XglValue *value)
+/*****************************************************************************
+assign() -
+*****************************************************************************/
+void XglSymbolTableData::assign(int index, XglValue *value)
 {
 	switch (type) {
 	case XglValueType::INTEGER:
@@ -38,20 +41,23 @@ void XglSymbolTableData::set(int index, XglValue *value)
 	}
 }
 
-XglValue *XglSymbolTableData::getValue()
+/*****************************************************************************
+getValue() -
+*****************************************************************************/
+XglValue *XglSymbolTableData::getValue(int index)
 {
 	switch (type) {
 	case XglValueType::INTEGER:
-		value->set(lvalue[0]);
+		value->set(lvalue[index]);
 		break;
 	case XglValueType::REAL:
-		value->set(dvalue[0]);
+		value->set(dvalue[index]);
 		break;
 	case XglValueType::STRING:
-		value->set(svalue[0]);
+		value->set(svalue[index]);
 		break;
 	case XglValueType::BOOLEAN:
-		value->set(bvalue[0]);
+		value->set(bvalue[index]);
 		break;
 	}
 

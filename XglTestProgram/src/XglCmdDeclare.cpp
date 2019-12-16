@@ -29,12 +29,13 @@ XglNode *XglCmdDeclare::execute(XglInterpreterAbstract *interpreter)
 	do {
 		type = interpreter->getToken();
 		variable = interpreter->getToken();
-		equalSign = interpreter->getToken();
-		expression = interpreter->parseExpression();
+		//equalSign = interpreter->getToken();
+		//expression = interpreter->parseExpression();
 
-		command->add(new XglNodeDeclareVar(type, variable, expression));
+		command->add(new XglNodeDeclareVar(type, variable, NULL));
 
-		separator = interpreter->getLastToken();
+		//separator = interpreter->getLastToken();
+		separator = interpreter->getToken();
 
 	} while (!separator->isEos());
 

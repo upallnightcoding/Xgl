@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "XglSymbolTableRec.h"
-
+#include "XglNodeValue.h"
 
 XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression)
 {
@@ -8,7 +8,8 @@ XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode
 	this->type = type->getTypeFromKeyword();
 	this->designation = XglSymbolTableRecDesType::CONSTANT;
 	this->expression = expression;
-	this->value = NULL;
+	this->size = 1;
+	this->data = NULL;
 }
 
 XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, int size, XglNode *expression)
@@ -19,7 +20,6 @@ XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, int siz
 	this->expression = expression;
 	this->size = size;
 	this->data = new XglSymbolTableData(this->type, size);
-	this->value = NULL;
 }
 
 XglSymbolTableRec::XglSymbolTableRec(string variable, bool value)
@@ -27,8 +27,9 @@ XglSymbolTableRec::XglSymbolTableRec(string variable, bool value)
 	this->variable = variable;
 	this->type = XglValueType::BOOLEAN;
 	this->designation = XglSymbolTableRecDesType::CONSTANT;
-	this->expression = NULL;
-	this->value = new XglValue(value);
+	this->expression = new XglNodeValue(new XglValue(value));
+	this->size = 1;
+	this->data = NULL;
 }
 
 XglSymbolTableRec::XglSymbolTableRec(string variable, double value)
@@ -36,13 +37,22 @@ XglSymbolTableRec::XglSymbolTableRec(string variable, double value)
 	this->variable = variable;
 	this->type = XglValueType::REAL;
 	this->designation = XglSymbolTableRecDesType::CONSTANT;
-	this->expression = NULL;
-	this->value = new XglValue(value);
+	this->expression = new XglNodeValue(new XglValue(value));
+	this->size = 1;
+	this->data = NULL;
 }
 
 
 XglSymbolTableRec::~XglSymbolTableRec()
 {
+}
+
+/*****************************************************************************
+getData() -
+*****************************************************************************/
+XglSymbolTableData *XglSymbolTableRec::getData()
+{
+	return(data);
 }
 
 /*****************************************************************************
@@ -62,18 +72,19 @@ XglValue *XglSymbolTableRec::getValue(XglContext &context)
 
 	switch (designation) {
 	case XglSymbolTableRecDesType::CONSTANT:
-		if (value == NULL) {
-			value = expression->execute(context);
+		if (data == NULL) {
+			data = new XglSymbolTableData(type, size);
+			data->assign(0, expression->execute(context));
 		}
-		returnValue = value;
+		returnValue = data->getValue(0);
 		break;
 	case XglSymbolTableRecDesType::SCALER:
-		if (expression != NULL) {
-			value = expression->execute(context);
-			data->set(0, value);
-		}
+		//if (expression != NULL) {
+			//XglValue *value = expression->execute(context);
+			//data->assign(0, value);
+		//}
 
-		returnValue = data->getValue();
+		returnValue = data->getValue(0);
 		break;
 	}
 	

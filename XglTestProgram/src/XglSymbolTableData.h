@@ -10,8 +10,8 @@ public:
 	virtual ~XglSymbolTableData();
 
 public:
-	XglValue *getValue();
-	void set(int index, XglValue *value);
+	XglValue *getValue(int index);
+	void assign(int index, XglValue *value);
 
 private:
 	void allocateData(XglValueType type, int size);

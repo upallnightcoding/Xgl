@@ -7,6 +7,7 @@
 #include "XglCmdEnd.h"
 #include "XglCmdConst.h"
 #include "XglCmdDeclare.h"
+#include "XglNodeAssign.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -44,7 +45,7 @@ XglNode *XglInterpreter::parseStatement()
 				node = command->execute(this);
 			}
 			else {
-				//node = assign(keyword);
+				node = assign(keyword);
 			}
 		}
 	}
@@ -52,16 +53,42 @@ XglNode *XglInterpreter::parseStatement()
 	return(node);
 }
 
+/*****************************************************************************
+assign() - Creates the assignment node needed to set the value of an 
+expression to a variable.  This functions skips over the assignment operator
+and then parses the expression for later evaluation.
+*****************************************************************************/
+XglNode *XglInterpreter::assign(string keyword) 
+{
+	// Skip over assignment operator
+	program.getToken();
+
+	// Parse and assignment expression
+	XglNode *value = parseExpression();
+
+	// Define assignment node
+	return(new XglNodeAssign(keyword, value));
+}
+
+/*****************************************************************************
+getToken() -
+*****************************************************************************/
 XglToken *XglInterpreter::getToken()
 {
 	return(program.getToken());
 }
 
+/*****************************************************************************
+parseExpression() -
+*****************************************************************************/
 XglNode *XglInterpreter::parseExpression()
 {
 	return(expression.parse(program));
 }
 
+/*****************************************************************************
+getLastToken() -
+*****************************************************************************/
 XglToken *XglInterpreter::getLastToken()
 {
 	return(expression.getLastToken());

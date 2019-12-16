@@ -65,11 +65,12 @@ XglProgram::XglProgram()
 	add("   print 'Value: 2*PI=', 2*PI;");*/
 
 	add("	declare ");
-	add("		real b = 10.3,");
-	add("		string c = 'Testing string declare',");
-	add("		boolean d = true,");
-	add("		integer a = 100;");
-	add("   print 'Value: ', a, ':', b, ':', c, ':', d;");
+	add("		real b ,");
+	add("		string c,");
+	add("		boolean d ,");
+	add("		integer a ;");
+	add("	a = 99;");
+	add("	print 'Value a:', a;");
 
 	add("end;");
 

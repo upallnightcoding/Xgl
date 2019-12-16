@@ -23,16 +23,25 @@ XglSymbolTable::~XglSymbolTable()
 	delete variables;
 }
 
+/*****************************************************************************
+createScope() -
+*****************************************************************************/
 void XglSymbolTable::createScope()
 {
 	varScopePtr++;
 }
 
+/*****************************************************************************
+deleteScope() -
+*****************************************************************************/
 void XglSymbolTable::deleteScope()
 {
 	varScopePtr--;
 }
 
+/*****************************************************************************
+add() -
+*****************************************************************************/
 void XglSymbolTable::add(string variable, double value)
 {
 	XglSymbolTableRec *record = new XglSymbolTableRec(variable, value);
@@ -40,6 +49,9 @@ void XglSymbolTable::add(string variable, double value)
 	variables[varScopePtr].add(record);
 }
 
+/*****************************************************************************
+add() -
+*****************************************************************************/
 void XglSymbolTable::add(string variable, bool value)
 {
 	XglSymbolTableRec *record = new XglSymbolTableRec(variable, value);
@@ -48,7 +60,7 @@ void XglSymbolTable::add(string variable, bool value)
 }
 
 /*****************************************************************************
-addConst() -
+add() -
 *****************************************************************************/
 void XglSymbolTable::add(XglToken *type, XglToken *variable, XglNode *expression)
 {
@@ -57,6 +69,9 @@ void XglSymbolTable::add(XglToken *type, XglToken *variable, XglNode *expression
 	variables[varScopePtr].add(record);
 }
 
+/*****************************************************************************
+add() -
+*****************************************************************************/
 void XglSymbolTable::add(XglToken *type, XglToken *variable, int size, XglNode *expression)
 {
 	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, size, expression);
@@ -69,7 +84,14 @@ find() -
 *****************************************************************************/
 XglSymbolTableRec *XglSymbolTable::find(XglValue *variable)
 {
-	string variableName = variable->getVariableName();
+	return(find(variable->getVariableName()));
+}
+
+/*****************************************************************************
+find() -
+*****************************************************************************/
+XglSymbolTableRec *XglSymbolTable::find(string variableName)
+{
 	XglSymbolTableRec *record = NULL;
 
 	int search = varScopePtr;

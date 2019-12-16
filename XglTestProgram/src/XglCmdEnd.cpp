@@ -12,7 +12,7 @@ XglCmdEnd::~XglCmdEnd()
 {
 }
 
-XglNode *XglCmdEnd::execute(XglInterpreterAbstract *interpreter)
+XglNode *XglCmdEnd::execute(XglInterpreter *interpreter)
 {
 	interpreter->getToken();
 

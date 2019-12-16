@@ -54,20 +54,11 @@
     <ClCompile Include="src\XglNodeValue.cpp">
       <Filter>node</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglCommandPrint.cpp">
-      <Filter>command</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglInterpreterAbstract.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\XglExpression.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglCommandProgram.cpp">
-      <Filter>command</Filter>
     </ClCompile>
     <ClCompile Include="src\XglNodeSub.cpp">
       <Filter>node</Filter>
@@ -156,6 +147,12 @@
     <ClCompile Include="src\XglNodeAssign.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglCmdPrint.cpp">
+      <Filter>command</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCmdProgram.cpp">
+      <Filter>command</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -191,20 +188,11 @@
     <ClInclude Include="src\XglNodeValue.h">
       <Filter>node</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglCommandPrint.h">
-      <Filter>command</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglInterpreterAbstract.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XglExpression.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglCommandProgram.h">
-      <Filter>command</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeSub.h">
       <Filter>node</Filter>
@@ -295,6 +283,12 @@
     </ClInclude>
     <ClInclude Include="src\XglNodeAssign.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdPrint.h">
+      <Filter>command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdProgram.h">
+      <Filter>command</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

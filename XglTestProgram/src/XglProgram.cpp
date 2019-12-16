@@ -51,7 +51,7 @@ XglProgram::XglProgram()
 	add("	print 'FALSE=', !(3.45 >= 1.9);");
 	add("	print '==================';");*/
 	
-	/*add("	const ");
+	add("	const ");
 	add("		integer a = 11,");
 	add("		real c = 23.45,");
 	add("		string b = 'Constant';");
@@ -62,7 +62,7 @@ XglProgram::XglProgram()
 	add("   print 'Value: false=', FALSE;");
 	add("   print 'Value: PI=', PI;");
 	add("   print 'Value: 2.0*PI=', 2.0*PI;");
-	add("   print 'Value: 2*PI=', 2*PI;");*/
+	add("   print 'Value: 2*PI=', 2*PI;");
 
 	add("	declare ");
 	add("		real b ,");
@@ -70,7 +70,8 @@ XglProgram::XglProgram()
 	add("		boolean d ,");
 	add("		integer a ;");
 	add("	a = 99;");
-	add("	print 'Value a:', a;");
+	add("	d = false;");
+	add("	print 'Value a,d,b:', a, ':', d, ':', b;");
 
 	add("end;");
 

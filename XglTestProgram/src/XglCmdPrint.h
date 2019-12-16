@@ -1,12 +1,13 @@
 #pragma once
 #include "XglCmd.h"
+#include "XglInterpreter.h"
 
-class XglCmdEnd :
+class XglCmdPrint :
 	public XglCmd
 {
 public:
-	XglCmdEnd();
-	virtual ~XglCmdEnd();
+	XglCmdPrint();
+	virtual ~XglCmdPrint();
 
 public:
 	virtual XglNode *execute(XglInterpreter *interpreter);

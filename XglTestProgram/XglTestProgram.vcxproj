@@ -161,11 +161,10 @@
     <ClInclude Include="src\XglInterpreter.h" />
     <ClInclude Include="src\XglCmd.h" />
     <ClInclude Include="src\XglNode.h" />
-    <ClInclude Include="src\XglCommandPrint.h" />
+    <ClInclude Include="src\XglCmdPrint.h" />
     <ClInclude Include="src\XglNodePrint.h" />
     <ClInclude Include="src\XglNodeValue.h" />
-    <ClInclude Include="src\XglInterpreterAbstract.h" />
-    <ClInclude Include="src\XglCommandProgram.h" />
+    <ClInclude Include="src\XglCmdProgram.h" />
     <ClInclude Include="src\XglNodeCodeBlock.h" />
     <ClInclude Include="src\XglNodeProgram.h" />
     <ClInclude Include="src\XglCmdEnd.h" />
@@ -214,11 +213,10 @@
     <ClCompile Include="src\XglInterpreter.cpp" />
     <ClCompile Include="src\XglCmd.cpp" />
     <ClCompile Include="src\XglNode.cpp" />
-    <ClCompile Include="src\XglCommandPrint.cpp" />
+    <ClCompile Include="src\XglCmdPrint.cpp" />
     <ClCompile Include="src\XglNodePrint.cpp" />
     <ClCompile Include="src\XglNodeValue.cpp" />
-    <ClCompile Include="src\XglInterpreterAbstract.cpp" />
-    <ClCompile Include="src\XglCommandProgram.cpp" />
+    <ClCompile Include="src\XglCmdProgram.cpp" />
     <ClCompile Include="src\XglNodeCodeBlock.cpp" />
     <ClCompile Include="src\XglNodeProgram.cpp" />
     <ClCompile Include="src\XglCmdEnd.cpp" />

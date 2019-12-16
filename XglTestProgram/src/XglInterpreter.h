@@ -3,11 +3,11 @@
 #include "Xgl.h"
 #include "XglProgram.h"
 #include "XglNode.h"
-#include "XglCmd.h"
-#include "XglInterpreterAbstract.h"
 #include "XglExpression.h"
 
-class XglInterpreter : public XglInterpreterAbstract
+class XglCmd;
+
+class XglInterpreter 
 {
 public:
 	XglInterpreter(XglProgram &program);
@@ -31,3 +31,4 @@ private:
 	XglExpression expression;
 };
 
+#include "XglCmd.h"

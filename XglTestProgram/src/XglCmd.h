@@ -1,6 +1,6 @@
 #pragma once
 
-#include "XglInterpreterAbstract.h"
+#include "XglInterpreter.h"
 #include "XglNode.h"
 
 class XglCmd
@@ -10,7 +10,7 @@ public:
 	virtual ~XglCmd();
 
 public:
-	virtual XglNode *execute(XglInterpreterAbstract *interpreter) = 0;
+	virtual XglNode *execute(XglInterpreter *interpreter) = 0;
 
 	string getName();
 

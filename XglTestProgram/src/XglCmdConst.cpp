@@ -12,7 +12,7 @@ XglCmdConst::~XglCmdConst()
 {
 }
 
-XglNode *XglCmdConst::execute(XglInterpreterAbstract *interpreter)
+XglNode *XglCmdConst::execute(XglInterpreter *interpreter)
 {
 	XglNode *command = new XglNodeConst();
 

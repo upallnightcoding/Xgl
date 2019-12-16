@@ -16,7 +16,7 @@ XglCmdDeclare::~XglCmdDeclare()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdDeclare::execute(XglInterpreterAbstract *interpreter)
+XglNode *XglCmdDeclare::execute(XglInterpreter *interpreter)
 {
 	XglNodeDeclare *command = new XglNodeDeclare();
 

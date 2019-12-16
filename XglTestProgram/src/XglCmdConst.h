@@ -1,6 +1,6 @@
 #pragma once
 #include "XglCmd.h"
-#include "XglInterpreterAbstract.h"
+#include "XglInterpreter.h"
 
 /*****************************************************************************
 class XglCommandConst - 
@@ -21,6 +21,6 @@ public:
 
 
 public:
-	virtual XglNode *execute(XglInterpreterAbstract *interpreter);
+	virtual XglNode *execute(XglInterpreter *interpreter);
 };
 

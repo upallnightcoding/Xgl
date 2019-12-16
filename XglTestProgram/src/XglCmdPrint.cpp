@@ -1,21 +1,21 @@
 #include "pch.h"
-#include "XglCommandPrint.h"
+#include "XglCmdPrint.h"
 #include "XglNodePrint.h"
 
 
-XglCommandPrint::XglCommandPrint() : XglCmd("PRINT")
+XglCmdPrint::XglCmdPrint() : XglCmd("PRINT")
 {
 }
 
 
-XglCommandPrint::~XglCommandPrint()
+XglCmdPrint::~XglCmdPrint()
 {
 }
 
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCommandPrint::execute(XglInterpreterAbstract *interpreter)
+XglNode *XglCmdPrint::execute(XglInterpreter *interpreter)
 {
 	XglNode *command = new XglNodePrint();
 

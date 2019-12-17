@@ -130,6 +130,11 @@ bool XglToken::isEOE()
 	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_EOE));
 }
 
+bool XglToken::isAssignment()
+{
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_ASSIGN));
+}
+
 bool XglToken::isOperator()
 {
 	bool value = false;

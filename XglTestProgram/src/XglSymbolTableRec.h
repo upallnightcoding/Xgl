@@ -55,6 +55,9 @@ private:
 
 	// Number of maximum elements in an array
 	int size;
+
+	// Set, if there is an initialization expression
+	bool hasInitializeExpression;
 };
 
 #include "XglNode.h"

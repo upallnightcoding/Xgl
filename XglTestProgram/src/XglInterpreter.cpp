@@ -71,7 +71,7 @@ XglNode *XglInterpreter::assign(string keyword)
 }
 
 /*****************************************************************************
-getToken() -
+getToken() - Returns a pointer to the next source token object.
 *****************************************************************************/
 XglToken *XglInterpreter::getToken()
 {
@@ -79,7 +79,8 @@ XglToken *XglInterpreter::getToken()
 }
 
 /*****************************************************************************
-parseExpression() -
+parseExpression() - Parses the next full expression and returns a pointer
+to a node representing the expression.
 *****************************************************************************/
 XglNode *XglInterpreter::parseExpression()
 {

@@ -85,6 +85,7 @@ public:
 	bool isConstant();
 	bool isOperator();
 	bool isKeyword();
+	bool isAssignment();
 
 	XglTokenType getType();
 	XglTokenSymbolType getSymbol();

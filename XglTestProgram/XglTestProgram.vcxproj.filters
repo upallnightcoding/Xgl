@@ -153,6 +153,18 @@
     <ClCompile Include="src\XglCmdProgram.cpp">
       <Filter>command</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglCmdWhile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeWhile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglCmdFor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\XglNodeFor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -289,6 +301,18 @@
     </ClInclude>
     <ClInclude Include="src\XglCmdProgram.h">
       <Filter>command</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdWhile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeWhile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglCmdFor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeFor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

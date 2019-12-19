@@ -8,6 +8,7 @@
 #include "XglCmdConst.h"
 #include "XglCmdDeclare.h"
 #include "XglNodeAssign.h"
+#include "XglCmdWhile.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -19,6 +20,7 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 	add(new XglCmdEnd());
 	add(new XglCmdConst());
 	add(new XglCmdDeclare());
+	add(new XglCmdWhile());
 }
 
 
@@ -79,6 +81,16 @@ XglToken *XglInterpreter::getToken()
 }
 
 /*****************************************************************************
+skipOver() - 
+*****************************************************************************/
+void XglInterpreter::skipOver()
+{
+	XglToken *token = program.getToken();
+
+	delete token;
+}
+
+/*****************************************************************************
 parseExpression() - Parses the next full expression and returns a pointer
 to a node representing the expression.
 *****************************************************************************/
@@ -88,7 +100,8 @@ XglNode *XglInterpreter::parseExpression()
 }
 
 /*****************************************************************************
-getLastToken() -
+getLastToken() - Returns the last token that ended the parsing of an 
+expression.  
 *****************************************************************************/
 XglToken *XglInterpreter::getLastToken()
 {

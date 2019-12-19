@@ -2,8 +2,9 @@
 #include "XglNodeProgram.h"
 
 
-XglNodeProgram::XglNodeProgram() : XglNode(XglNodeType::NODE_PROGRAM)
+XglNodeProgram::XglNodeProgram(XglNode *codeBlock) : XglNode(XglNodeType::NODE_PROGRAM)
 {
+	this->codeBlock = codeBlock;
 }
 
 
@@ -13,7 +14,7 @@ XglNodeProgram::~XglNodeProgram()
 
 XglValue *XglNodeProgram::execute(XglContext &context)
 {
-	evaluate(0, context);
+	codeBlock->execute(context);
 
 	return(NULL);
 }

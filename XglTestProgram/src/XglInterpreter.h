@@ -20,6 +20,7 @@ public:
 	XglNode *parseExpression();
 
 	XglToken *getToken();
+	void skipOver();
 	XglNode *assign (string keyword);
 
 private:

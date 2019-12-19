@@ -19,21 +19,24 @@ execute() -
 *****************************************************************************/
 XglNode *XglCmdProgram::execute(XglInterpreter *interpreter)
 {
-	interpreter->getToken();
+	// Skip over end of statement token
+	//---------------------------------
+	interpreter->skipOver();
 
-	XglNode *code = new XglNodeCodeBlock();
-
+	// Create code block object and read first while loop statement
+	//-------------------------------------------------------------
+	XglNode *codeBlock = new XglNodeCodeBlock();
 	XglNode *statement = interpreter->parseStatement();
 
+	// Continue to read and collect statements until the "END"
+	//--------------------------------------------------------
 	while (!statement->isEnd()) {
-		code->add(statement);
+		codeBlock->add(statement);
 
 		statement = interpreter->parseStatement();
 	}
 
-	XglNode *command = new XglNodeProgram();
-
-	command->add(code);
-
-	return(command);
+	// Create the program node
+	//------------------------
+	return(new XglNodeProgram(codeBlock));
 }

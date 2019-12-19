@@ -196,6 +196,10 @@
     <ClInclude Include="src\XglNodeDeclareVar.h" />
     <ClInclude Include="src\XglSymbolTableData.h" />
     <ClInclude Include="src\XglNodeAssign.h" />
+    <ClInclude Include="src\XglCmdWhile.h" />
+    <ClInclude Include="src\XglNodeWhile.h" />
+    <ClInclude Include="src\XglCmdFor.h" />
+    <ClInclude Include="src\XglNodeFor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -247,6 +251,10 @@
     <ClCompile Include="src\XglNodeDeclareVar.cpp" />
     <ClCompile Include="src\XglSymbolTableData.cpp" />
     <ClCompile Include="src\XglNodeAssign.cpp" />
+    <ClCompile Include="src\XglCmdWhile.cpp" />
+    <ClCompile Include="src\XglNodeWhile.cpp" />
+    <ClCompile Include="src\XglCmdFor.cpp" />
+    <ClCompile Include="src\XglNodeFor.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

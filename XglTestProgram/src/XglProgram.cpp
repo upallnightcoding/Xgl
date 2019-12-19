@@ -64,14 +64,20 @@ XglProgram::XglProgram()
 	add("   print 'Value: 2.0*PI=', 2.0*PI;");
 	add("   print 'Value: 2*PI=', 2*PI;");*/
 
-	add("	declare ");
+	/*add("	declare ");
 	add("		real b = 10 * 20 - 1,");
 	add("		integer c = 20 * ~2,");
 	add("		real d ,");
 	add("		integer a ;");
 	add("	a = 99;");
 	add("	d = false;");
-	add("	print 'Value a,d,b:', a, ':', d, ':', b, ':', c;");
+	add("	print 'Value a,d,b:', a, ':', d, ':', b, ':', c;");*/
+
+	add("	declare integer n = 10;");
+	add("	while (n > 0);");
+	add("		print 'n: ', n;");
+	add("		n = n - 2;");
+	add("	end;");
 
 	add("end;");
 

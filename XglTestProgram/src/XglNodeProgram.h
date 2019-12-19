@@ -7,10 +7,13 @@ class XglNodeProgram :
 	public XglNode
 {
 public:
-	XglNodeProgram();
+	XglNodeProgram(XglNode *codeBlock);
 	virtual ~XglNodeProgram();
 
 public:
 	virtual XglValue *execute(XglContext &context);
+
+private:
+	XglNode *codeBlock;
 };
 

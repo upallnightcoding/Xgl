@@ -4,7 +4,7 @@ class XglNodeFor :
 	public XglNode
 {
 public:
-	XglNodeFor(XglToken *type, XglToken *variable, XglNode *init, XglNode *fin, XglNode *step);
+	XglNodeFor(XglToken *type, XglToken *variable, XglNode *init, XglNode *fin, XglNode *step, XglNode *codeBlock);
 	virtual ~XglNodeFor();
 
 public:
@@ -14,10 +14,9 @@ private:
 	XglToken *type;
 	XglToken *variable;
 
-	XglNode *init;
-	XglNode *fin;
-	XglNode *step;
-
-	bool firstLoop;
+	XglNode *initialValue;
+	XglNode *finalValue;
+	XglNode *stepValue;
+	XglNode *codeBlock;
 };
 

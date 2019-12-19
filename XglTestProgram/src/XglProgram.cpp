@@ -73,10 +73,16 @@ XglProgram::XglProgram()
 	add("	d = false;");
 	add("	print 'Value a,d,b:', a, ':', d, ':', b, ':', c;");*/
 
-	add("	declare integer n = 10;");
+	/*add("	declare integer n = 10;");
 	add("	while (n > 0);");
 	add("		print 'n: ', n;");
 	add("		n = n - 2;");
+	add("	end;");*/
+
+	add("	for integer n = 1, 3, 1;");
+	add("		for integer m = 4, 6, 1;");
+	add("			print 'For Loop: ', n, ':', m;");
+	add("		end;");
 	add("	end;");
 
 	add("end;");

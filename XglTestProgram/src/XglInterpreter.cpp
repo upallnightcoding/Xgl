@@ -9,6 +9,7 @@
 #include "XglCmdDeclare.h"
 #include "XglNodeAssign.h"
 #include "XglCmdWhile.h"
+#include "XglCmdFor.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -21,6 +22,7 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 	add(new XglCmdConst());
 	add(new XglCmdDeclare());
 	add(new XglCmdWhile());
+	add(new XglCmdFor());
 }
 
 

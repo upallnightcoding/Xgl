@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "XglCmdFor.h"
 #include "XglNodeFor.h"
+#include "XglNodeCodeBlock.h"
 
 XglCmdFor::XglCmdFor() : XglCmd("FOR")
 {
@@ -25,5 +26,14 @@ XglNode *XglCmdFor::execute(XglInterpreter *interpreter)
 	XglNode *fin = interpreter->parseExpression();
 	XglNode *step = interpreter->parseExpression();
 
-	return(new XglNodeFor(type, variable, init, fin, step));
+	XglNode *codeBlock = new XglNodeCodeBlock();
+
+	XglNode *statement = interpreter->parseStatement();
+
+	while (!statement->isEnd()) {
+		codeBlock->add(statement);
+		statement = interpreter->parseStatement();
+	}
+
+	return(new XglNodeFor(type, variable, init, fin, step, codeBlock));
 }

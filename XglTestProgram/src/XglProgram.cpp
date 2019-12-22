@@ -79,9 +79,21 @@ XglProgram::XglProgram()
 	add("		n = n - 2;");
 	add("	end;");*/
 
-	add("	for integer n = 1, 3, 1;");
+	/*add("	for integer n = 1, 3, 1;");
 	add("		for integer m = 4, 6, 1;");
 	add("			print 'For Loop: ', n, ':', m;");
+	add("		end;");
+	add("	end;"); */
+
+	add("	# This is just a test of the if statement comment. # ");
+	add("	declare integer n = 2;");
+	add("	if (n == 1);");
+	add("		print 'Value = 1';");
+	add("	else;");
+	add("		if (n == 2);");
+	add("			print 'Value = 2';");
+	add("		else;");
+	add("			print 'Value is 3';");
 	add("		end;");
 	add("	end;");
 
@@ -377,7 +389,7 @@ void XglProgram::skipBlanks()
 		if ((!eop) && (isChar(XglConstant::POUND_CHAR))) {
 			moveToNextChar();
 
-			while ((!eop) && (isChar(XglConstant::POUND_CHAR))) {
+			while ((!eop) && (!isChar(XglConstant::POUND_CHAR))) {
 				moveToNextChar();
 			}
 

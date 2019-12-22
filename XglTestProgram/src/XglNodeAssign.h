@@ -5,6 +5,7 @@ class XglNodeAssign :
 {
 public:
 	XglNodeAssign(string variable, XglNode *expression);
+	XglNodeAssign(XglToken *variable, XglNode *expression);
 	virtual ~XglNodeAssign();
 
 public:

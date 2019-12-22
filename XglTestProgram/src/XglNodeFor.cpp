@@ -22,6 +22,9 @@ XglNodeFor::~XglNodeFor()
 {
 }
 
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglValue *XglNodeFor::execute(XglContext &context)
 {
 	// Construct index variable declaration
@@ -46,7 +49,7 @@ XglValue *XglNodeFor::execute(XglContext &context)
 
 	// Construct loop index variable update & assignment
 	//--------------------------------------------------
-	XglNode *updateIndexVar = new XglNodeAssign(variable->getString(), addStep);
+	XglNode *updateIndexVar = new XglNodeAssign(variable, addStep);
 
 
 	// Execute Xgl For Loop

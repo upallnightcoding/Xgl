@@ -10,6 +10,9 @@
 #include "XglNodeAssign.h"
 #include "XglCmdWhile.h"
 #include "XglCmdFor.h"
+#include "XglCmdIf.h"
+#include "XglCmdElse.h"
+#include "XglCmdElseIf.h"
 
 
 XglInterpreter::XglInterpreter(XglProgram &program)
@@ -23,6 +26,9 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 	add(new XglCmdDeclare());
 	add(new XglCmdWhile());
 	add(new XglCmdFor());
+	add(new XglCmdIf());
+	add(new XglCmdElse());
+	add(new XglCmdElseIf());
 }
 
 

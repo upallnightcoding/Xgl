@@ -200,6 +200,12 @@
     <ClInclude Include="src\XglNodeWhile.h" />
     <ClInclude Include="src\XglCmdFor.h" />
     <ClInclude Include="src\XglNodeFor.h" />
+    <ClInclude Include="src\XglCmdElse.h" />
+    <ClInclude Include="src\XglNodeElse.h" />
+    <ClInclude Include="src\XglCmdIf.h" />
+    <ClInclude Include="src\XglNodeIf.h" />
+    <ClInclude Include="src\XglCmdElseIf.h" />
+    <ClInclude Include="src\XglNodeElseIf.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -255,6 +261,12 @@
     <ClCompile Include="src\XglNodeWhile.cpp" />
     <ClCompile Include="src\XglCmdFor.cpp" />
     <ClCompile Include="src\XglNodeFor.cpp" />
+    <ClCompile Include="src\XglCmdElse.cpp" />
+    <ClCompile Include="src\XglNodeElse.cpp" />
+    <ClCompile Include="src\XglCmdIf.cpp" />
+    <ClCompile Include="src\XglNodeIf.cpp" />
+    <ClCompile Include="src\XglCmdElseIf.cpp" />
+    <ClCompile Include="src\XglNodeElseIf.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

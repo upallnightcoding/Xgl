@@ -1,23 +1,21 @@
 #include "pch.h"
-#include "XglCmdEnd.h"
-#include "XglNodeEnd.h"
+#include "XglCmdElse.h"
+#include "XglNodeElse.h"
 
-
-XglCmdEnd::XglCmdEnd() : XglCmd("END")
+XglCmdElse::XglCmdElse() : XglCmd("ELSE")
 {
 }
 
-
-XglCmdEnd::~XglCmdEnd()
+XglCmdElse::~XglCmdElse()
 {
 }
 
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdEnd::execute(XglInterpreter *interpreter)
+XglNode *XglCmdElse::execute(XglInterpreter *interpreter)
 {
 	interpreter->skipOver();
 
-	return(new XglNodeEnd());
+	return(new XglNodeElse());
 }

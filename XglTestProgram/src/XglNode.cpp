@@ -30,8 +30,19 @@ vector<XglNode*> XglNode::getAttributes()
 /*****************************************************************************
 isEnd() -
 *****************************************************************************/
-bool XglNode::isEnd() {
+bool XglNode::isEnd() 
+{
 	return(type == XglNodeType::NODE_END);
+}
+
+bool XglNode::isElseIf() 
+{
+	return(type == XglNodeType::NODE_ELSEIF);
+}
+
+bool XglNode::isElse()
+{
+	return(type == XglNodeType::NODE_ELSE);
 }
 
 /*****************************************************************************

@@ -15,6 +15,7 @@ enum class XglNodeType
 	NODE_WHILE,
 	NODE_EXEC,
 	NODE_IF,
+	NODE_ELSEIF,
 	NODE_END,
 	NODE_ELSE,
 
@@ -62,6 +63,8 @@ public:
 	vector<XglNode*> getAttributes();
 
 	bool isEnd();
+	bool isElse();
+	bool isElseIf();
 
 private:
 	vector<XglNode*> children;

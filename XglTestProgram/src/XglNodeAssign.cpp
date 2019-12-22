@@ -8,6 +8,12 @@ XglNodeAssign::XglNodeAssign(string variable, XglNode *expression) : XglNode(Xgl
 	this->expression = expression;
 }
 
+XglNodeAssign::XglNodeAssign(XglToken *variable, XglNode *expression) : XglNode(XglNodeType::NODE_ASSIGN)
+{
+	this->variable = variable->getString();
+	this->expression = expression;
+}
+
 
 XglNodeAssign::~XglNodeAssign()
 {

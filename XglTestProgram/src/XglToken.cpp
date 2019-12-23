@@ -14,7 +14,7 @@ XglToken::XglToken(long value)
 	this->dvalue = 0.0;
 	this->svalue = "";
 	this->bvalue = false;
-	this->symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
+	this->symbol = XglTokenSymbolType::UNKNOWN;
 }
 
 XglToken::XglToken(double value)
@@ -24,7 +24,7 @@ XglToken::XglToken(double value)
 	this->dvalue = value;
 	this->svalue = "";
 	this->bvalue = false;
-	this->symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
+	this->symbol = XglTokenSymbolType::UNKNOWN;
 }
 
 XglToken::XglToken(XglTokenType type, string value)
@@ -34,7 +34,7 @@ XglToken::XglToken(XglTokenType type, string value)
 	this->dvalue = 0.0;
 	this->svalue = value;
 	this->bvalue = false;
-	this->symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
+	this->symbol = XglTokenSymbolType::UNKNOWN;
 }
 
 XglToken::XglToken(XglTokenSymbolType symbol)
@@ -77,14 +77,28 @@ bool XglToken::isKeyword()
 isComma() - Returns true if the token is a comma ","
 *****************************************************************************/
 bool XglToken::isComma() {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_COMMA));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_COMMA));
 }
 
 /*****************************************************************************
 isEos() - Returns true if the token is a semi colon ";"
 *****************************************************************************/
 bool XglToken::isEos() {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_SEMI));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_SEMI));
+}
+
+/*****************************************************************************
+isColon() 
+*****************************************************************************/
+bool XglToken::isColon() {
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_COLON));
+}
+
+/*****************************************************************************
+isQuestion() - 
+*****************************************************************************/
+bool XglToken::isQuestion() {
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_QUESTION));
 }
 
 /*****************************************************************************
@@ -95,9 +109,12 @@ a comma or semi-colon.
 *****************************************************************************/
 bool XglToken::isEndExpression() 
 {
-	return(isComma() || isEos());
+	return(isComma() || isEos() || isQuestion() || isColon());
 }
 
+/*****************************************************************************
+isConstant() - 
+*****************************************************************************/
 bool XglToken::isConstant() 
 {
 	bool constant = false;
@@ -117,22 +134,22 @@ bool XglToken::isConstant()
 
 bool XglToken::isRightParen() 
 {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_RPAREN));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_RPAREN));
 }
 
 bool XglToken::isLeftParen() 
 {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_LPAREN));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_LPAREN));
 }
 
 bool XglToken::isEOE()
 {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_EOE));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_EOE));
 }
 
 bool XglToken::isAssignment()
 {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::TOKEN_SYMBOL_ASSIGN));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_ASSIGN));
 }
 
 bool XglToken::isOperator()
@@ -140,25 +157,25 @@ bool XglToken::isOperator()
 	bool value = false;
 
 	switch (symbol) {
-	case XglTokenSymbolType::TOKEN_SYMBOL_TILDE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_NOT:
+	case XglTokenSymbolType::SYMBOL_TILDE:
+	case XglTokenSymbolType::SYMBOL_NOT:
 
-	case XglTokenSymbolType::TOKEN_SYMBOL_MULT:
-	case XglTokenSymbolType::TOKEN_SYMBOL_DIVIDE:
+	case XglTokenSymbolType::SYMBOL_MULT:
+	case XglTokenSymbolType::SYMBOL_DIVIDE:
 
-	case XglTokenSymbolType::TOKEN_SYMBOL_PLUS:
-	case XglTokenSymbolType::TOKEN_SYMBOL_MINUS:
+	case XglTokenSymbolType::SYMBOL_PLUS:
+	case XglTokenSymbolType::SYMBOL_MINUS:
 
-	case XglTokenSymbolType::TOKEN_SYMBOL_EQ:
-	case XglTokenSymbolType::TOKEN_SYMBOL_NE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_GT:
-	case XglTokenSymbolType::TOKEN_SYMBOL_LT:
-	case XglTokenSymbolType::TOKEN_SYMBOL_GE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_LE:
+	case XglTokenSymbolType::SYMBOL_EQ:
+	case XglTokenSymbolType::SYMBOL_NE:
+	case XglTokenSymbolType::SYMBOL_GT:
+	case XglTokenSymbolType::SYMBOL_LT:
+	case XglTokenSymbolType::SYMBOL_GE:
+	case XglTokenSymbolType::SYMBOL_LE:
 
-	case XglTokenSymbolType::TOKEN_SYMBOL_LPAREN:
+	case XglTokenSymbolType::SYMBOL_LPAREN:
 
-	case XglTokenSymbolType::TOKEN_SYMBOL_EOE:
+	case XglTokenSymbolType::SYMBOL_EOE:
 		value = true;
 		break;
 	default:
@@ -254,31 +271,31 @@ int XglToken::rank()
 	int value = -1;
 
 	switch (symbol) {
-	case XglTokenSymbolType::TOKEN_SYMBOL_TILDE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_NOT:
+	case XglTokenSymbolType::SYMBOL_TILDE:
+	case XglTokenSymbolType::SYMBOL_NOT:
 		value = 50;
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_MULT:
-	case XglTokenSymbolType::TOKEN_SYMBOL_DIVIDE:
+	case XglTokenSymbolType::SYMBOL_MULT:
+	case XglTokenSymbolType::SYMBOL_DIVIDE:
 		value = 20;
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_PLUS:
-	case XglTokenSymbolType::TOKEN_SYMBOL_MINUS:
+	case XglTokenSymbolType::SYMBOL_PLUS:
+	case XglTokenSymbolType::SYMBOL_MINUS:
 		value = 10;
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_EQ:
-	case XglTokenSymbolType::TOKEN_SYMBOL_NE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_GT:
-	case XglTokenSymbolType::TOKEN_SYMBOL_LT:
-	case XglTokenSymbolType::TOKEN_SYMBOL_GE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_LE:
+	case XglTokenSymbolType::SYMBOL_EQ:
+	case XglTokenSymbolType::SYMBOL_NE:
+	case XglTokenSymbolType::SYMBOL_GT:
+	case XglTokenSymbolType::SYMBOL_LT:
+	case XglTokenSymbolType::SYMBOL_GE:
+	case XglTokenSymbolType::SYMBOL_LE:
 		value = 5;
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_LPAREN:
+	case XglTokenSymbolType::SYMBOL_LPAREN:
 		value = 1;
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_EOE:
-	case XglTokenSymbolType::TOKEN_SYMBOL_RPAREN:
+	case XglTokenSymbolType::SYMBOL_EOE:
+	case XglTokenSymbolType::SYMBOL_RPAREN:
 		value = 0;
 		break;
 	}

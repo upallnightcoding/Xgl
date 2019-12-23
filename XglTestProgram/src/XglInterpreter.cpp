@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "XglInterpreter.h"
 #include "XglNodeValue.h"
+#include "XglNodeTriplet.h"
 
 #include "XglCmdPrint.h"
 #include "XglCmdProgram.h"
@@ -70,14 +71,26 @@ and then parses the expression for later evaluation.
 *****************************************************************************/
 XglNode *XglInterpreter::assign(string keyword) 
 {
+	XglNode *assignNode = NULL;
+
 	// Skip over assignment operator
 	program.getToken();
 
 	// Parse and assignment expression
-	XglNode *value = parseExpression();
+	XglNode *expression = parseExpression();
+
+	if (getLastToken()->isQuestion()) {
+		XglNode *truePart = parseExpression();
+		XglNode *falsePart = parseExpression();
+
+		assignNode = new XglNodeTriplet(expression, truePart, falsePart);
+	}
+	else {
+		assignNode = expression;
+	}
 
 	// Define assignment node
-	return(new XglNodeAssign(keyword, value));
+	return(new XglNodeAssign(keyword, assignNode));
 }
 
 /*****************************************************************************
@@ -113,7 +126,7 @@ expression.
 *****************************************************************************/
 XglToken *XglInterpreter::getLastToken()
 {
-	return(expression.getLastToken());
+	return(expression.getEndToken());
 }
 
 /*****************************************************************************

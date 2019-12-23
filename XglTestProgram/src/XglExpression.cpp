@@ -17,14 +17,14 @@
 
 XglExpression::XglExpression()
 {
-	oprStack.push(new XglToken(XglTokenSymbolType::TOKEN_SYMBOL_EOE));
+	oprStack.push(new XglToken(XglTokenSymbolType::SYMBOL_EOE));
 }
 
 XglExpression::~XglExpression()
 {
 }
 
-XglToken *XglExpression::getLastToken()
+XglToken *XglExpression::getEndToken()
 {
 	return(lastToken);
 }
@@ -160,48 +160,48 @@ void XglExpression::popOprStack()
 	XglTokenSymbolType symbol = oprStack.top()->getSymbol();
 
 	switch (symbol) {
-	case XglTokenSymbolType::TOKEN_SYMBOL_PLUS:
+	case XglTokenSymbolType::SYMBOL_PLUS:
 		expression = new XglNodeAdd();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_MULT: 
+	case XglTokenSymbolType::SYMBOL_MULT: 
 		expression = new XglNodeMult();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_MINUS:
+	case XglTokenSymbolType::SYMBOL_MINUS:
 		expression = new XglNodeSub();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_DIVIDE:
+	case XglTokenSymbolType::SYMBOL_DIVIDE:
 		expression = new XglNodeDivide();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_TILDE:
+	case XglTokenSymbolType::SYMBOL_TILDE:
 		expression = new XglNodeNeg();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_NOT:
+	case XglTokenSymbolType::SYMBOL_NOT:
 		expression = new XglNodeNot();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_LT:
+	case XglTokenSymbolType::SYMBOL_LT:
 		expression = new XglNodeLt();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_GT:
+	case XglTokenSymbolType::SYMBOL_GT:
 		expression = new XglNodeGt();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_EQ:
+	case XglTokenSymbolType::SYMBOL_EQ:
 		expression = new XglNodeEq();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_NE:
+	case XglTokenSymbolType::SYMBOL_NE:
 		expression = new XglNodeNe();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_GE:
+	case XglTokenSymbolType::SYMBOL_GE:
 		expression = new XglNodeGe();
 		break;
-	case XglTokenSymbolType::TOKEN_SYMBOL_LE:
+	case XglTokenSymbolType::SYMBOL_LE:
 		expression = new XglNodeLe();
 		break;
 	}
 
 	if (expression != NULL) {
 		switch (symbol) {
-		case XglTokenSymbolType::TOKEN_SYMBOL_TILDE:
-		case XglTokenSymbolType::TOKEN_SYMBOL_NOT:
+		case XglTokenSymbolType::SYMBOL_TILDE:
+		case XglTokenSymbolType::SYMBOL_NOT:
 			expression->add(expStack.top());
 			expStack.pop();
 			break;

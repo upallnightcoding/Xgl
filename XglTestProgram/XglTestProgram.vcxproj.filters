@@ -183,6 +183,9 @@
     <ClCompile Include="src\XglCmdElseIf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglNodeTriplet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -348,6 +351,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XglCmdElseIf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeTriplet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

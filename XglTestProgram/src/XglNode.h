@@ -39,6 +39,8 @@ enum class XglNodeType
 
 	NODE_SYSTEM_FUNCTION,
 
+	NODE_TRIPLET,
+
 	NODE_ADD,
 	NODE_SUB,
 	NODE_DIVIDE,

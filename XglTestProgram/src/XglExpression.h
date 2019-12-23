@@ -12,7 +12,7 @@ public:
 public:
 	XglNode *parse(XglProgram &program);
 
-	XglToken *getLastToken();
+	XglToken *getEndToken();
 
 private:
 	//XglNode *parse();

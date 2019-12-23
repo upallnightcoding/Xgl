@@ -85,7 +85,7 @@ XglProgram::XglProgram()
 	add("		end;");
 	add("	end;"); */
 
-	add("	# This is just a test of the if statement comment. # ");
+	/*add("	# This is just a test of the if statement comment. # ");
 	add("	declare integer n = 2;");
 	add("	if (n == 1);");
 	add("		print 'Value = 1';");
@@ -95,7 +95,13 @@ XglProgram::XglProgram()
 	add("		else;");
 	add("			print 'Value is 3';");
 	add("		end;");
-	add("	end;");
+	add("	end;");*/
+
+	add("	declare integer x;");
+	add("	declare integer y;");
+	add("	x = (1 < 2) ? 10+3 : 20;");
+	add("	y = (1 > 2) ? 10 : 20+7-2;");
+	add("	print 'Value of x, y: ', x, ':', y;");
 
 	add("end;");
 
@@ -158,29 +164,29 @@ Example:
 *****************************************************************************/
 XglToken *XglProgram::getDoubleToken() 
 {
-	XglTokenSymbolType symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
+	XglTokenSymbolType symbol = XglTokenSymbolType::UNKNOWN;
 	XglToken *token = NULL;
 
 	// Search for the first character of a double token
 	//-------------------------------------------------
 	switch (peekChar()) {
 	case '<':
-		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::TOKEN_SYMBOL_LT, XglTokenSymbolType::TOKEN_SYMBOL_LE);
+		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::SYMBOL_LT, XglTokenSymbolType::SYMBOL_LE);
 		break;
 	case '>':
-		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::TOKEN_SYMBOL_GT, XglTokenSymbolType::TOKEN_SYMBOL_GE);
+		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::SYMBOL_GT, XglTokenSymbolType::SYMBOL_GE);
 		break;
 	case '=':
-		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::TOKEN_SYMBOL_ASSIGN, XglTokenSymbolType::TOKEN_SYMBOL_EQ);
+		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::SYMBOL_ASSIGN, XglTokenSymbolType::SYMBOL_EQ);
 		break;
 	case '!':
-		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::TOKEN_SYMBOL_NOT, XglTokenSymbolType::TOKEN_SYMBOL_NE);
+		symbol = getDoubleCharSymbol('=', XglTokenSymbolType::SYMBOL_NOT, XglTokenSymbolType::SYMBOL_NE);
 		break;
 	}
 
 	// If a double token has been found, return a token object
 	//--------------------------------------------------------
-	if (symbol != XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN) {
+	if (symbol != XglTokenSymbolType::UNKNOWN) {
 		token = new XglToken(symbol);
 	}
 
@@ -211,43 +217,49 @@ character and moves off the character.
 *****************************************************************************/
 XglToken *XglProgram::getSingleToken()
 {
-	XglTokenSymbolType symbol = XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN;
+	XglTokenSymbolType symbol = XglTokenSymbolType::UNKNOWN;
 
 	// Identify the single token character
 	//------------------------------------
 	switch (peekChar()) {
+	case '?':
+		symbol = XglTokenSymbolType::SYMBOL_QUESTION;
+		break;
+	case ':':
+		symbol = XglTokenSymbolType::SYMBOL_COLON;
+		break;
 	case '~':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_TILDE;
+		symbol = XglTokenSymbolType::SYMBOL_TILDE;
 		break;
 	case '+':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_PLUS;
+		symbol = XglTokenSymbolType::SYMBOL_PLUS;
 		break;
 	case '-':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_MINUS;
+		symbol = XglTokenSymbolType::SYMBOL_MINUS;
 		break;
 	case '*':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_MULT;
+		symbol = XglTokenSymbolType::SYMBOL_MULT;
 		break;
 	case '/':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_DIVIDE;
+		symbol = XglTokenSymbolType::SYMBOL_DIVIDE;
 		break;
 	case ';':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_SEMI;
+		symbol = XglTokenSymbolType::SYMBOL_SEMI;
 		break;
 	case '{':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_LBRACE;
+		symbol = XglTokenSymbolType::SYMBOL_LBRACE;
 		break;
 	case '}':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_RBRACE;
+		symbol = XglTokenSymbolType::SYMBOL_RBRACE;
 		break;
 	case '(':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_LPAREN;
+		symbol = XglTokenSymbolType::SYMBOL_LPAREN;
 		break;
 	case ')':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_RPAREN;
+		symbol = XglTokenSymbolType::SYMBOL_RPAREN;
 		break;
 	case ',':
-		symbol = XglTokenSymbolType::TOKEN_SYMBOL_COMMA;
+		symbol = XglTokenSymbolType::SYMBOL_COMMA;
 		break;
 	}
 
@@ -255,7 +267,7 @@ XglToken *XglProgram::getSingleToken()
 
 	// Verify the token and create the token object
 	//---------------------------------------------
-	if (symbol != XglTokenSymbolType::TOKEN_SYMBOL_UNKNOWN) {
+	if (symbol != XglTokenSymbolType::UNKNOWN) {
 		token = new XglToken(symbol);
 		moveToNextChar();
 	}

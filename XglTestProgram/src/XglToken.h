@@ -14,52 +14,56 @@ enum class XglTokenType {
 };
 
 enum class XglTokenSymbolType {
-	TOKEN_SYMBOL_UNKNOWN,
+	UNKNOWN,
 
-	TOKEN_SYMBOL_EOE,
+	SYMBOL_EOE,
 
 	// Not Operators
 	//--------------
-	TOKEN_SYMBOL_TILDE,
-	TOKEN_SYMBOL_NOT,
+	SYMBOL_TILDE,	// '~'
+	SYMBOL_NOT,		// '!'
+
+	// Triplet operators
+	SYMBOL_QUESTION,	// '?'
+	SYMBOL_COLON,		// ':'
 
 	// Binary Operators
 	//-----------------
-	TOKEN_SYMBOL_MULT,
-	TOKEN_SYMBOL_DIVIDE,
-	TOKEN_SYMBOL_PLUS,
-	TOKEN_SYMBOL_MINUS,
+	SYMBOL_MULT,	// '*'
+	SYMBOL_DIVIDE,	// '/'
+	SYMBOL_PLUS,	// '+'
+	SYMBOL_MINUS,	// '-'
 
 	// Conditional Operators
 	//----------------------
-	TOKEN_SYMBOL_EQ,
-	TOKEN_SYMBOL_NE,
-	TOKEN_SYMBOL_GT,
-	TOKEN_SYMBOL_LT,
-	TOKEN_SYMBOL_GE,
-	TOKEN_SYMBOL_LE,
+	SYMBOL_EQ,	// ==
+	SYMBOL_NE,	// !=
+	SYMBOL_GT,	// >
+	SYMBOL_LT,	// <
+	SYMBOL_GE,	// <=
+	SYMBOL_LE,	// <=
 
 	// Left & Right Parentheses ()
 	//----------------------------
-	TOKEN_SYMBOL_RPAREN,
-	TOKEN_SYMBOL_LPAREN,
+	SYMBOL_RPAREN,
+	SYMBOL_LPAREN,
 
 	// Left & Right Brace {}
 	//----------------------
-	TOKEN_SYMBOL_LBRACE,
-	TOKEN_SYMBOL_RBRACE,
+	SYMBOL_LBRACE,
+	SYMBOL_RBRACE,
 
-	// Variable assignment operator
-	//-----------------------------
-	TOKEN_SYMBOL_ASSIGN,
+	// Variable assignment operator '='
+	//---------------------------------
+	SYMBOL_ASSIGN,
 
-	// Statement separator token
-	//--------------------------
-	TOKEN_SYMBOL_SEMI,
+	// Statement separator token ';'
+	//------------------------------
+	SYMBOL_SEMI,
 
-	// Expression separator token
-	//---------------------------
-	TOKEN_SYMBOL_COMMA
+	// Expression separator token ','
+	//-------------------------------
+	SYMBOL_COMMA
 };
 
 class XglToken
@@ -86,6 +90,8 @@ public:
 	bool isOperator();
 	bool isKeyword();
 	bool isAssignment();
+	bool isColon();
+	bool isQuestion();
 
 	XglTokenType getType();
 	XglTokenSymbolType getSymbol();

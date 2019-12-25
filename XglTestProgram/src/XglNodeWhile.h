@@ -8,7 +8,7 @@ public:
 	virtual ~XglNodeWhile();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 
 private:
 	XglNode *expression;

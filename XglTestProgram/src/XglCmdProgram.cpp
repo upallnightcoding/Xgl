@@ -13,27 +13,26 @@ XglCmdProgram::~XglCmdProgram()
 {
 }
 
-
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdProgram::execute(XglInterpreter *interpreter)
+XglNode *XglCmdProgram::execute(XglSyntax *syntax)
 {
 	// Skip over end of statement token
 	//---------------------------------
-	interpreter->skipOver();
+	syntax->getInterpreter()->skipOver();
 
 	// Create code block object and read first while loop statement
 	//-------------------------------------------------------------
 	XglNode *codeBlock = new XglNodeCodeBlock();
-	XglNode *statement = interpreter->parseStatement();
+	XglNode *statement = syntax->getInterpreter()->parseStatement();
 
 	// Continue to read and collect statements until the "END"
 	//--------------------------------------------------------
 	while (!statement->isEnd()) {
 		codeBlock->add(statement);
 
-		statement = interpreter->parseStatement();
+		statement = syntax->getInterpreter()->parseStatement();
 	}
 
 	// Create the program node

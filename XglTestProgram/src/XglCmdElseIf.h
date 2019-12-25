@@ -8,6 +8,6 @@ public:
 	virtual ~XglCmdElseIf();
 
 public:
-	XglNode *execute(XglInterpreter *interpreter);
+	XglNode *execute(XglSyntax *syntax);
 };
 

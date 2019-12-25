@@ -11,6 +11,6 @@ public:
 	virtual ~XglNodeMult();
 
 public:
-	virtual XglValue *execute(XglContext &context);
+	virtual XglValue *execute(XglContext *context);
 };
 

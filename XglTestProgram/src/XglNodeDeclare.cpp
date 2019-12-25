@@ -14,7 +14,7 @@ XglNodeDeclare::~XglNodeDeclare()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeDeclare::execute(XglContext &context)
+XglValue *XglNodeDeclare::execute(XglContext *context)
 {
 	for (XglNode *node : getAttributes()) {
 		node->execute(context);

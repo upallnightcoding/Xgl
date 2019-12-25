@@ -18,7 +18,7 @@ is execute in order presented in the block.  This block can be used for any
 set of statements, but is usually used to represent a set of statement within
 a programming scope.
 *****************************************************************************/
-XglValue *XglNodeCodeBlock::execute(XglContext &context)
+XglValue *XglNodeCodeBlock::execute(XglContext *context)
 {
 	for (XglNode *attribute : getAttributes()) {
 		attribute->evaluate(context);

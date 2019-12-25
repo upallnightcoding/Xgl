@@ -17,9 +17,9 @@ XglNodeDeclareVar::~XglNodeDeclareVar()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeDeclareVar::execute(XglContext &context)
+XglValue *XglNodeDeclareVar::execute(XglContext *context)
 {
-	XglSymbolTable *symbolTable = context.getSymbolTable();
+	XglSymbolTable *symbolTable = context->getSymbolTable();
 
 	symbolTable->add(type, variable, 1, expression);
 

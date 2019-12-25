@@ -22,11 +22,11 @@ XglNodeAssign::~XglNodeAssign()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeAssign::execute(XglContext &context)
+XglValue *XglNodeAssign::execute(XglContext *context)
 {
 	XglValue *value = expression->execute(context);
 
-	XglSymbolTableRec *record = context.getSymbolTable()->find(variable);
+	XglSymbolTableRec *record = context->getSymbolTable()->find(variable);
 
 	if (record != NULL) {
 		record->getData()->assign(0, value);

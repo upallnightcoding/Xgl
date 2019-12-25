@@ -20,7 +20,7 @@ public:
 	virtual ~XglCmdIf();
 
 public:
-	XglNode *execute(XglInterpreter *interpreter);
+	XglNode *execute(XglSyntax *syntax);
 
 private:
 	IfCodeBlock parseCodeBlock(XglInterpreter *interpreter, bool parseExpression);

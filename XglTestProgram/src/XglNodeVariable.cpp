@@ -14,9 +14,9 @@ XglNodeVariable::~XglNodeVariable()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeVariable::execute(XglContext &context)
+XglValue *XglNodeVariable::execute(XglContext *context)
 {
-	XglSymbolTable *symbolTable = context.getSymbolTable();
+	XglSymbolTable *symbolTable = context->getSymbolTable();
 
 	XglValue *value = symbolTable->find(variable)->getValue(context);
 

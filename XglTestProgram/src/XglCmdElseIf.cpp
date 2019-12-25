@@ -14,9 +14,9 @@ XglCmdElseIf::~XglCmdElseIf()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdElseIf::execute(XglInterpreter *interpreter)
+XglNode *XglCmdElseIf::execute(XglSyntax *syntax)
 {
-	interpreter->skipOver();
+	syntax->getInterpreter()->skipOver();
 
 	return(NULL);
 }

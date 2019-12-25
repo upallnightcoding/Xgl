@@ -11,6 +11,6 @@ public:
 	virtual ~XglNodeEnd();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 };
 

@@ -14,7 +14,7 @@ XglNodeElse::~XglNodeElse()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeElse::execute(XglContext &context)
+XglValue *XglNodeElse::execute(XglContext *context)
 {
 	return(NULL);
 }

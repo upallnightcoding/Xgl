@@ -55,10 +55,10 @@ public:
 	virtual ~XglNode();
 
 public:
-	virtual XglValue *execute(XglContext &context) = 0;
+	virtual XglValue *execute(XglContext *context) = 0;
 
-	XglValue *evaluate(XglContext &context);
-	XglValue *evaluate(int index, XglContext &context);
+	XglValue *evaluate(XglContext *context);
+	XglValue *evaluate(int index, XglContext *context);
 
 	void add(XglNode *node);
 

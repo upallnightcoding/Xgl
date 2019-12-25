@@ -8,6 +8,6 @@ public:
 	virtual ~XglCmdDeclare();
 
 public:
-	XglNode *execute(XglInterpreter *interpreter);
+	XglNode *execute(XglSyntax *syntax);
 };
 

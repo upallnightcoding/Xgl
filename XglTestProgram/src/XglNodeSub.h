@@ -10,6 +10,6 @@ public:
 	virtual ~XglNodeSub();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 };
 

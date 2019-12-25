@@ -8,7 +8,7 @@ public:
 	virtual ~XglNodeFor();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 
 private:
 	XglToken *type;

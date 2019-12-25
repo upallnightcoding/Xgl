@@ -12,9 +12,13 @@ XglNodeProgram::~XglNodeProgram()
 {
 }
 
-XglValue *XglNodeProgram::execute(XglContext &context)
+XglValue *XglNodeProgram::execute(XglContext *context)
 {
+	context->getSymbolTable()->createScope();
+
 	codeBlock->execute(context);
+
+	context->getSymbolTable()->deleteScope();
 
 	return(NULL);
 }

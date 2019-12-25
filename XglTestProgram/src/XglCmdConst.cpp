@@ -3,17 +3,27 @@
 #include "XglNodeConst.h"
 #include "XglNodeConstVar.h"
 
+/*****************************************************************************
+XglCmdConst() -
+*****************************************************************************/
 XglCmdConst::XglCmdConst() : XglCmd("CONST")
 {
 }
 
-
+/*****************************************************************************
+XglCmdConst() -
+*****************************************************************************/
 XglCmdConst::~XglCmdConst()
 {
 }
 
-XglNode *XglCmdConst::execute(XglInterpreter *interpreter)
+/*****************************************************************************
+execute() -
+*****************************************************************************/
+XglNode *XglCmdConst::execute(XglSyntax *syntax)
 {
+	XglInterpreter *interpreter = syntax->getInterpreter();
+
 	XglNode *command = new XglNodeConst();
 
 	XglToken *separator = NULL;

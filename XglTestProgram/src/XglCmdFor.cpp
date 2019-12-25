@@ -15,8 +15,10 @@ XglCmdFor::~XglCmdFor()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdFor::execute(XglInterpreter *interpreter)
+XglNode *XglCmdFor::execute(XglSyntax *syntax)
 {
+	XglInterpreter *interpreter = syntax->getInterpreter();
+
 	XglToken *type = interpreter->getToken();
 	XglToken *variable = interpreter->getToken();
 

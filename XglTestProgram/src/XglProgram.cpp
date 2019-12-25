@@ -97,11 +97,20 @@ XglProgram::XglProgram()
 	add("		end;");
 	add("	end;");*/
 
-	add("	declare integer x;");
+	/*add("	declare integer x;");
 	add("	declare integer y;");
 	add("	x = (1 < 2) ? 10+3 : 20;");
 	add("	y = (1 > 2) ? 10 : 20+7-2;");
-	add("	print 'Value of x, y: ', x, ':', y;");
+	add("	print 'Value of x, y: ', x, ':', y;");*/
+
+	add("	for integer n = 1, 2, 1;");
+	add("		declare integer y = n;");
+	add("		for integer m = 1, 3, 1;");
+	add("			declare integer y = m;");
+	add("			print 'For Loop: ', n, ':', m;");
+	add("		end;");
+	add("		print 'Value of y: ', y;");
+	add("	end;"); 
 
 	add("end;");
 

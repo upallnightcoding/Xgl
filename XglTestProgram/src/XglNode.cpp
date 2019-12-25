@@ -48,7 +48,7 @@ bool XglNode::isElse()
 /*****************************************************************************
 evaluate() -
 *****************************************************************************/
-XglValue *XglNode::evaluate(XglContext &context) 
+XglValue *XglNode::evaluate(XglContext *context) 
 {
 	return(execute(context));
 }
@@ -56,7 +56,7 @@ XglValue *XglNode::evaluate(XglContext &context)
 /*****************************************************************************
 evaluate() -
 *****************************************************************************/
-XglValue *XglNode::evaluate(int index, XglContext &context) 
+XglValue *XglNode::evaluate(int index, XglContext *context) 
 {
 	return(children[index]->execute(context)); 
 }

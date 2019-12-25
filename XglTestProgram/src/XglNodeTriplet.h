@@ -8,7 +8,7 @@ public:
 	virtual ~XglNodeTriplet();
 
 public:
-	XglValue *XglNodeTriplet::execute(XglContext &context);
+	XglValue *XglNodeTriplet::execute(XglContext *context);
 
 private:
 	XglNode *expression;

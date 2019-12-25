@@ -11,7 +11,7 @@ XglNodeNeg::~XglNodeNeg()
 {
 }
 
-XglValue *XglNodeNeg::execute(XglContext &context)
+XglValue *XglNodeNeg::execute(XglContext *context)
 {
 	XglValue *target = evaluate(0, context);
 	XglValue *value = NULL;

@@ -33,7 +33,7 @@ void XglNodeIf::setElse(XglNode *codeBlock)
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeIf::execute(XglContext &context)
+XglValue *XglNodeIf::execute(XglContext *context)
 {
 	int foundTrue = -1;
 
@@ -43,6 +43,8 @@ XglValue *XglNodeIf::execute(XglContext &context)
 		}
 	}
 
+	context->getSymbolTable()->createScope();
+
 	if (foundTrue >= 0) {
 		codeBlocks[foundTrue]->execute(context);
 	}
@@ -51,6 +53,8 @@ XglValue *XglNodeIf::execute(XglContext &context)
 			elseStatement->execute(context);
 		}
 	}
+
+	context->getSymbolTable()->deleteScope();
 
 	return(NULL);
 }

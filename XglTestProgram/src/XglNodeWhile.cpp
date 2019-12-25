@@ -13,11 +13,15 @@ XglNodeWhile::~XglNodeWhile()
 {
 }
 
-XglValue *XglNodeWhile::execute(XglContext &context)
+XglValue *XglNodeWhile::execute(XglContext *context)
 {
 
 	while (expression->execute(context)->getBool()) {
+		context->getSymbolTable()->createScope();
+
 		codeBlock->execute(context);
+
+		context->getSymbolTable()->deleteScope();
 	}
 
 	return(NULL);

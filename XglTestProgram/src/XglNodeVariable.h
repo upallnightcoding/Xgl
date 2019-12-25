@@ -8,7 +8,7 @@ public:
 	virtual ~XglNodeVariable();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 
 public:
 	XglValue *variable;

@@ -11,7 +11,7 @@ XglNodeNe::~XglNodeNe()
 {
 }
 
-XglValue *XglNodeNe::execute(XglContext &context)
+XglValue *XglNodeNe::execute(XglContext *context)
 {
 	XglValue *value = NULL;
 

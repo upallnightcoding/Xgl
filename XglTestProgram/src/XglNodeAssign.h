@@ -9,7 +9,7 @@ public:
 	virtual ~XglNodeAssign();
 
 public:
-	virtual XglValue *execute(XglContext &context);
+	virtual XglValue *execute(XglContext *context);
 
 private:
 	string variable;

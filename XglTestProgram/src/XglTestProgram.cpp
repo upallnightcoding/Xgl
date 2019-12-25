@@ -17,5 +17,5 @@ int main()
 
 	node = interpreter.parseStatement();
 
-	node->execute(context);
+	node->execute(&context);
 }

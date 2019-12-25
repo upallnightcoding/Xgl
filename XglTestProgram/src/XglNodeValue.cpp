@@ -13,7 +13,7 @@ XglNodeValue::~XglNodeValue()
 {
 }
 
-XglValue *XglNodeValue::execute(XglContext &context)
+XglValue *XglNodeValue::execute(XglContext *context)
 {
 	return(value);
 }

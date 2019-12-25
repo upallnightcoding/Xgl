@@ -15,18 +15,18 @@ XglCmdPrint::~XglCmdPrint()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdPrint::execute(XglInterpreter *interpreter)
+XglNode *XglCmdPrint::execute(XglSyntax *syntax)
 {
 	XglNode *command = new XglNodePrint();
 
 	XglToken *lastToken = new XglToken();
 
 	while (!lastToken->isEos()) {
-		XglNode *expression = interpreter->parseExpression();
+		XglNode *expression = syntax->getInterpreter()->parseExpression();
 
 		command->add(expression);
 
-		lastToken = interpreter->getLastToken();
+		lastToken = syntax->getInterpreter()->getLastToken();
 	}
 
 	return(command);

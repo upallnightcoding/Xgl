@@ -10,7 +10,7 @@ public:
 	virtual ~XglNodeDeclareVar();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 
 private:
 	XglToken *type;

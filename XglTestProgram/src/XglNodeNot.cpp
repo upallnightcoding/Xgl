@@ -11,7 +11,7 @@ XglNodeNot::~XglNodeNot()
 {
 }
 
-XglValue *XglNodeNot::execute(XglContext &context)
+XglValue *XglNodeNot::execute(XglContext *context)
 {
 	return(new XglValue(!evaluate(0, context)->getBool()));
 }

@@ -15,17 +15,17 @@ XglCmdWhile::~XglCmdWhile()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdWhile::execute(XglInterpreter *interpreter)
+XglNode *XglCmdWhile::execute(XglSyntax *syntax)
 {
-	XglNode *expression = interpreter->parseExpression();
+	XglNode *expression = syntax->getInterpreter()->parseExpression();
 
 	XglNode *codeBlock = new XglNodeCodeBlock();
 
-	XglNode *statement = interpreter->parseStatement();
+	XglNode *statement = syntax->getInterpreter()->parseStatement();
 
 	while (!statement->isEnd()) {
 		codeBlock->add(statement);
-		statement = interpreter->parseStatement();
+		statement = syntax->getInterpreter()->parseStatement();
 	}
 
 	return(new XglNodeWhile(expression, codeBlock));

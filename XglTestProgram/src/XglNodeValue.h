@@ -11,7 +11,7 @@ public:
 	virtual ~XglNodeValue();
 
 public:
-	virtual XglValue *execute(XglContext &context);
+	virtual XglValue *execute(XglContext *context);
 
 private:
 	XglValue *value;

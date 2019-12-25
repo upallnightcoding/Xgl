@@ -10,6 +10,6 @@ public:
 	virtual ~XglNodeGt();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 };
 

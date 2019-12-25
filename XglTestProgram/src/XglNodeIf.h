@@ -11,7 +11,7 @@ public:
 public:
 	void add(XglNode *expression, XglNode *codeBlock);
 
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 
 	void setElse(XglNode *codeBlock);
 

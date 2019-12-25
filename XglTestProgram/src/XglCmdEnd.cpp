@@ -15,9 +15,9 @@ XglCmdEnd::~XglCmdEnd()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdEnd::execute(XglInterpreter *interpreter)
+XglNode *XglCmdEnd::execute(XglSyntax *syntax)
 {
-	interpreter->skipOver();
+	syntax->getInterpreter()->skipOver();
 
 	return(new XglNodeEnd());
 }

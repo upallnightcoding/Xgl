@@ -10,6 +10,6 @@ public:
 	virtual ~XglCmdWhile();
 
 public:
-	XglNode *execute(XglInterpreter *interpreter);
+	XglNode *execute(XglSyntax *syntax);
 };
 

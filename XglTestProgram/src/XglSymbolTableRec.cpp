@@ -67,7 +67,7 @@ string XglSymbolTableRec::getVariableName()
 /*****************************************************************************
 getValue() - 
 *****************************************************************************/
-XglValue *XglSymbolTableRec::getValue(XglContext &context)
+XglValue *XglSymbolTableRec::getValue(XglContext *context)
 {
 	XglValue *returnValue = NULL;
 

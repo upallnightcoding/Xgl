@@ -25,7 +25,7 @@ XglNodeFor::~XglNodeFor()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodeFor::execute(XglContext &context)
+XglValue *XglNodeFor::execute(XglContext *context)
 {
 	// Construct index variable declaration
 	//-------------------------------------
@@ -51,6 +51,7 @@ XglValue *XglNodeFor::execute(XglContext &context)
 	//--------------------------------------------------
 	XglNode *updateIndexVar = new XglNodeAssign(variable, addStep);
 
+	context->getSymbolTable()->createScope();
 
 	// Execute Xgl For Loop
 	//---------------------
@@ -60,6 +61,8 @@ XglValue *XglNodeFor::execute(XglContext &context)
 		codeBlock->execute(context);
 		updateIndexVar->execute(context);
 	}
+
+	context->getSymbolTable()->deleteScope();
 
 	return(NULL);
 }

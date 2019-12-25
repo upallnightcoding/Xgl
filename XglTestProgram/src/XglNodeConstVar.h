@@ -8,7 +8,7 @@ public:
 	virtual ~XglNodeConstVar();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 
 private:
 	XglToken *type;

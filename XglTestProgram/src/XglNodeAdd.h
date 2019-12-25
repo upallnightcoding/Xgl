@@ -8,6 +8,6 @@ public:
 	virtual ~XglNodeAdd();
 
 public:
-	virtual XglValue *execute(XglContext &context);
+	virtual XglValue *execute(XglContext *context);
 };
 

@@ -6,6 +6,7 @@
 #include "XglExpression.h"
 
 class XglCmd;
+class XglSyntax;
 
 class XglInterpreter 
 {
@@ -30,6 +31,7 @@ private:
 	XglProgram program;
 	map<string, XglCmd*> commandMap;
 	XglExpression expression;
+	XglSyntax *syntax;
 };
 
 #include "XglCmd.h"

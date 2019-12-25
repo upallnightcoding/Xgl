@@ -19,6 +19,7 @@
 XglInterpreter::XglInterpreter(XglProgram &program)
 {
 	this->program = program;
+	this->syntax = new XglSyntax(this);
 
 	add(new XglCmdPrint());
 	add(new XglCmdProgram());
@@ -53,7 +54,7 @@ XglNode *XglInterpreter::parseStatement()
 			XglCmd *command = commandMap[keyword];
 
 			if (command != NULL) {
-				node = command->execute(this);
+				node = command->execute(syntax);
 			}
 			else {
 				node = assign(keyword);

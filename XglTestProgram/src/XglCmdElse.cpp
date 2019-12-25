@@ -13,9 +13,9 @@ XglCmdElse::~XglCmdElse()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdElse::execute(XglInterpreter *interpreter)
+XglNode *XglCmdElse::execute(XglSyntax *syntax)
 {
-	interpreter->skipOver();
+	syntax->getInterpreter()->skipOver();
 
 	return(new XglNodeElse());
 }

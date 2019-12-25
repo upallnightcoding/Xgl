@@ -18,7 +18,7 @@ XglNodeTriplet::~XglNodeTriplet()
 /*****************************************************************************
 execute() - 
 *****************************************************************************/
-XglValue *XglNodeTriplet::execute(XglContext &context)
+XglValue *XglNodeTriplet::execute(XglContext *context)
 {
 	XglValue *triplet = NULL;
 

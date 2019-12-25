@@ -14,7 +14,7 @@ XglNodePrint::~XglNodePrint()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglValue *XglNodePrint::execute(XglContext &context)
+XglValue *XglNodePrint::execute(XglContext *context)
 {
 	for (XglNode *node : getAttributes()) {
 

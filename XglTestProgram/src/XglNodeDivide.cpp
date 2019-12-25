@@ -11,7 +11,7 @@ XglNodeDivide::~XglNodeDivide()
 {
 }
 
-XglValue *XglNodeDivide::execute(XglContext &context)
+XglValue *XglNodeDivide::execute(XglContext *context)
 {
 	XglValue *value = NULL;
 

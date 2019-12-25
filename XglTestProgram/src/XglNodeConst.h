@@ -8,6 +8,6 @@ public:
 	virtual ~XglNodeConst();
 
 public:
-	XglValue *execute(XglContext &context);
+	XglValue *execute(XglContext *context);
 };
 

@@ -18,21 +18,29 @@ execute() -
 *****************************************************************************/
 XglNode *XglCmdProgram::execute(XglSyntax *syntax)
 {
+	XglInterpreter *interpreter = syntax->getInterpreter();
+
+	XglNode *codeBlock = NULL;
+
 	// Skip over end of statement token
 	//---------------------------------
-	syntax->getInterpreter()->skipOver();
+	if (interpreter->skipOver(XglTokenSymbolType::SYMBOL_SEMI)) {
 
-	// Create code block object and read first while loop statement
-	//-------------------------------------------------------------
-	XglNode *codeBlock = new XglNodeCodeBlock();
-	XglNode *statement = syntax->getInterpreter()->parseStatement();
+		// Create code block object and read first while loop statement
+		//-------------------------------------------------------------
+		codeBlock = new XglNodeCodeBlock();
+		XglNode *statement = interpreter->parseStatement();
 
-	// Continue to read and collect statements until the "END"
-	//--------------------------------------------------------
-	while (!statement->isEnd()) {
-		codeBlock->add(statement);
+		// Continue to read and collect statements until the "END"
+		//--------------------------------------------------------
+		while (!statement->isEnd()) {
+			codeBlock->add(statement);
 
-		statement = syntax->getInterpreter()->parseStatement();
+			statement = interpreter->parseStatement();
+		}
+	}
+	else {
+		syntax->error(XglErrorMessageType::EOS_EXPECTED);
 	}
 
 	// Create the program node

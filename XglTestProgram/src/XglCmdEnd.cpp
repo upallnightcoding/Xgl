@@ -17,7 +17,7 @@ execute() -
 *****************************************************************************/
 XglNode *XglCmdEnd::execute(XglSyntax *syntax)
 {
-	syntax->getInterpreter()->skipOver();
+	syntax->getInterpreter()->skipOver(XglTokenSymbolType::SYMBOL_SEMI);
 
 	return(new XglNodeEnd());
 }

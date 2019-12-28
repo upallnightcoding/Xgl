@@ -22,7 +22,7 @@ XglNode *XglCmdFor::execute(XglSyntax *syntax)
 	XglToken *type = interpreter->getToken();
 	XglToken *variable = interpreter->getToken();
 
-	interpreter->skipOver();
+	interpreter->skipOver(XglTokenSymbolType::SYMBOL_EQ);
 
 	XglNode *init = interpreter->parseExpression();
 	XglNode *fin = interpreter->parseExpression();

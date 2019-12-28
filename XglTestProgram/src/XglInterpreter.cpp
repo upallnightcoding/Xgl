@@ -105,11 +105,15 @@ XglToken *XglInterpreter::getToken()
 /*****************************************************************************
 skipOver() - 
 *****************************************************************************/
-void XglInterpreter::skipOver()
+bool XglInterpreter::skipOver(XglTokenSymbolType symbol)
 {
 	XglToken *token = program.getToken();
 
+	bool check = token->is(symbol);
+
 	delete token;
+
+	return(check);
 }
 
 /*****************************************************************************

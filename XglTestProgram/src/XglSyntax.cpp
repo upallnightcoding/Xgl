@@ -19,7 +19,7 @@ XglInterpreter *XglSyntax::getInterpreter()
 	return(interpreter);
 }
 
-XglErrorMgr *XglSyntax::getErrorMgr()
+void XglSyntax::error(XglErrorMessageType type)
 {
-	return(errorMrg);
+	string message = errorMrg->getErrorMessage(type);
 }

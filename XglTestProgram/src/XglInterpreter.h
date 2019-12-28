@@ -21,7 +21,7 @@ public:
 	XglNode *parseExpression();
 
 	XglToken *getToken();
-	void skipOver();
+	bool skipOver(XglTokenSymbolType symbol);
 	XglNode *assign (string keyword);
 
 private:

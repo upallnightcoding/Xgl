@@ -80,6 +80,7 @@ public:
 public:
 	int rank();
 
+	bool is(XglTokenSymbolType target);
 	bool isEos();
 	bool isEndExpression();
 	bool isComma();

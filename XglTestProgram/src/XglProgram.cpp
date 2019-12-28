@@ -10,7 +10,7 @@ XglProgram::XglProgram()
 	eop = false;
 	currentChar = 0;
 
-	add("program;");
+	add("program 'xxx';");
 	/*add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
 	add("	print '3=', (10 - 9) * 3;");

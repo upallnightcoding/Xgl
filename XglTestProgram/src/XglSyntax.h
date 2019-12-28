@@ -11,7 +11,7 @@ public:
 
 public:
 	XglInterpreter *getInterpreter();
-	XglErrorMgr *getErrorMgr();
+	void error(XglErrorMessageType type);
 
 private:
 	XglInterpreter *interpreter;

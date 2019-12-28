@@ -68,6 +68,11 @@ XglValueType XglToken::getTypeFromKeyword()
 	return(type);
 }
 
+bool XglToken::is(XglTokenSymbolType target)
+{
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == target));
+}
+
 bool XglToken::isKeyword() 
 {
 	return(type == XglTokenType::KEYWORD);

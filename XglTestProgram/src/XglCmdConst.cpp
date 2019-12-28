@@ -20,10 +20,8 @@ XglCmdConst::~XglCmdConst()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdConst::execute(XglSyntax *syntax)
+XglNode *XglCmdConst::execute(XglInterpreter *interpreter)
 {
-	XglInterpreter *interpreter = syntax->getInterpreter();
-
 	XglNode *command = new XglNodeConst();
 
 	XglToken *separator = NULL;

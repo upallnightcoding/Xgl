@@ -16,7 +16,7 @@ XglCmdDeclare::~XglCmdDeclare()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdDeclare::execute(XglSyntax *syntax)
+XglNode *XglCmdDeclare::execute(XglInterpreter *interpreter)
 {
 	XglToken *separator = NULL;
 	XglToken *type = NULL;
@@ -28,17 +28,17 @@ XglNode *XglCmdDeclare::execute(XglSyntax *syntax)
 	do {
 		// Parse variable type and name
 		//-----------------------------
-		type = syntax->getInterpreter()->getToken();
-		variable = syntax->getInterpreter()->getToken();
+		type = interpreter->getToken();
+		variable = interpreter->getToken();
 		
-		separator = syntax->getInterpreter()->getToken();
+		separator = interpreter->getToken();
 
 		// Parse variable initialization expression
 		//-----------------------------------------
 		expression = NULL;
 		if (separator->isAssignment()) {
-			expression = syntax->getInterpreter()->parseExpression();
-			separator = syntax->getInterpreter()->getLastToken();
+			expression = interpreter->parseExpression();
+			separator = interpreter->getLastToken();
 		}
 
 		// Capture variable declaration

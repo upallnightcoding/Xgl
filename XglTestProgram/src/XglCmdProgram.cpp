@@ -16,11 +16,10 @@ XglCmdProgram::~XglCmdProgram()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdProgram::execute(XglSyntax *syntax)
+XglNode *XglCmdProgram::execute(XglInterpreter *interpreter)
 {
-	XglInterpreter *interpreter = syntax->getInterpreter();
-
 	XglNode *codeBlock = NULL;
+	XglNode *command = NULL;
 
 	// Skip over end of statement token
 	//---------------------------------
@@ -38,12 +37,16 @@ XglNode *XglCmdProgram::execute(XglSyntax *syntax)
 
 			statement = interpreter->parseStatement();
 		}
+
+		// Set the node command
+		//---------------------
+		command = new XglNodeProgram(codeBlock);
 	}
 	else {
-		syntax->error(XglErrorMessageType::EOS_EXPECTED);
+		interpreter->error(XglErrorMessageType::EOS_EXPECTED);
 	}
 
 	// Create the program node
 	//------------------------
-	return(new XglNodeProgram(codeBlock));
+	return(command);
 }

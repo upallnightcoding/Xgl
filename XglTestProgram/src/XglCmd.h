@@ -1,9 +1,7 @@
 #pragma once
 
-
 #include "XglNode.h"
-
-class XglSyntax;
+#include "XglInterpreter.h"
 
 class XglCmd
 {
@@ -12,13 +10,10 @@ public:
 	virtual ~XglCmd();
 
 public:
-	virtual XglNode *execute(XglSyntax *syntax) = 0;
+	virtual XglNode *execute(XglInterpreter *interpreter) = 0;
 
 	string getName();
 
 private:
 	string name;
 };
-
-#include "XglSyntax.h"
-

@@ -5,6 +5,12 @@
 #include "XglNode.h"
 #include "XglExpression.h"
 
+enum class XglErrorMessageType
+{
+	EOS_EXPECTED,
+	UNKNOWN
+};
+
 class XglCmd;
 class XglSyntax;
 
@@ -24,14 +30,21 @@ public:
 	bool skipOver(XglTokenSymbolType symbol);
 	XglNode *assign (string keyword);
 
+	void error(XglErrorMessageType type);
+
+	bool isNoErrors();
+	int getnErrors();
+
 private:
 	void add(XglCmd *command);
+
+	string getErrorMessage(XglErrorMessageType type);
 
 private:
 	XglProgram program;
 	map<string, XglCmd*> commandMap;
 	XglExpression expression;
-	XglSyntax *syntax;
+	int nErrors;
 };
 
 #include "XglCmd.h"

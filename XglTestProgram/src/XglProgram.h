@@ -10,6 +10,20 @@ class XglProgram
 This class is used to read tokens from a source input, one token at a time.
 *****************************************************************************/
 
+class XglProgramLine {
+public:
+	XglProgramLine(string sourceCode);
+
+public:
+	char getChar(size_t characterPos);
+	size_t getLength();
+	string getSource();
+
+private:
+	string sourceCode;
+	size_t size;
+};
+
 class XglProgram
 {
 public:
@@ -19,6 +33,7 @@ public:
 public:
 	void add(string source);
 	XglToken *getToken();
+	string getErrorLine();
 
 private:
 	bool isChar(char character);
@@ -39,7 +54,8 @@ private:
 
 private:
 	size_t currentChar;
-	string program;
+	size_t currentLine;
+	vector<XglProgramLine> source;
 	bool eop;
 };
 

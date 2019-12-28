@@ -15,10 +15,8 @@ XglCmdIf::~XglCmdIf()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdIf::execute(XglSyntax *syntax)
+XglNode *XglCmdIf::execute(XglInterpreter *interpreter)
 {
-	XglInterpreter *interpreter = syntax->getInterpreter();
-
 	XglNodeIf *command = new XglNodeIf();
 	XglNode *endingStatement = NULL;
 	XglNode *codeBlock = NULL;

@@ -9,6 +9,6 @@ public:
 	virtual ~XglCmdEnd();
 
 public:
-	virtual XglNode *execute(XglSyntax *syntax);
+	virtual XglNode *execute(XglInterpreter *interpreter);
 };
 

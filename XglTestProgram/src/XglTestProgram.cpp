@@ -17,5 +17,11 @@ int main()
 
 	node = interpreter.parseStatement();
 
-	node->execute(&context);
+	if (interpreter.isNoErrors()) {
+		node->execute(&context);
+	}
+	else {
+		int nErrors = interpreter.getnErrors();
+		cout << "(" << nErrors << ") Error(s) found, execution terminated ..." << "\n";
+	}
 }

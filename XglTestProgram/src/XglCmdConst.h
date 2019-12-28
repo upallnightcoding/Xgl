@@ -21,6 +21,6 @@ public:
 
 
 public:
-	virtual XglNode *execute(XglSyntax *syntax);
+	virtual XglNode *execute(XglInterpreter *interpreter);
 };
 

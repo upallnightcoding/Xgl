@@ -14,9 +14,9 @@ XglCmdElseIf::~XglCmdElseIf()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdElseIf::execute(XglSyntax *syntax)
+XglNode *XglCmdElseIf::execute(XglInterpreter *interpreter)
 {
-	syntax->getInterpreter()->skipOver(XglTokenSymbolType::SYMBOL_SEMI);
+	interpreter->skipOver(XglTokenSymbolType::SYMBOL_SEMI);
 
 	return(NULL);
 }

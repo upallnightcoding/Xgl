@@ -13,9 +13,9 @@ XglCmdElse::~XglCmdElse()
 /*****************************************************************************
 execute() -
 *****************************************************************************/
-XglNode *XglCmdElse::execute(XglSyntax *syntax)
+XglNode *XglCmdElse::execute(XglInterpreter *interpreter)
 {
-	syntax->getInterpreter()->skipOver(XglTokenSymbolType::SYMBOL_SEMI);
+	interpreter->skipOver(XglTokenSymbolType::SYMBOL_SEMI);
 
 	return(new XglNodeElse());
 }

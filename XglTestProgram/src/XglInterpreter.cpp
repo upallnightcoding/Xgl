@@ -19,7 +19,7 @@
 XglInterpreter::XglInterpreter(XglProgram &program)
 {
 	this->program = program;
-	this->syntax = new XglSyntax(this);
+	this->nErrors = 0;
 
 	add(new XglCmdPrint());
 	add(new XglCmdProgram());
@@ -32,7 +32,6 @@ XglInterpreter::XglInterpreter(XglProgram &program)
 	add(new XglCmdElse());
 	add(new XglCmdElseIf());
 }
-
 
 XglInterpreter::~XglInterpreter()
 {
@@ -54,7 +53,7 @@ XglNode *XglInterpreter::parseStatement()
 			XglCmd *command = commandMap[keyword];
 
 			if (command != NULL) {
-				node = command->execute(syntax);
+				node = command->execute(this);
 			}
 			else {
 				node = assign(keyword);
@@ -140,4 +139,44 @@ add() -
 void XglInterpreter::add(XglCmd *command)
 {
 	commandMap[command->getName()] = command;
+}
+
+/*****************************************************************************
+getErrorMessage() -
+*****************************************************************************/
+string XglInterpreter::getErrorMessage(XglErrorMessageType type)
+{
+	string msg = "";
+
+	switch (type) {
+	case XglErrorMessageType::EOS_EXPECTED:
+		msg = "End of statement was expected but not found.";
+		break;
+	}
+
+	return(msg);
+}
+
+/*****************************************************************************
+error() -
+*****************************************************************************/
+void XglInterpreter::error(XglErrorMessageType type)
+{
+	nErrors++; 
+
+	cout << program.getErrorLine() << "\n";
+	cout << "Error: " << getErrorMessage(type) << "\n";
+}
+
+/*****************************************************************************
+isAnyErrors() -
+*****************************************************************************/
+bool XglInterpreter::isNoErrors()
+{
+	return(nErrors == 0);
+}
+
+int XglInterpreter::getnErrors()
+{
+	return(nErrors);
 }

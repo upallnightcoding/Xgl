@@ -3,12 +3,42 @@
 
 #include "XglNumber.h"
 
+XglProgramLine::XglProgramLine(string sourceCode)
+{
+	this->sourceCode = sourceCode;
+	this->size = sourceCode.size();
+}
+
+/*****************************************************************************
+getChar() -
+*****************************************************************************/
+char XglProgramLine::getChar(size_t characterPos)
+{
+	return(sourceCode.at(characterPos));
+}
+
+/*****************************************************************************
+getLength() - Return the length of the programming line.
+*****************************************************************************/
+size_t XglProgramLine::getLength()
+{
+	return(size);
+}
+
+/*****************************************************************************
+getSource() - Return the source code pertaining to this programming line.
+*****************************************************************************/
+string XglProgramLine::getSource()
+{
+	return(sourceCode);
+}
+
 
 XglProgram::XglProgram()
 {
-	program = "";
-	eop = false;
-	currentChar = 0;
+	this->eop = false;
+	this->currentChar = 0;
+	this->currentLine = 0;
 
 	add("program 'xxx';");
 	/*add("	print '123=', 123;");
@@ -388,9 +418,9 @@ XglNumber XglProgram::getInteger()
 /*****************************************************************************
 add() -
 *****************************************************************************/
-void XglProgram::add(string source)
+void XglProgram::add(string sourceCode)
 {
-	program = program + XglConstant::SPACE_CHAR + source;
+	source.push_back(XglProgramLine(sourceCode));
 }
 
 /*****************************************************************************
@@ -435,15 +465,23 @@ bool XglProgram::isChar(char character)
 }
 
 /*****************************************************************************
-nextChar() - Skips to the next character in the source code.
+nextChar() - Skips to the next character in the source code.  If the character
+pointer has reached the end of line, the line pointer is moved to the next 
+source code line.  If the line pointer has reached the end of the source code
+the eop flag is set to mark the end of the program.
 *****************************************************************************/
 void XglProgram::moveToNextChar()
 {
 	if (!eop) {
 		currentChar++;
 
-		if (currentChar >= program.length()) {
-			eop = true;
+		if (currentChar >= source.at(currentLine).getLength()) {
+			currentLine++;
+			currentChar = 0;
+
+			if (currentLine >= source.size()) {
+				eop = true;
+			}
 		}
 	}
 }
@@ -453,14 +491,28 @@ getCurrentChar() - Returns the current active character in the source code.
 *****************************************************************************/
 char XglProgram::peekChar()
 {
-	return(program.at(currentChar));
+	return(source.at(currentLine).getChar(currentChar));
 }
 
 /*****************************************************************************
 isEop() - Returns the value of the end-of-program pointer.
 *****************************************************************************/
+// TODO May be able to remove this function, it is not used outside of this class
 bool XglProgram::isEop()
 {
 	return(eop);
 }
 
+/*****************************************************************************
+getErrorLine() - Returns the value of the end-of-program pointer.
+*****************************************************************************/
+string XglProgram::getErrorLine()
+{
+	string line = "";
+
+	if (!isEop()) {
+		line = "Line (" + to_string(currentLine+1) + ") : " + source.at(currentLine).getSource();
+	}
+
+	return(line);
+}

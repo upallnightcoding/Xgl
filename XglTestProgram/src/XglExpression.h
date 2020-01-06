@@ -16,20 +16,14 @@ public:
 
 private:
 	//XglNode *parse();
-	void popOprStack();
-	void pushOperOnStack(XglToken *token);
-	void popUntilRightParen();
-	void emptyOprStack();
-	void pushKeywordOnExpStack(XglToken *token);
+	void popOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
+	void pushOperOnStack(XglToken *token, stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
+	void popUntilRightParen(stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
+	void emptyOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
+	void pushKeywordOnExpStack(XglToken *token, stack<XglNode*> &expStack);
 
 private:
-	// Expression Stack
-	stack<XglNode*> expStack;
-
-	// Operator Stack
-	stack<XglToken*> oprStack;
-
-	XglToken *lastToken;
 	XglProgram program;
+	XglToken *lastToken;
 };
 

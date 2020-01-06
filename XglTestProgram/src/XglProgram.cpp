@@ -40,7 +40,7 @@ XglProgram::XglProgram()
 	this->currentChar = 0;
 	this->currentLine = 0;
 
-	add("program 'xxx';");
+	add("program ;");
 	/*add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
 	add("	print '3=', (10 - 9) * 3;");
@@ -286,19 +286,25 @@ XglToken *XglProgram::getSingleToken()
 		symbol = XglTokenSymbolType::SYMBOL_SEMI;
 		break;
 	case '{':
-		symbol = XglTokenSymbolType::SYMBOL_LBRACE;
+		symbol = XglTokenSymbolType::SYMBOL_LEFT_BRACE;
 		break;
 	case '}':
-		symbol = XglTokenSymbolType::SYMBOL_RBRACE;
+		symbol = XglTokenSymbolType::SYMBOL_RIGHT_BRACE;
 		break;
 	case '(':
-		symbol = XglTokenSymbolType::SYMBOL_LPAREN;
+		symbol = XglTokenSymbolType::SYMBOL_LEFT_PAREN;
 		break;
 	case ')':
-		symbol = XglTokenSymbolType::SYMBOL_RPAREN;
+		symbol = XglTokenSymbolType::SYMBOL_RIGHT_PAREN;
 		break;
 	case ',':
 		symbol = XglTokenSymbolType::SYMBOL_COMMA;
+		break;
+	case '[':
+		symbol = XglTokenSymbolType::SYMBOL_LEFT_BRACKET;
+		break;
+	case ']':
+		symbol = XglTokenSymbolType::SYMBOL_RIGHT_BRACKET;
 		break;
 	}
 

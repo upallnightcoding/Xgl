@@ -207,6 +207,8 @@
     <ClInclude Include="src\XglCmdElseIf.h" />
     <ClInclude Include="src\XglNodeElseIf.h" />
     <ClInclude Include="src\XglNodeTriplet.h" />
+    <ClInclude Include="src\XglCmdFunction.h" />
+    <ClInclude Include="src\XglNodeFunction.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -269,6 +271,8 @@
     <ClCompile Include="src\XglCmdElseIf.cpp" />
     <ClCompile Include="src\XglNodeElseIf.cpp" />
     <ClCompile Include="src\XglNodeTriplet.cpp" />
+    <ClCompile Include="src\XglCmdFunction.cpp" />
+    <ClCompile Include="src\XglNodeFunction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

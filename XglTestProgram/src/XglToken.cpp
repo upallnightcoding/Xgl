@@ -139,12 +139,22 @@ bool XglToken::isConstant()
 
 bool XglToken::isRightParen() 
 {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_RPAREN));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_RIGHT_PAREN));
 }
 
 bool XglToken::isLeftParen() 
 {
-	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_LPAREN));
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_LEFT_PAREN));
+}
+
+bool XglToken::isRightBracket()
+{
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_RIGHT_BRACKET));
+}
+
+bool XglToken::isLeftBracket()
+{
+	return((type == XglTokenType::TOKEN_SYMBOL) && (symbol == XglTokenSymbolType::SYMBOL_LEFT_BRACKET));
 }
 
 bool XglToken::isEOE()
@@ -178,7 +188,7 @@ bool XglToken::isOperator()
 	case XglTokenSymbolType::SYMBOL_GE:
 	case XglTokenSymbolType::SYMBOL_LE:
 
-	case XglTokenSymbolType::SYMBOL_LPAREN:
+	case XglTokenSymbolType::SYMBOL_LEFT_PAREN:
 
 	case XglTokenSymbolType::SYMBOL_EOE:
 		value = true;
@@ -296,11 +306,11 @@ int XglToken::rank()
 	case XglTokenSymbolType::SYMBOL_LE:
 		value = 5;
 		break;
-	case XglTokenSymbolType::SYMBOL_LPAREN:
+	case XglTokenSymbolType::SYMBOL_LEFT_PAREN:
 		value = 1;
 		break;
 	case XglTokenSymbolType::SYMBOL_EOE:
-	case XglTokenSymbolType::SYMBOL_RPAREN:
+	case XglTokenSymbolType::SYMBOL_RIGHT_PAREN:
 		value = 0;
 		break;
 	}

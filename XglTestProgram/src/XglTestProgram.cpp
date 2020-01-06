@@ -22,6 +22,6 @@ int main()
 	}
 	else {
 		int nErrors = interpreter.getnErrors();
-		cout << "(" << nErrors << ") Error(s) found, execution terminated ..." << "\n";
+		cout << "\n(" << nErrors << ") Error(s) found, execution terminated ..." << "\n";
 	}
 }

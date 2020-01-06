@@ -17,7 +17,6 @@
 
 XglExpression::XglExpression()
 {
-	oprStack.push(new XglToken(XglTokenSymbolType::SYMBOL_EOE));
 }
 
 XglExpression::~XglExpression()
@@ -47,10 +46,14 @@ parse()
 *****************************************************************************/
 XglNode *XglExpression::parse(XglProgram &program)
 {
-	int balance = 0;
+	stack<XglNode*> expStack;
+	stack<XglToken*> oprStack;
+	int parenCount = 0;
 	bool interpreting = true;
 
 	lastToken = NULL;
+
+	oprStack.push(new XglToken(XglTokenSymbolType::SYMBOL_EOE));
 
 	while (interpreting) {
 		XglToken *token = program.getToken();
@@ -63,31 +66,31 @@ XglNode *XglExpression::parse(XglProgram &program)
 			expStack.push(new XglNodeValue(new XglValue(token)));
 		}
 		else if (token->isKeyword()) {
-			pushKeywordOnExpStack(token);
+			pushKeywordOnExpStack(token, expStack);
 		}
 		else if (token->isLeftParen()) {
-			balance++;
+			parenCount++;
 			oprStack.push(token);
 		}
-		else if (token->isRightParen() && (balance == 0)) {
+		else if (token->isRightParen() && (parenCount == 0)) {
 			interpreting = false;
 			lastToken = token;
 		}
 		else if (token->isRightParen()) {
-			balance--;
-			popUntilRightParen();
+			parenCount--;
+			popUntilRightParen(oprStack, expStack);
 		}
 		else if (token->isOperator()) {
-			pushOperOnStack(token);
+			pushOperOnStack(token, oprStack, expStack);
 		}
 	}
 
-	emptyOprStack();
+	emptyOprStack(oprStack, expStack);
 
 	return (expStack.top());
 }
 
-void XglExpression::pushKeywordOnExpStack(XglToken *token) 
+void XglExpression::pushKeywordOnExpStack(XglToken *token, stack<XglNode*> &expStack)
 {
 	XglValue *variable = new XglValue(token);
 	XglNode *value = new XglNodeVariable(variable);
@@ -116,22 +119,22 @@ void XglExpression::pushKeywordOnExpStack(XglToken *token)
 /*****************************************************************************
 emptyOprStack()
 *****************************************************************************/
-void XglExpression::emptyOprStack() 
+void XglExpression::emptyOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &expStack)
 {
 	while (!oprStack.top()->isEOE()) {
-		popOprStack();
+		popOprStack(oprStack, expStack);
 	}
 }
 
 /*****************************************************************************
 popUntilRightParen()
 *****************************************************************************/
-void XglExpression::popUntilRightParen() 
+void XglExpression::popUntilRightParen(stack<XglToken*> &oprStack, stack<XglNode*> &expStack)
 {
 	// Pop the operator stack until the first left parenthesis
 	//--------------------------------------------------------
 	while (!oprStack.top()->isLeftParen()) {
-		popOprStack();
+		popOprStack(oprStack, expStack);
 	}
 
 	// Pop the left parenthesis off the stack
@@ -142,10 +145,10 @@ void XglExpression::popUntilRightParen()
 /*****************************************************************************
 pushOperOnStack()
 *****************************************************************************/
-void XglExpression::pushOperOnStack(XglToken *token) 
+void XglExpression::pushOperOnStack(XglToken *token, stack<XglToken*> &oprStack, stack<XglNode*> &expStack)
 {
 	while (token->rank() <= oprStack.top()->rank()) {
-		popOprStack();
+		popOprStack(oprStack, expStack);
 	}
 
 	oprStack.push(token);
@@ -154,7 +157,7 @@ void XglExpression::pushOperOnStack(XglToken *token)
 /*****************************************************************************
 popOprStack()
 *****************************************************************************/
-void XglExpression::popOprStack() 
+void XglExpression::popOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &expStack)
 {
 	XglNode *expression = NULL;
 	XglTokenSymbolType symbol = oprStack.top()->getSymbol();

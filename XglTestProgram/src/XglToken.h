@@ -45,13 +45,18 @@ enum class XglTokenSymbolType {
 
 	// Left & Right Parentheses ()
 	//----------------------------
-	SYMBOL_RPAREN,
-	SYMBOL_LPAREN,
+	SYMBOL_RIGHT_PAREN,
+	SYMBOL_LEFT_PAREN,
 
 	// Left & Right Brace {}
 	//----------------------
-	SYMBOL_LBRACE,
-	SYMBOL_RBRACE,
+	SYMBOL_LEFT_BRACE,
+	SYMBOL_RIGHT_BRACE,
+
+	// Left & Right Brace []
+	//----------------------
+	SYMBOL_LEFT_BRACKET,
+	SYMBOL_RIGHT_BRACKET,
 
 	// Variable assignment operator '='
 	//---------------------------------
@@ -93,6 +98,8 @@ public:
 	bool isAssignment();
 	bool isColon();
 	bool isQuestion();
+	bool isRightBracket();
+	bool isLeftBracket();
 
 	XglTokenType getType();
 	XglTokenSymbolType getSymbol();

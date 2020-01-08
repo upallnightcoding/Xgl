@@ -21,7 +21,7 @@ XglNode *XglCmdDeclare::execute(XglInterpreter *interpreter)
 	XglToken *separator = NULL;
 	XglToken *type = NULL;
 	XglToken *variable = NULL;
-	XglNode *expression = NULL;
+	XglExpParse *expression = NULL;
 
 	XglNodeDeclare *command = new XglNodeDeclare();
 
@@ -38,12 +38,12 @@ XglNode *XglCmdDeclare::execute(XglInterpreter *interpreter)
 		expression = NULL;
 		if (separator->isAssignment()) {
 			expression = interpreter->parseExpression();
-			separator = interpreter->getLastToken();
+			separator = expression->getLastToken();
 		}
 
 		// Capture variable declaration
 		//-----------------------------
-		command->add(new XglNodeDeclareVar(type, variable, expression));
+		command->add(new XglNodeDeclareVar(type, variable, expression->getExpression()));
 
 	} while (!separator->isEos());
 

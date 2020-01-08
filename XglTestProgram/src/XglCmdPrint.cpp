@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "XglCmdPrint.h"
 #include "XglNodePrint.h"
-
+#include "XglExpParse.h"
 
 XglCmdPrint::XglCmdPrint() : XglCmd("PRINT")
 {
@@ -22,11 +22,11 @@ XglNode *XglCmdPrint::execute(XglInterpreter *interpreter)
 	XglToken *lastToken = new XglToken();
 
 	while (!lastToken->isEos()) {
-		XglNode *expression = interpreter->parseExpression();
+		XglExpParse *expression = interpreter->parseExpression();
 
-		command->add(expression);
+		command->add(expression->getExpression());
 
-		lastToken = interpreter->getLastToken();
+		lastToken = expression->getLastToken();
 	}
 
 	return(command);

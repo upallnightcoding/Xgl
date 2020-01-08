@@ -2,6 +2,7 @@
 #include "XglCmdWhile.h"
 #include "XglNodeCodeBlock.h"
 #include "XglNodeWhile.h"
+#include "XglExpParse.h"
 
 XglCmdWhile::XglCmdWhile() : XglCmd("WHILE")
 {
@@ -17,7 +18,7 @@ execute() -
 *****************************************************************************/
 XglNode *XglCmdWhile::execute(XglInterpreter *interpreter)
 {
-	XglNode *expression = interpreter->parseExpression();
+	XglExpParse *expression = interpreter->parseExpression();
 
 	XglNode *codeBlock = new XglNodeCodeBlock();
 
@@ -28,5 +29,5 @@ XglNode *XglCmdWhile::execute(XglInterpreter *interpreter)
 		statement = interpreter->parseStatement();
 	}
 
-	return(new XglNodeWhile(expression, codeBlock));
+	return(new XglNodeWhile(expression->getExpression(), codeBlock));
 }

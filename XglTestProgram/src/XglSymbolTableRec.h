@@ -10,6 +10,7 @@ class XglContext;
 enum class XglSymbolTableRecDesType {
 	UNKNOWN,
 	SCALER,
+	ARRAY,
 	CONSTANT
 };
 

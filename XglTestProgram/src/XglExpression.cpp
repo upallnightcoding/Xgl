@@ -23,11 +23,6 @@ XglExpression::~XglExpression()
 {
 }
 
-XglToken *XglExpression::getEndToken()
-{
-	return(lastToken);
-}
-
 /*****************************************************************************
 parse()
 *****************************************************************************/
@@ -44,14 +39,13 @@ parse()
 /*****************************************************************************
 parse()
 *****************************************************************************/
-XglNode *XglExpression::parse(XglProgram &program)
+XglExpParse *XglExpression::parse(XglProgram &program)
 {
 	stack<XglNode*> expStack;
 	stack<XglToken*> oprStack;
 	int parenCount = 0;
 	bool interpreting = true;
-
-	lastToken = NULL;
+	XglToken *lastToken = NULL;
 
 	oprStack.push(new XglToken(XglTokenSymbolType::SYMBOL_EOE));
 
@@ -66,7 +60,7 @@ XglNode *XglExpression::parse(XglProgram &program)
 			expStack.push(new XglNodeValue(new XglValue(token)));
 		}
 		else if (token->isKeyword()) {
-			pushKeywordOnExpStack(token, expStack);
+			pushKeywordOnExpStack(program, token, expStack);
 		}
 		else if (token->isLeftParen()) {
 			parenCount++;
@@ -87,13 +81,29 @@ XglNode *XglExpression::parse(XglProgram &program)
 
 	emptyOprStack(oprStack, expStack);
 
-	return (expStack.top());
+	return (new XglExpParse(expStack.top(), lastToken));
 }
 
-void XglExpression::pushKeywordOnExpStack(XglToken *token, stack<XglNode*> &expStack)
+/*****************************************************************************
+pushKeywordOnExpStack() -
+*****************************************************************************/
+void XglExpression::pushKeywordOnExpStack(XglProgram &program, XglToken *token, stack<XglNode*> &expStack)
 {
 	XglValue *variable = new XglValue(token);
 	XglNode *value = new XglNodeVariable(variable);
+	XglToken *lBracket = NULL;
+	XglExpParse *element = NULL;
+
+	if (program.isChar('[')) {
+		lBracket = program.getToken();
+
+		do {
+			element = parse(program);
+			value->add(element->getExpression());
+		} while (!element->getLastToken()->isRightBracket());
+
+		delete lBracket;
+	}
 
 	//XglSymbolTableRec *record = symbolTable->find(variable);
 	//XglNode *value = NULL;

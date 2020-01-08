@@ -34,9 +34,9 @@ public:
 	void add(string source);
 	XglToken *getToken();
 	string getErrorLine();
+	bool isChar(char character);
 
 private:
-	bool isChar(char character);
 	void moveToNextChar();
 	char peekChar();
 	void skipBlanks();

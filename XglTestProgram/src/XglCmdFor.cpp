@@ -22,9 +22,9 @@ XglNode *XglCmdFor::execute(XglInterpreter *interpreter)
 
 	interpreter->skipOver(XglTokenSymbolType::SYMBOL_EQ);
 
-	XglNode *init = interpreter->parseExpression();
-	XglNode *fin = interpreter->parseExpression();
-	XglNode *step = interpreter->parseExpression();
+	XglNode *init = interpreter->parseExpression()->getExpression();
+	XglNode *fin = interpreter->parseExpression()->getExpression();
+	XglNode *step = interpreter->parseExpression()->getExpression();
 
 	XglNode *codeBlock = new XglNodeCodeBlock();
 

@@ -4,6 +4,7 @@
 #include "XglProgram.h"
 #include "XglNode.h"
 #include "XglExpression.h"
+#include "XglExpParse.h"
 
 enum class XglErrorMessageType
 {
@@ -21,10 +22,8 @@ public:
 	virtual ~XglInterpreter();
 
 public:
-	virtual XglToken *getLastToken();
-
 	XglNode *parseStatement();
-	XglNode *parseExpression();
+	XglExpParse *parseExpression();
 
 	XglToken *getToken();
 	bool skipOver(XglTokenSymbolType symbol);

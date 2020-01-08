@@ -2,6 +2,7 @@
 #include "XglNode.h"
 #include "Xgl.h"
 #include "XglProgram.h"
+#include "XglExpParse.h"
 
 class XglExpression
 {
@@ -10,9 +11,7 @@ public:
 	virtual ~XglExpression();
 
 public:
-	XglNode *parse(XglProgram &program);
-
-	XglToken *getEndToken();
+	XglExpParse *parse(XglProgram &program);
 
 private:
 	//XglNode *parse();
@@ -20,10 +19,6 @@ private:
 	void pushOperOnStack(XglToken *token, stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
 	void popUntilRightParen(stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
 	void emptyOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &expStack);
-	void pushKeywordOnExpStack(XglToken *token, stack<XglNode*> &expStack);
-
-private:
-	XglProgram program;
-	XglToken *lastToken;
+	void pushKeywordOnExpStack(XglProgram &program, XglToken *token, stack<XglNode*> &expStack);
 };
 

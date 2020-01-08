@@ -142,6 +142,13 @@ XglProgram::XglProgram()
 	add("		print 'Value of y: ', y;");
 	add("	end;"); 
 
+	/*add("	declare integer xx = 10;");
+	add("	declare integer yy = xx;");
+	add("	xx = xx + 1;");
+	add("	print 'yy: ', yy;");*/
+
+	//add("  print c[10 * 4], d[ c[10], d[1, 2]];");
+
 	add("end;");
 
 	skipBlanks();
@@ -231,6 +238,7 @@ XglToken *XglProgram::getDoubleToken()
 
 	return(token);
 }
+
 
 /*****************************************************************************
 getDoubleCharSymbol() -

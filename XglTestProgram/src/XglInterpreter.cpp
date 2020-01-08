@@ -77,16 +77,16 @@ XglNode *XglInterpreter::assign(string keyword)
 	program.getToken();
 
 	// Parse and assignment expression
-	XglNode *expression = parseExpression();
+	XglExpParse *expression = parseExpression();
 
-	if (getLastToken()->isQuestion()) {
-		XglNode *truePart = parseExpression();
-		XglNode *falsePart = parseExpression();
+	if (expression->getLastToken()->isQuestion()) {
+		XglNode *truePart = parseExpression()->getExpression();
+		XglNode *falsePart = parseExpression()->getExpression();
 
-		assignNode = new XglNodeTriplet(expression, truePart, falsePart);
+		assignNode = new XglNodeTriplet(expression->getExpression(), truePart, falsePart);
 	}
 	else {
-		assignNode = expression;
+		assignNode = expression->getExpression();
 	}
 
 	// Define assignment node
@@ -119,18 +119,9 @@ bool XglInterpreter::skipOver(XglTokenSymbolType symbol)
 parseExpression() - Parses the next full expression and returns a pointer
 to a node representing the expression.
 *****************************************************************************/
-XglNode *XglInterpreter::parseExpression()
+XglExpParse *XglInterpreter::parseExpression()
 {
 	return(expression.parse(program));
-}
-
-/*****************************************************************************
-getLastToken() - Returns the last token that ended the parsing of an 
-expression.  
-*****************************************************************************/
-XglToken *XglInterpreter::getLastToken()
-{
-	return(expression.getEndToken());
 }
 
 /*****************************************************************************
@@ -169,13 +160,16 @@ void XglInterpreter::error(XglErrorMessageType type)
 }
 
 /*****************************************************************************
-isAnyErrors() -
+isNoErrors() -
 *****************************************************************************/
 bool XglInterpreter::isNoErrors()
 {
 	return(nErrors == 0);
 }
 
+/*****************************************************************************
+getnErrors() -
+*****************************************************************************/
 int XglInterpreter::getnErrors()
 {
 	return(nErrors);

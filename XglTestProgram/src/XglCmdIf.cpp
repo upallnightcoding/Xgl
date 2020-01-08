@@ -88,7 +88,7 @@ IfCodeBlock XglCmdIf::parseCodeBlock(XglInterpreter *interpreter, bool parseExpr
 	XglNode *expression = NULL;
 
 	if (parseExpression) {
-		expression = interpreter->parseExpression();
+		expression = interpreter->parseExpression()->getExpression();
 	}
 
 	XglNode *codeBlock = new XglNodeCodeBlock();

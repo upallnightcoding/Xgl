@@ -114,7 +114,7 @@ a comma or semi-colon.
 *****************************************************************************/
 bool XglToken::isEndExpression() 
 {
-	return(isComma() || isEos() || isQuestion() || isColon());
+	return(isComma() || isEos() || isQuestion() || isColon() || isRightBracket());
 }
 
 /*****************************************************************************

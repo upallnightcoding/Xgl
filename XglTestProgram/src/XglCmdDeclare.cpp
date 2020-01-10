@@ -2,7 +2,7 @@
 #include "XglCmdDeclare.h"
 #include "XglNodeDeclare.h"
 #include "XglNodeDeclareVar.h"
-
+#include "XglNodeDeclareArray.h"
 
 XglCmdDeclare::XglCmdDeclare() : XglCmd("DECLARE")
 {
@@ -19,31 +19,33 @@ execute() -
 XglNode *XglCmdDeclare::execute(XglInterpreter *interpreter)
 {
 	XglToken *separator = NULL;
-	XglToken *type = NULL;
-	XglToken *variable = NULL;
-	XglExpParse *expression = NULL;
-
 	XglNodeDeclare *command = new XglNodeDeclare();
 
 	do {
 		// Parse variable type and name
 		//-----------------------------
-		type = interpreter->getToken();
-		variable = interpreter->getToken();
-		
+		XglToken *type = interpreter->getToken();
+		XglToken *variable = interpreter->getToken();
+
 		separator = interpreter->getToken();
 
-		// Parse variable initialization expression
-		//-----------------------------------------
-		expression = NULL;
-		if (separator->isAssignment()) {
-			expression = interpreter->parseExpression();
-			separator = expression->getLastToken();
+		if (separator->isLeftBracket()) {
+			XglNodeDeclareArray *declareVar = new XglNodeDeclareArray(type, variable);
+			interpreter->parseArray(declareVar);
+			command->add(declareVar);
+			separator = interpreter->getToken();  
 		}
+		else {
+			XglNodeDeclareVar *declareVar = new XglNodeDeclareVar(type, variable);
 
-		// Capture variable declaration
-		//-----------------------------
-		command->add(new XglNodeDeclareVar(type, variable, expression->getExpression()));
+			if (separator->isAssignment()) {
+				XglExpParse *initialize = interpreter->parseExpression();
+				declareVar->set(initialize->getExpression());
+				separator = initialize->getLastToken();
+			}
+
+			command->add(declareVar);
+		}
 
 	} while (!separator->isEos());
 

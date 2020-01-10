@@ -24,6 +24,7 @@ public:
 public:
 	XglNode *parseStatement();
 	XglExpParse *parseExpression();
+	void parseArray(XglNode *arrayVariable);
 
 	XglToken *getToken();
 	bool skipOver(XglTokenSymbolType symbol);

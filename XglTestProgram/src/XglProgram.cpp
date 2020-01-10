@@ -133,6 +133,11 @@ XglProgram::XglProgram()
 	add("	y = (1 > 2) ? 10 : 20+7-2;");
 	add("	print 'Value of x, y: ', x, ':', y;");*/
 
+	/*add("	declare integer m = 2;");
+	add("	declare integer x[10 * m],");
+	add("	        integer y[m * m, 3],");
+	add("	        integer z[4, m, m];");*/
+
 	add("	for integer n = 1, 2, 1;");
 	add("		declare integer y = n;");
 	add("		for integer m = 1, 3, 1;");
@@ -140,7 +145,11 @@ XglProgram::XglProgram()
 	add("			print 'For Loop: ', n, ':', m;");
 	add("		end;");
 	add("		print 'Value of y: ', y;");
-	add("	end;"); 
+	add("	end;");
+
+	/*add("	for integer n = 1, 2, 1;");
+	add("		print 'Value of n: ', n;");
+	add("	end;");*/
 
 	/*add("	declare integer xx = 10;");
 	add("	declare integer yy = xx;");

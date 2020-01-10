@@ -2,10 +2,6 @@
 
 #include "Xgl.h"
 #include "XglValue.h"
-#include "XglSymbolTableData.h"
-
-class XglNode;
-class XglContext;
 
 enum class XglSymbolTableRecDesType {
 	UNKNOWN,
@@ -13,6 +9,10 @@ enum class XglSymbolTableRecDesType {
 	ARRAY,
 	CONSTANT
 };
+
+class XglNode;
+class XglContext;
+class XglSymbolTableData;
 
 /*****************************************************************************
 XglSymbolTableRec -
@@ -27,16 +27,20 @@ public:
 	// Symbol Table Constants
 	XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression);
 
-	// Variable Constants
-	XglSymbolTableRec(XglToken *type, XglToken *variable, int size, XglNode *expression);
+	// Scalar & Array Variables
+	XglSymbolTableRec(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglNode *expression);
+	
 	virtual ~XglSymbolTableRec();
 
 public:
 	XglValue *getValue(XglContext *context);
 	string getVariableName();
 	XglSymbolTableData *getData();
+	
 
 	bool isConstant();
+	bool isScaler();
+	bool isArray();
 
 private:
 	// Variable Name
@@ -63,3 +67,4 @@ private:
 
 #include "XglNode.h"
 #include "XglContext.h"
+#include "XglSymbolTableData.h"

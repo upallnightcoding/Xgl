@@ -23,6 +23,19 @@ XglSymbolTableData::~XglSymbolTableData()
 /*****************************************************************************
 assign() -
 *****************************************************************************/
+void XglSymbolTableData::assign(XglValue *value)
+{
+	assign(0, value);
+}
+
+/*void XglSymbolTableData::assign(XglNode *variable, XglValue *value)
+{
+
+}*/
+
+/*****************************************************************************
+assign() -
+*****************************************************************************/
 void XglSymbolTableData::assign(int index, XglValue *value)
 {
 	switch (type) {

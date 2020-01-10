@@ -2,6 +2,7 @@
 #include "XglInterpreter.h"
 #include "XglNodeValue.h"
 #include "XglNodeTriplet.h"
+#include "XglNodeAssignVar.h"
 
 #include "XglCmdPrint.h"
 #include "XglCmdProgram.h"
@@ -65,16 +66,36 @@ XglNode *XglInterpreter::parseStatement()
 }
 
 /*****************************************************************************
+parseArray() -
+*****************************************************************************/
+void XglInterpreter::parseArray(XglNode *arrayVariable)
+{
+	XglExpParse *argument = NULL;
+
+	do {
+		argument = parseExpression();
+		arrayVariable->add(argument->getExpression());
+	} while (!argument->getLastToken()->isRightBracket());
+}
+
+/*****************************************************************************
 assign() - Creates the assignment node needed to set the value of an 
 expression to a variable.  This functions skips over the assignment operator
 and then parses the expression for later evaluation.
 *****************************************************************************/
-XglNode *XglInterpreter::assign(string keyword) 
+XglNode *XglInterpreter::assign(string variableName) 
 {
-	XglNode *assignNode = NULL;
+	XglNode *value = NULL;
+
+	XglNodeAssignVar *variable = new XglNodeAssignVar(variableName);
 
 	// Skip over assignment operator
-	program.getToken();
+	XglToken *separator = program.getToken();
+
+	if (separator->isLeftBracket()) {
+		parseArray(variable);
+		separator = program.getToken();
+	}
 
 	// Parse and assignment expression
 	XglExpParse *expression = parseExpression();
@@ -83,14 +104,14 @@ XglNode *XglInterpreter::assign(string keyword)
 		XglNode *truePart = parseExpression()->getExpression();
 		XglNode *falsePart = parseExpression()->getExpression();
 
-		assignNode = new XglNodeTriplet(expression->getExpression(), truePart, falsePart);
+		value = new XglNodeTriplet(expression->getExpression(), truePart, falsePart);
 	}
 	else {
-		assignNode = expression->getExpression();
+		value = expression->getExpression();
 	}
 
 	// Define assignment node
-	return(new XglNodeAssign(keyword, assignNode));
+	return(new XglNodeAssign(variable, value));
 }
 
 /*****************************************************************************

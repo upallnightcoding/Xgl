@@ -2,6 +2,7 @@
 
 #include "Xgl.h"
 #include "XglValue.h"
+#include "XglNode.h"
 
 class XglSymbolTableData
 {
@@ -11,6 +12,11 @@ public:
 
 public:
 	XglValue *getValue(int index);
+
+	void assign(XglValue *value);
+
+	//void assign(XglNode *variable, XglValue *value);
+
 	void assign(int index, XglValue *value);
 
 private:

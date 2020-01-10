@@ -1,22 +1,24 @@
 #include "pch.h"
 #include "XglNodeAssign.h"
 
-
-XglNodeAssign::XglNodeAssign(string variable, XglNode *expression) : XglNode(XglNodeType::NODE_ASSIGN)
+XglNodeAssign::XglNodeAssign(XglNodeAssignVar *variable, XglNode *value) 
+	: XglNode(XglNodeType::NODE_ASSIGN)
 {
 	this->variable = variable;
-	this->expression = expression;
+	this->value = value;
 }
 
-XglNodeAssign::XglNodeAssign(XglToken *variable, XglNode *expression) : XglNode(XglNodeType::NODE_ASSIGN)
+XglNodeAssign::XglNodeAssign(XglToken *variable, XglNode *expression) 
+	: XglNode(XglNodeType::NODE_ASSIGN)
 {
-	this->variable = variable->getString();
-	this->expression = expression;
+	this->variable = new XglNodeAssignVar(variable->getString());
+	this->value = expression;
 }
-
 
 XglNodeAssign::~XglNodeAssign()
 {
+	delete variable;
+	delete value;
 }
 
 /*****************************************************************************
@@ -24,12 +26,19 @@ execute() -
 *****************************************************************************/
 XglValue *XglNodeAssign::execute(XglContext *context)
 {
-	XglValue *value = expression->execute(context);
+	XglValue *constant = value->execute(context);
 
-	XglSymbolTableRec *record = context->getSymbolTable()->find(variable);
+	string variableName = variable->getVariableName();
+
+	XglSymbolTableRec *record = context->getSymbolTable()->find(variableName);
 
 	if (record != NULL) {
-		record->getData()->assign(0, value);
+		if (record->isConstant() || record->isScaler()) {
+			record->getData()->assign(0, constant);
+		} else if (record->isArray()) {
+			record->getData()->assign(0, constant);
+		}
+
 	}
 
 	return(NULL);

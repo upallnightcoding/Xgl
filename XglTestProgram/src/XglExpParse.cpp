@@ -12,11 +12,17 @@ XglExpParse::~XglExpParse()
 {
 }
 
+/*****************************************************************************
+getExpression() - Returns pointer to parsed expression.
+*****************************************************************************/
 XglNode *XglExpParse::getExpression()
 {
 	return(expression);
 }
 
+/*****************************************************************************
+getLastToken() - Returns pointer to the token that halts an expression.
+*****************************************************************************/
 XglToken *XglExpParse::getLastToken()
 {
 	return(lastToken);

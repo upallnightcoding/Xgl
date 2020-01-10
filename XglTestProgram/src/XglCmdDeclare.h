@@ -1,5 +1,6 @@
 #pragma once
 #include "XglCmd.h"
+
 class XglCmdDeclare :
 	public XglCmd
 {

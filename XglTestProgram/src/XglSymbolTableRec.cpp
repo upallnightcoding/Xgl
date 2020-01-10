@@ -12,11 +12,11 @@ XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode
 	this->data = NULL;
 }
 
-XglSymbolTableRec::XglSymbolTableRec(XglToken *type, XglToken *variable, int size, XglNode *expression)
+XglSymbolTableRec::XglSymbolTableRec(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglNode *expression)
 {
 	this->variable = variable->getString();
 	this->type = type->getTypeFromKeyword();
-	this->designation = (size == 1) ? XglSymbolTableRecDesType::SCALER : XglSymbolTableRecDesType::ARRAY;
+	this->designation = designation;
 	this->expression = expression;
 	this->hasInitializeExpression = (expression != NULL);
 	this->size = size;
@@ -100,10 +100,26 @@ XglValue *XglSymbolTableRec::getValue(XglContext *context)
 }
 
 /*****************************************************************************
-isConstant() -  
+isConstant() - Return true if the symbol table record represents a constant.
 *****************************************************************************/
 bool XglSymbolTableRec::isConstant()
 {
 	return(designation == XglSymbolTableRecDesType::CONSTANT);
+}
+
+/*****************************************************************************
+isScaler() - Return true if the symbol table record represents a scaler.
+*****************************************************************************/
+bool XglSymbolTableRec::isScaler() 
+{
+	return(designation == XglSymbolTableRecDesType::SCALER);
+}
+
+/*****************************************************************************
+isArray() - Return true if the symbol table record represents a array.
+*****************************************************************************/
+bool XglSymbolTableRec::isArray()
+{
+	return(designation == XglSymbolTableRecDesType::ARRAY);
 }
 

@@ -67,7 +67,7 @@ string XglSymbolTableRec::getVariableName()
 /*****************************************************************************
 getValue() - 
 *****************************************************************************/
-XglValue *XglSymbolTableRec::getValue(XglContext *context)
+XglValue *XglSymbolTableRec::access(int index, XglContext *context)
 {
 	XglValue *returnValue = NULL;
 
@@ -75,7 +75,7 @@ XglValue *XglSymbolTableRec::getValue(XglContext *context)
 	case XglSymbolTableRecDesType::CONSTANT:
 		if (data == NULL) {
 			data = new XglSymbolTableData(type, size);
-			data->assign(0, expression->execute(context));
+			data->assign(index, expression->execute(context));
 		}
 
 		returnValue = data->getValue(0);
@@ -85,14 +85,14 @@ XglValue *XglSymbolTableRec::getValue(XglContext *context)
 		if (hasInitializeExpression) {
 			hasInitializeExpression = false;
 			XglValue *value = expression->execute(context);
-			data->assign(0, value);
+			data->assign(index, value);
 		}
 
-		returnValue = data->getValue(0);
+		returnValue = data->getValue(index);
 
 		break;
 	case XglSymbolTableRecDesType::ARRAY:
-		returnValue = data->getValue(0);
+		returnValue = data->getValue(index);
 		break;
 	}
 	

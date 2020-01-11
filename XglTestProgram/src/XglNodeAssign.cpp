@@ -36,7 +36,8 @@ XglValue *XglNodeAssign::execute(XglContext *context)
 		if (record->isConstant() || record->isScaler()) {
 			record->getData()->assign(0, constant);
 		} else if (record->isArray()) {
-			record->getData()->assign(0, constant);
+			int index = variable->evaluate(0, context)->getInteger();
+			record->getData()->assign(index, constant);
 		}
 
 	}

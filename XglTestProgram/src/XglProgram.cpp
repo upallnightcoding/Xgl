@@ -138,18 +138,28 @@ XglProgram::XglProgram()
 	add("	        integer y[m * m, 3],");
 	add("	        integer z[4, m, m];");*/
 
-	add("	for integer n = 1, 2, 1;");
+	/*add("	for integer n = 1, 2, 1;");
 	add("		declare integer y = n;");
 	add("		for integer m = 1, 3, 1;");
 	add("			declare integer y = m;");
 	add("			print 'For Loop: ', n, ':', m;");
 	add("		end;");
 	add("		print 'Value of y: ', y;");
-	add("	end;");
+	add("	end;");*/
 
 	/*add("	for integer n = 1, 2, 1;");
 	add("		print 'Value of n: ', n;");
 	add("	end;");*/
+
+	add("	declare integer xx[10], integer m = 3;");
+	add("	xx[m] = 100;");
+	add("	print 'xx: ',  xx[m];");
+	add("	for integer i = 0, m-1, 1;");
+	add("	    xx[i] = i * 4;");
+	add("	end;");
+	add("	for integer i = 0, m-1, 1;");
+	add("	    print 'xx[i]: ', i, ':', xx[i];");
+	add("	end;");
 
 	/*add("	declare integer xx = 10;");
 	add("	declare integer yy = xx;");

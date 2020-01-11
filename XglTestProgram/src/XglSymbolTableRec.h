@@ -33,7 +33,7 @@ public:
 	virtual ~XglSymbolTableRec();
 
 public:
-	XglValue *getValue(XglContext *context);
+	XglValue *access(int index, XglContext *context);
 	string getVariableName();
 	XglSymbolTableData *getData();
 	

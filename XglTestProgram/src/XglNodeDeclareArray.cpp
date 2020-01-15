@@ -33,7 +33,13 @@ XglValue *XglNodeDeclareArray::execute(XglContext *context)
 
 	XglSymbolTableRecDesType designation = XglSymbolTableRecDesType::ARRAY;
 
-	symbolTable->add(designation, type, variable, calcArraySize(context), initialize);
+	XglValue *value = NULL;
+
+	if (initialize != NULL) {
+		value = initialize->execute(context);
+	}
+
+	symbolTable->add(designation, type, variable, calcArraySize(context), value);
 
 	return(NULL);
 }

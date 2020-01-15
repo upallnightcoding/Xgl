@@ -2,7 +2,7 @@
 #include "XglSymbolTableData.h"
 
 
-XglSymbolTableData::XglSymbolTableData(XglValueType type, int size)
+XglSymbolTableData::XglSymbolTableData(XglValueType type, int size, XglValue *initialize)
 {
 	this->svalue = NULL;
 	this->lvalue = NULL;
@@ -14,10 +14,31 @@ XglSymbolTableData::XglSymbolTableData(XglValueType type, int size)
 	this->type = type;
 
 	allocateData(type, size);
+
+	if (initialize != NULL) {
+		assign(0, initialize);
+	}
 }
 
 XglSymbolTableData::~XglSymbolTableData()
 {
+	if (svalue != NULL) {
+		delete svalue;
+	}
+
+	if (lvalue != NULL) {
+		delete lvalue;
+	}
+
+	if (dvalue != NULL) {
+		delete dvalue;
+	}
+
+	if (bvalue != NULL) {
+		delete bvalue;
+	}
+
+	delete value;
 }
 
 /*****************************************************************************

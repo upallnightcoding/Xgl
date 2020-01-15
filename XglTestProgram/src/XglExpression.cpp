@@ -1,19 +1,10 @@
 #include "pch.h"
 #include "XglExpression.h"
-#include "XglNodeAdd.h"
-#include "XglNodeMult.h"
-#include "XglNodeSub.h"
-#include "XglNodeDivide.h"
 #include "XglNodeValue.h"
 #include "XglNodeNot.h"
 #include "XglNodeNeg.h"
-#include "XglNodeLt.h"
-#include "XglNodeGt.h"
-#include "XglNodeEq.h"
-#include "XglNodeNe.h"
-#include "XglNodeGe.h"
-#include "XglNodeLe.h"
 #include "XglNodeVariable.h"
+#include "XglNodeBinaryOperator.h"
 
 XglExpression::XglExpression()
 {
@@ -174,40 +165,40 @@ void XglExpression::popOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &exp
 
 	switch (symbol) {
 	case XglTokenSymbolType::SYMBOL_PLUS:
-		expression = new XglNodeAdd();
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_ADD);
 		break;
 	case XglTokenSymbolType::SYMBOL_MULT: 
-		expression = new XglNodeMult();
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_MULTI);
 		break;
 	case XglTokenSymbolType::SYMBOL_MINUS:
-		expression = new XglNodeSub();
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_SUB);
 		break;
 	case XglTokenSymbolType::SYMBOL_DIVIDE:
-		expression = new XglNodeDivide();
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_DIVIDE);
+		break;
+	case XglTokenSymbolType::SYMBOL_LT:
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_LT);
+		break;
+	case XglTokenSymbolType::SYMBOL_GT:
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_GT);
+		break;
+	case XglTokenSymbolType::SYMBOL_EQ:
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_EQ);
+		break;
+	case XglTokenSymbolType::SYMBOL_NE:
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_GE);
+		break;
+	case XglTokenSymbolType::SYMBOL_GE:
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_GE);
+		break;
+	case XglTokenSymbolType::SYMBOL_LE:
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_LE);
 		break;
 	case XglTokenSymbolType::SYMBOL_TILDE:
 		expression = new XglNodeNeg();
 		break;
 	case XglTokenSymbolType::SYMBOL_NOT:
 		expression = new XglNodeNot();
-		break;
-	case XglTokenSymbolType::SYMBOL_LT:
-		expression = new XglNodeLt();
-		break;
-	case XglTokenSymbolType::SYMBOL_GT:
-		expression = new XglNodeGt();
-		break;
-	case XglTokenSymbolType::SYMBOL_EQ:
-		expression = new XglNodeEq();
-		break;
-	case XglTokenSymbolType::SYMBOL_NE:
-		expression = new XglNodeNe();
-		break;
-	case XglTokenSymbolType::SYMBOL_GE:
-		expression = new XglNodeGe();
-		break;
-	case XglTokenSymbolType::SYMBOL_LE:
-		expression = new XglNodeLe();
 		break;
 	}
 

@@ -15,11 +15,16 @@ XglNodeConstVar::~XglNodeConstVar()
 {
 }
 
+/*****************************************************************************
+execute() -
+*****************************************************************************/
 XglValue *XglNodeConstVar::execute(XglContext *context)
 {
 	XglSymbolTable *symbolTable = context->getSymbolTable();
 
-	symbolTable->add(type, variable, expression);
+	XglValue *initialize = expression->execute(context);
+
+	symbolTable->add(type, variable, initialize);
 
 	return(NULL);
 }

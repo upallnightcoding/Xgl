@@ -21,19 +21,32 @@ class XglSymbolTableRec
 {
 public:
 	// Xgl Internal Constants
-	XglSymbolTableRec(string variable, bool value);
-	XglSymbolTableRec(string variable, double value);
+	XglSymbolTableRec(
+		XglValueType type, 
+		string variable, 
+		XglValue *initialize
+	);
 
 	// Symbol Table Constants
-	XglSymbolTableRec(XglToken *type, XglToken *variable, XglNode *expression);
+	XglSymbolTableRec(
+		XglToken *type, 
+		XglToken *variable, 
+		XglValue *initialize
+	);
 
 	// Scalar & Array Variables
-	XglSymbolTableRec(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglNode *expression);
+	XglSymbolTableRec(
+		XglSymbolTableRecDesType designation, 
+		XglToken *type, 
+		XglToken *variable, 
+		int size, 
+		XglValue *initialize
+	);
 	
 	virtual ~XglSymbolTableRec();
 
 public:
-	XglValue *access(int index, XglContext *context);
+	XglValue *access(int index);
 	string getVariableName();
 	XglSymbolTableData *getData();
 	
@@ -52,17 +65,11 @@ private:
 	// Designation of the vairable, scalar, array, function, procedure ...
 	XglSymbolTableRecDesType designation;
 
-	// Expression initialization
-	XglNode *expression;
-
 	// Value help by scalars and arrays
 	XglSymbolTableData *data;
 
 	// Number of maximum elements in an array
 	int size;
-
-	// Set, if there is an initialization expression
-	bool hasInitializeExpression;
 };
 
 #include "XglNode.h"

@@ -7,7 +7,7 @@
 class XglSymbolTableData
 {
 public:
-	XglSymbolTableData(XglValueType type, int size);
+	XglSymbolTableData(XglValueType type, int size, XglValue *initialize);
 	virtual ~XglSymbolTableData();
 
 public:

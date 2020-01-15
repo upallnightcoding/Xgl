@@ -1,10 +1,9 @@
 #include "pch.h"
 #include "XglNodeFor.h"
 #include "XglNodeDeclareVar.h"
-#include "XglNodeLe.h"
 #include "XglNodeVariable.h"
-#include "XglNodeAdd.h"
 #include "XglNodeAssign.h"
+#include "XglNodeBinaryOperator.h"
 
 
 XglNodeFor::XglNodeFor(XglToken *type, XglToken *variable, XglNode *init, XglNode *fin, XglNode *step, XglNode *codeBlock) :
@@ -37,13 +36,13 @@ XglValue *XglNodeFor::execute(XglContext *context)
 
 	// Construct for loop test, if index variable is <= final value
 	//-------------------------------------------------------------
-	XglNode *indexVarLeFin = new XglNodeLe();
+	XglNode *indexVarLeFin = new XglNodeBinaryOperator(XglNodeType::NODE_LE);
 	indexVarLeFin->add(indexVar);
 	indexVarLeFin->add(finalValue);
 
 	// Construct for loop index update
 	//-------------------------------- 
-	XglNodeAdd *addStep = new XglNodeAdd();
+	XglNode *addStep = new XglNodeBinaryOperator(XglNodeType::NODE_ADD);
 	addStep->add(indexVar);
 	addStep->add(stepValue);
 

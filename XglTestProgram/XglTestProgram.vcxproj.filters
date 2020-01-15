@@ -60,9 +60,6 @@
     <ClCompile Include="src\XglExpression.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeSub.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglNodeProgram.cpp">
       <Filter>node</Filter>
     </ClCompile>
@@ -72,37 +69,10 @@
     <ClCompile Include="src\XglNodeNeg.cpp">
       <Filter>node</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeMult.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglNodeEnd.cpp">
       <Filter>node</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeDivide.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglNodeCodeBlock.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeAdd.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeGt.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeLt.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeNe.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeLe.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeGe.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeEq.cpp">
       <Filter>node</Filter>
     </ClCompile>
     <ClCompile Include="src\XglNodeConst.cpp">
@@ -201,6 +171,9 @@
     <ClCompile Include="src\XglNodeAssignVar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglNodeBinaryOperator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -242,9 +215,6 @@
     <ClInclude Include="src\XglExpression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeSub.h">
-      <Filter>node</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglNodeProgram.h">
       <Filter>node</Filter>
     </ClInclude>
@@ -254,37 +224,10 @@
     <ClInclude Include="src\XglNodeNeg.h">
       <Filter>node</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeMult.h">
-      <Filter>node</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglNodeEnd.h">
       <Filter>node</Filter>
     </ClInclude>
-    <ClInclude Include="src\XglNodeDivide.h">
-      <Filter>node</Filter>
-    </ClInclude>
     <ClInclude Include="src\XglNodeCodeBlock.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeAdd.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeLt.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeGt.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeNe.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeLe.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeEq.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeGe.h">
       <Filter>node</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeConst.h">
@@ -384,6 +327,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeAssignVar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeBinaryOperator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

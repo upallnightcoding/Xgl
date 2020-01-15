@@ -41,7 +41,8 @@ XglProgram::XglProgram()
 	this->currentLine = 0;
 
 	add("program ;");
-	/*add("	print '123=', 123;");
+
+	add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
 	add("	print '3=', (10 - 9) * 3;");
 	add("	print '40=', 8 * 5;");
@@ -79,7 +80,7 @@ XglProgram::XglProgram()
 	add("	print 'TRUE=', 'b' >= 'b';");
 	add("	print 'TRUE=', 3.45 >= 1.9;");
 	add("	print 'FALSE=', !(3.45 >= 1.9);");
-	add("	print '==================';");*/
+	add("	print '==================';");
 	
 	/*add("	const ");
 	add("		integer a = 11,");
@@ -151,7 +152,7 @@ XglProgram::XglProgram()
 	add("		print 'Value of n: ', n;");
 	add("	end;");*/
 
-	add("	declare integer xx[10], integer m = 3;");
+	/*add("	declare integer xx[10], integer m = 3;");
 	add("	xx[m] = 100;");
 	add("	print 'xx: ',  xx[m];");
 	add("	for integer i = 0, m-1, 1;");
@@ -159,7 +160,7 @@ XglProgram::XglProgram()
 	add("	end;");
 	add("	for integer i = 0, m-1, 1;");
 	add("	    print 'xx[i]: ', i, ':', xx[i];");
-	add("	end;");
+	add("	end;");*/
 
 	/*add("	declare integer xx = 10;");
 	add("	declare integer yy = xx;");

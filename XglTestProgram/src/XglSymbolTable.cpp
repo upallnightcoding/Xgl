@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "XglSymbolTable.h"
 
+#include "XglNodeValue.h"
+
 // Global Constants
 //-----------------
 const double PI = 3.14159265359;
@@ -44,7 +46,7 @@ add() -
 *****************************************************************************/
 void XglSymbolTable::add(string variable, double value)
 {
-	XglSymbolTableRec *record = new XglSymbolTableRec(variable, value);
+	XglSymbolTableRec *record = new XglSymbolTableRec(XglValueType::REAL, variable, new XglValue(value));
 
 	variables[varScopePtr].add(record);
 }
@@ -54,7 +56,7 @@ add() -
 *****************************************************************************/
 void XglSymbolTable::add(string variable, bool value)
 {
-	XglSymbolTableRec *record = new XglSymbolTableRec(variable, value);
+	XglSymbolTableRec *record = new XglSymbolTableRec(XglValueType::BOOLEAN, variable, new XglValue(value));
 
 	variables[varScopePtr].add(record);
 }
@@ -62,9 +64,9 @@ void XglSymbolTable::add(string variable, bool value)
 /*****************************************************************************
 add() -
 *****************************************************************************/
-void XglSymbolTable::add(XglToken *type, XglToken *variable, XglNode *expression)
+void XglSymbolTable::add(XglToken *type, XglToken *variable, XglValue *initialize)
 {
-	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, expression);
+	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, initialize);
 
 	variables[varScopePtr].add(record);
 }
@@ -72,9 +74,9 @@ void XglSymbolTable::add(XglToken *type, XglToken *variable, XglNode *expression
 /*****************************************************************************
 add() -
 *****************************************************************************/
-void XglSymbolTable::add(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglNode *expression)
+void XglSymbolTable::add(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglValue *initialize)
 {
-	XglSymbolTableRec *record = new XglSymbolTableRec(designation, type, variable, size, expression);
+	XglSymbolTableRec *record = new XglSymbolTableRec(designation, type, variable, size, initialize);
 
 	variables[varScopePtr].add(record);
 }

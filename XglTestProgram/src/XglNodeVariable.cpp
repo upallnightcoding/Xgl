@@ -26,7 +26,7 @@ XglValue *XglNodeVariable::execute(XglContext *context)
 		index = evaluate(0, context)->getInteger();
 	}
 
-	value = record->access(index, context);
+	value = record->access(index);
 
 	return(value);
 }

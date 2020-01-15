@@ -17,9 +17,10 @@ public:
 public:
 	void add(string variable, bool value);
 	void add(string variable, double value);
-	void add(XglToken *type, XglToken *variable, int size, XglNode *expression);
-	void add(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglNode *expression);
-	void add(XglToken *type, XglToken *variable, XglNode *expression);
+
+	void add(XglToken *type, XglToken *variable, int size, XglValue *initialize);
+	void add(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglValue *initialize);
+	void add(XglToken *type, XglToken *variable, XglValue *initialize);
 
 	XglSymbolTableRec *find(XglValue *variable);
 	XglSymbolTableRec *find(string variableName);

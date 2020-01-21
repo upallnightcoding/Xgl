@@ -5,19 +5,22 @@
 XglNodeBinaryOperator::XglNodeBinaryOperator(XglNodeType type) : XglNode(type)
 {
 	this->type = type;
+	this->value1 = NULL;
+	this->value2 = NULL;
 }
-
 
 XglNodeBinaryOperator::~XglNodeBinaryOperator()
 {
+	delete value1;
+	delete value2;
 }
 
 XglValue *XglNodeBinaryOperator::execute(XglContext *context)
 {
 	XglValue *value = NULL;
 
-	XglValue *value1 = evaluate(0, context);
-	XglValue *value2 = evaluate(1, context);
+	value1 = evaluate(0, context);
+	value2 = evaluate(1, context);
 
 	switch (type) {
 	case XglNodeType::NODE_ADD:
@@ -26,7 +29,7 @@ XglValue *XglNodeBinaryOperator::execute(XglContext *context)
 	case XglNodeType::NODE_DIVIDE:
 		value = divide(context, value1, value2);
 		break;
-	case XglNodeType::NODE_MULTI:
+	case XglNodeType::NODE_MULT:
 		value = multi(context, value1, value2);
 		break;
 	case XglNodeType::NODE_SUB:

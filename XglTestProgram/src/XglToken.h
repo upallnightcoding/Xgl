@@ -31,8 +31,8 @@ enum class XglTokenSymbolType {
 	//-----------------
 	SYMBOL_MULT,	// '*'
 	SYMBOL_DIVIDE,	// '/'
-	SYMBOL_PLUS,	// '+'
-	SYMBOL_MINUS,	// '-'
+	SYMBOL_ADD,	// '+'
+	SYMBOL_SUB,	// '-'
 
 	// Conditional Operators
 	//----------------------

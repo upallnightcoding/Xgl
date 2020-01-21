@@ -29,6 +29,7 @@ public:
 
 	// Symbol Table Constants
 	XglSymbolTableRec(
+		XglSymbolTableRecDesType designation, 
 		XglToken *type, 
 		XglToken *variable, 
 		XglValue *initialize
@@ -36,17 +37,18 @@ public:
 
 	// Scalar & Array Variables
 	XglSymbolTableRec(
-		XglSymbolTableRecDesType designation, 
 		XglToken *type, 
 		XglToken *variable, 
-		int size, 
+		vector<int> &dimensions, 
 		XglValue *initialize
 	);
 	
 	virtual ~XglSymbolTableRec();
 
 public:
-	XglValue *access(int index);
+	XglValue *access(vector<int> elements);
+	void assign(vector<int> elements, XglValue *value);
+
 	string getVariableName();
 	XglSymbolTableData *getData();
 	
@@ -67,9 +69,6 @@ private:
 
 	// Value help by scalars and arrays
 	XglSymbolTableData *data;
-
-	// Number of maximum elements in an array
-	int size;
 };
 
 #include "XglNode.h"

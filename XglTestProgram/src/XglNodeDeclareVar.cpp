@@ -39,15 +39,9 @@ XglValue *XglNodeDeclareVar::execute(XglContext *context)
 {
 	XglSymbolTable *symbolTable = context->getSymbolTable();
 
-	XglSymbolTableRecDesType designation = XglSymbolTableRecDesType::SCALER;
+	XglValue *value = (initialize != NULL) ? initialize->execute(context) : NULL;
 
-	XglValue *value = NULL;
-
-	if (initialize != NULL) {
-		value = initialize->execute(context);
-	}
-
-	symbolTable->add(designation, type, variable, 1, value);
+	symbolTable->declareScalar(type, variable, value);
 
 	return(NULL);
 }

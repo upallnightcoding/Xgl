@@ -12,9 +12,9 @@ XglSymbolTable::XglSymbolTable()
 {
 	variables = new XglVarScope[10];
 
-	add("TRUE", true);
-	add("FALSE", false);
-	add("PI", PI);
+	declareSystemConstant("TRUE", true);
+	declareSystemConstant("FALSE", false);
+	declareSystemConstant("PI", PI);
 
 	createScope();
 }
@@ -42,9 +42,9 @@ void XglSymbolTable::deleteScope()
 }
 
 /*****************************************************************************
-add() -
+add() - Defines a constant of type real.
 *****************************************************************************/
-void XglSymbolTable::add(string variable, double value)
+void XglSymbolTable::declareSystemConstant(string variable, double value)
 {
 	XglSymbolTableRec *record = new XglSymbolTableRec(XglValueType::REAL, variable, new XglValue(value));
 
@@ -52,21 +52,29 @@ void XglSymbolTable::add(string variable, double value)
 }
 
 /*****************************************************************************
-add() -
+add() - Defines a constant of type boolean.
 *****************************************************************************/
-void XglSymbolTable::add(string variable, bool value)
+void XglSymbolTable::declareSystemConstant(string variable, bool value)
 {
 	XglSymbolTableRec *record = new XglSymbolTableRec(XglValueType::BOOLEAN, variable, new XglValue(value));
 
 	variables[varScopePtr].add(record);
 }
 
-/*****************************************************************************
-add() -
-*****************************************************************************/
-void XglSymbolTable::add(XglToken *type, XglToken *variable, XglValue *initialize)
+void XglSymbolTable::declareConstant(XglToken *type, XglToken *variable, XglValue *initialize)
 {
-	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, initialize);
+	XglSymbolTableRecDesType designation = XglSymbolTableRecDesType::CONSTANT;
+
+	XglSymbolTableRec *record = new XglSymbolTableRec(designation, type, variable, initialize);
+
+	variables[varScopePtr].add(record);
+}
+
+void XglSymbolTable::declareScalar(XglToken *type, XglToken *variable, XglValue *initialize)
+{
+	XglSymbolTableRecDesType designation = XglSymbolTableRecDesType::SCALER;
+
+	XglSymbolTableRec *record = new XglSymbolTableRec(designation, type, variable, initialize);
 
 	variables[varScopePtr].add(record);
 }
@@ -74,9 +82,19 @@ void XglSymbolTable::add(XglToken *type, XglToken *variable, XglValue *initializ
 /*****************************************************************************
 add() -
 *****************************************************************************/
-void XglSymbolTable::add(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglValue *initialize)
+/*void XglSymbolTable::add(XglToken *type, XglToken *variable, XglValue *initialize)
 {
-	XglSymbolTableRec *record = new XglSymbolTableRec(designation, type, variable, size, initialize);
+	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, initialize);
+
+	variables[varScopePtr].add(record);
+}*/
+
+/*****************************************************************************
+add() -
+*****************************************************************************/
+void XglSymbolTable::declareArray(XglToken *type, XglToken *variable, vector<int> &dimensions, XglValue *initialize)
+{
+	XglSymbolTableRec *record = new XglSymbolTableRec(type, variable, dimensions, initialize);
 
 	variables[varScopePtr].add(record);
 }
@@ -103,4 +121,32 @@ XglSymbolTableRec *XglSymbolTable::find(string variableName)
 	}
 
 	return(record);
+}
+
+/*****************************************************************************
+assign() -
+*****************************************************************************/
+void XglSymbolTable::assign(string variable, vector<int> elements, XglValue *value)
+{
+	XglSymbolTableRec *record = find(variable);
+
+	if (record != NULL) {
+		record->assign(elements, value);
+	}
+}
+
+/*****************************************************************************
+access() -
+*****************************************************************************/
+XglValue *XglSymbolTable::access(XglValue *variable, vector<int> elements)
+{
+	XglValue *value = NULL;
+
+	XglSymbolTableRec *record = find(variable);
+
+	if (record != NULL) {
+		value = record->access(elements);
+	}
+
+	return(value);
 }

@@ -15,18 +15,24 @@ public:
 	virtual ~XglSymbolTable();
 
 public:
-	void add(string variable, bool value);
-	void add(string variable, double value);
+	void declareSystemConstant(string variable, bool value);
+	void declareSystemConstant(string variable, double value);
 
-	void add(XglToken *type, XglToken *variable, int size, XglValue *initialize);
-	void add(XglSymbolTableRecDesType designation, XglToken *type, XglToken *variable, int size, XglValue *initialize);
-	void add(XglToken *type, XglToken *variable, XglValue *initialize);
+	void declareConstant(XglToken *type, XglToken *variable, XglValue *initialize);
+	void declareScalar(XglToken *type, XglToken *variable, XglValue *initialize);
 
-	XglSymbolTableRec *find(XglValue *variable);
-	XglSymbolTableRec *find(string variableName);
+	void declareArray(XglToken *type, XglToken *variable, vector<int> &dimensions, XglValue *initialize);
+	//void add(XglToken *type, XglToken *variable, XglValue *initialize);
+
+	void assign(string variable, vector<int> elements, XglValue *value);
+	XglValue *access(XglValue *variable, vector<int> elements);
 
 	void createScope();
 	void deleteScope();
+
+private:
+	XglSymbolTableRec *find(XglValue *variable);
+	XglSymbolTableRec *find(string variableName);
 
 private:
 	XglVarScope *variables;

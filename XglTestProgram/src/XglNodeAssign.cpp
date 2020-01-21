@@ -26,21 +26,19 @@ execute() -
 *****************************************************************************/
 XglValue *XglNodeAssign::execute(XglContext *context)
 {
-	XglValue *constant = value->execute(context);
-
 	string variableName = variable->getVariableName();
 
-	XglSymbolTableRec *record = context->getSymbolTable()->find(variableName);
+	XglValue *calcValue = value->execute(context);
 
-	if (record != NULL) {
-		if (record->isConstant() || record->isScaler()) {
-			record->getData()->assign(0, constant);
-		} else if (record->isArray()) {
-			int index = variable->evaluate(0, context)->getInteger();
-			record->getData()->assign(index, constant);
-		}
+	vector<int> elements;
 
+	for (XglNode *element : variable->getAttributes()) {
+		int elementIndex = element->execute(context)->getInteger();
+		elements.push_back(elementIndex);
 	}
+
+	context->getSymbolTable()->assign(variableName, elements, calcValue);
 
 	return(NULL);
 }
+

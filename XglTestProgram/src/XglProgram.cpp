@@ -42,7 +42,7 @@ XglProgram::XglProgram()
 
 	add("program ;");
 
-	add("	print '123=', 123;");
+	/*add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
 	add("	print '3=', (10 - 9) * 3;");
 	add("	print '40=', 8 * 5;");
@@ -81,6 +81,7 @@ XglProgram::XglProgram()
 	add("	print 'TRUE=', 3.45 >= 1.9;");
 	add("	print 'FALSE=', !(3.45 >= 1.9);");
 	add("	print '==================';");
+	*/
 	
 	/*add("	const ");
 	add("		integer a = 11,");
@@ -138,6 +139,16 @@ XglProgram::XglProgram()
 	add("	declare integer x[10 * m],");
 	add("	        integer y[m * m, 3],");
 	add("	        integer z[4, m, m];");*/
+
+	add("	const integer mc = 2, integer mr = 3;");
+	add("	declare integer aaa[mc, mr], integer count = 0;");
+	add("	for integer c = 0, mc-1, 1;");
+	add("		for integer r = 0, mr-1, 1;");
+	add("			aaa[c, r] = count;");
+	add("			count = count + 1;");
+	add("			print 'Value, c, r: ', aaa[c, r], ' ', c, ' ', r;");
+	add("		end;");
+	add("	end;");
 
 	/*add("	for integer n = 1, 2, 1;");
 	add("		declare integer y = n;");
@@ -299,10 +310,10 @@ XglToken *XglProgram::getSingleToken()
 		symbol = XglTokenSymbolType::SYMBOL_TILDE;
 		break;
 	case '+':
-		symbol = XglTokenSymbolType::SYMBOL_PLUS;
+		symbol = XglTokenSymbolType::SYMBOL_ADD;
 		break;
 	case '-':
-		symbol = XglTokenSymbolType::SYMBOL_MINUS;
+		symbol = XglTokenSymbolType::SYMBOL_SUB;
 		break;
 	case '*':
 		symbol = XglTokenSymbolType::SYMBOL_MULT;

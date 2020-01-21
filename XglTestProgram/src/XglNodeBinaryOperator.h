@@ -24,5 +24,8 @@ private:
 
 private:
 	XglNodeType type;
+
+	XglValue *value1;
+	XglValue *value2;
 };
 

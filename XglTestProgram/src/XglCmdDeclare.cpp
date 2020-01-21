@@ -29,12 +29,16 @@ XglNode *XglCmdDeclare::execute(XglInterpreter *interpreter)
 
 		separator = interpreter->getToken();
 
+		// If therer is a left bracket, capture array declaration
+		//-------------------------------------------------------
 		if (separator->isLeftBracket()) {
 			XglNodeDeclareArray *declareVar = new XglNodeDeclareArray(type, variable);
 			interpreter->parseArray(declareVar);
 			command->add(declareVar);
 			separator = interpreter->getToken();  
 		}
+		// Capture scalar variable with possible initialization
+		//-----------------------------------------------------
 		else {
 			XglNodeDeclareVar *declareVar = new XglNodeDeclareVar(type, variable);
 

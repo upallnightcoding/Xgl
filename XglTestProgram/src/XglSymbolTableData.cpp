@@ -2,22 +2,20 @@
 #include "XglSymbolTableData.h"
 
 
-XglSymbolTableData::XglSymbolTableData(XglValueType type, int size, XglValue *initialize)
+XglSymbolTableData::XglSymbolTableData(XglValueType type, XglValue *initialize)
 {
-	this->svalue = NULL;
-	this->lvalue = NULL;
-	this->dvalue = NULL;
-	this->bvalue = NULL;
+	init(type, 1, initialize);
+}
 
-	this->value = new XglValue();
+XglSymbolTableData::XglSymbolTableData(XglValueType type, vector<int> &dimensions, XglValue *initialize)
+{
+	int size = 1;
 
-	this->type = type;
-
-	allocateData(type, size);
-
-	if (initialize != NULL) {
-		assign(0, initialize);
+	for (int dimension : dimensions) {
+		size *= dimension;
 	}
+
+	init(type, size, initialize);
 }
 
 XglSymbolTableData::~XglSymbolTableData()
@@ -42,6 +40,27 @@ XglSymbolTableData::~XglSymbolTableData()
 }
 
 /*****************************************************************************
+init() -
+*****************************************************************************/
+void XglSymbolTableData::init(XglValueType type, int size, XglValue *initialize)
+{
+	this->svalue = NULL;
+	this->lvalue = NULL;
+	this->dvalue = NULL;
+	this->bvalue = NULL;
+
+	this->value = new XglValue();
+
+	this->type = type;
+
+	this->width = 0;
+
+	allocateData(type, size);
+
+	assign(0, initialize);
+}
+
+/*****************************************************************************
 assign() -
 *****************************************************************************/
 void XglSymbolTableData::assign(XglValue *value)
@@ -54,25 +73,92 @@ void XglSymbolTableData::assign(XglValue *value)
 
 }*/
 
+void XglSymbolTableData::assign(int col, int row, XglValue *value)
+{
+	int index = row * width + col;
+
+	assign(index, value);
+}
+
+/*****************************************************************************
+assign() -
+*****************************************************************************/
+void XglSymbolTableData::assign(vector<int> elements, XglValue *value)
+{
+	int index = calcArrayIndex(elements);
+
+	if (index != -1) {
+		assign(index, value);
+	}
+}
+
+int XglSymbolTableData::calcArrayIndex(vector<int> elements)
+{
+	int index = -1;
+
+	switch (elements.size()) {
+	case 0:
+		index = 0;
+		break;
+	case 1:
+		index = elements.at(0);
+		break;
+	case 2: {
+		int col = elements.at(0);
+		int row = elements.at(1);
+		index = row * width + col;
+		break;
+		}
+	}
+
+	return(index);
+}
+
 /*****************************************************************************
 assign() -
 *****************************************************************************/
 void XglSymbolTableData::assign(int index, XglValue *value)
 {
-	switch (type) {
-	case XglValueType::INTEGER:
-		lvalue[index] = value->getInteger();
-		break;
-	case XglValueType::REAL:
-		dvalue[index] = value->getReal();
-		break;
-	case XglValueType::STRING:
-		svalue[index] = value->getString();
-		break;
-	case XglValueType::BOOLEAN:
-		bvalue[index] = value->getBool();
-		break;
+	if (value != NULL) {
+		switch (type) {
+		case XglValueType::INTEGER:
+			lvalue[index] = value->getInteger();
+			break;
+		case XglValueType::REAL:
+			dvalue[index] = value->getReal();
+			break;
+		case XglValueType::STRING:
+			svalue[index] = value->getString();
+			break;
+		case XglValueType::BOOLEAN:
+			bvalue[index] = value->getBool();
+			break;
+		}
 	}
+}
+
+/*****************************************************************************
+access() -
+*****************************************************************************/
+XglValue *XglSymbolTableData::access(vector<int> elements)
+{
+	XglValue *value = NULL;
+
+	int index = calcArrayIndex(elements);
+
+	if (index != -1) {
+		value = getValue(index);
+	}
+
+	return(value);
+}
+
+/*****************************************************************************
+getValue() -
+*****************************************************************************/
+XglValue *XglSymbolTableData::getValue()
+{
+	return(getValue(0));
 }
 
 /*****************************************************************************

@@ -47,7 +47,7 @@ enum class XglNodeType
 	NODE_ADD,
 	NODE_SUB,
 	NODE_DIVIDE,
-	NODE_MULTI,
+	NODE_MULT,
 	NODE_VALUE
 };
 
@@ -63,8 +63,13 @@ public:
 	XglValue *evaluate(XglContext *context);
 	XglValue *evaluate(int index, XglContext *context);
 
+	// Add a node to the children nodes
 	void add(XglNode *node);
 
+	// Return the number of children nodes
+	int getnChildren();
+
+	// Return the list of children nodes
 	vector<XglNode*> getAttributes();
 
 	bool isEnd();

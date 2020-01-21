@@ -15,7 +15,7 @@ public:
 	XglValue *execute(XglContext *context);
 
 private:
-	int calcArraySize(XglContext *context);
+	vector<int> declareArraySize(XglContext *context);
 
 private:
 	XglToken *type;

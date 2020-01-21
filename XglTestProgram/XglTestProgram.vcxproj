@@ -171,8 +171,6 @@
     <ClInclude Include="src\XglNodeEnd.h" />
     <ClInclude Include="src\XglContext.h" />
     <ClInclude Include="src\XglExpression.h" />
-    <ClInclude Include="src\XglNodeNot.h" />
-    <ClInclude Include="src\XglNodeNeg.h" />
     <ClInclude Include="src\XglCmdConst.h" />
     <ClInclude Include="src\XglNodeConst.h" />
     <ClInclude Include="src\XglNodeConstVar.h" />
@@ -203,6 +201,7 @@
     <ClInclude Include="src\XglExpParse.h" />
     <ClInclude Include="src\XglNodeAssignVar.h" />
     <ClInclude Include="src\XglNodeBinaryOperator.h" />
+    <ClInclude Include="src\XglNodeUnaryOperator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\pch.cpp">
@@ -230,8 +229,6 @@
     <ClCompile Include="src\XglNodeEnd.cpp" />
     <ClCompile Include="src\XglContext.cpp" />
     <ClCompile Include="src\XglExpression.cpp" />
-    <ClCompile Include="src\XglNodeNot.cpp" />
-    <ClCompile Include="src\XglNodeNeg.cpp" />
     <ClCompile Include="src\XglCmdConst.cpp" />
     <ClCompile Include="src\XglNodeConst.cpp" />
     <ClCompile Include="src\XglNodeConstVar.cpp" />
@@ -261,6 +258,7 @@
     <ClCompile Include="src\XglExpParse.cpp" />
     <ClCompile Include="src\XglNodeAssignVar.cpp" />
     <ClCompile Include="src\XglNodeBinaryOperator.cpp" />
+    <ClCompile Include="src\XglNodeUnaryOperator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

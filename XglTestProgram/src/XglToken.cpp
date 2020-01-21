@@ -178,8 +178,8 @@ bool XglToken::isOperator()
 	case XglTokenSymbolType::SYMBOL_MULT:
 	case XglTokenSymbolType::SYMBOL_DIVIDE:
 
-	case XglTokenSymbolType::SYMBOL_PLUS:
-	case XglTokenSymbolType::SYMBOL_MINUS:
+	case XglTokenSymbolType::SYMBOL_ADD:
+	case XglTokenSymbolType::SYMBOL_SUB:
 
 	case XglTokenSymbolType::SYMBOL_EQ:
 	case XglTokenSymbolType::SYMBOL_NE:
@@ -294,8 +294,8 @@ int XglToken::rank()
 	case XglTokenSymbolType::SYMBOL_DIVIDE:
 		value = 20;
 		break;
-	case XglTokenSymbolType::SYMBOL_PLUS:
-	case XglTokenSymbolType::SYMBOL_MINUS:
+	case XglTokenSymbolType::SYMBOL_ADD:
+	case XglTokenSymbolType::SYMBOL_SUB:
 		value = 10;
 		break;
 	case XglTokenSymbolType::SYMBOL_EQ:

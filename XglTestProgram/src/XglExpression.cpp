@@ -1,10 +1,9 @@
 #include "pch.h"
 #include "XglExpression.h"
 #include "XglNodeValue.h"
-#include "XglNodeNot.h"
-#include "XglNodeNeg.h"
 #include "XglNodeVariable.h"
 #include "XglNodeBinaryOperator.h"
+#include "XglNodeUnaryOperator.h"
 
 XglExpression::XglExpression()
 {
@@ -81,6 +80,8 @@ pushKeywordOnExpStack() -
 void XglExpression::pushKeywordOnExpStack(XglProgram &program, XglToken *token, stack<XglNode*> &expStack)
 {
 	XglValue *variable = new XglValue(token);
+
+	// TODO If this is the only place the "variable" could be a string
 	XglNode *value = new XglNodeVariable(variable);
 	XglToken *lBracket = NULL;
 	XglExpParse *element = NULL;
@@ -164,13 +165,13 @@ void XglExpression::popOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &exp
 	XglTokenSymbolType symbol = oprStack.top()->getSymbol();
 
 	switch (symbol) {
-	case XglTokenSymbolType::SYMBOL_PLUS:
+	case XglTokenSymbolType::SYMBOL_ADD:
 		expression = new XglNodeBinaryOperator(XglNodeType::NODE_ADD);
 		break;
 	case XglTokenSymbolType::SYMBOL_MULT: 
-		expression = new XglNodeBinaryOperator(XglNodeType::NODE_MULTI);
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_MULT);
 		break;
-	case XglTokenSymbolType::SYMBOL_MINUS:
+	case XglTokenSymbolType::SYMBOL_SUB:
 		expression = new XglNodeBinaryOperator(XglNodeType::NODE_SUB);
 		break;
 	case XglTokenSymbolType::SYMBOL_DIVIDE:
@@ -186,7 +187,7 @@ void XglExpression::popOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &exp
 		expression = new XglNodeBinaryOperator(XglNodeType::NODE_EQ);
 		break;
 	case XglTokenSymbolType::SYMBOL_NE:
-		expression = new XglNodeBinaryOperator(XglNodeType::NODE_GE);
+		expression = new XglNodeBinaryOperator(XglNodeType::NODE_NE);
 		break;
 	case XglTokenSymbolType::SYMBOL_GE:
 		expression = new XglNodeBinaryOperator(XglNodeType::NODE_GE);
@@ -195,10 +196,10 @@ void XglExpression::popOprStack(stack<XglToken*> &oprStack, stack<XglNode*> &exp
 		expression = new XglNodeBinaryOperator(XglNodeType::NODE_LE);
 		break;
 	case XglTokenSymbolType::SYMBOL_TILDE:
-		expression = new XglNodeNeg();
+		expression = new XglNodeUnaryOperator(XglNodeType::NODE_NEG);
 		break;
 	case XglTokenSymbolType::SYMBOL_NOT:
-		expression = new XglNodeNot();
+		expression = new XglNodeUnaryOperator(XglNodeType::NODE_NOT);
 		break;
 	}
 

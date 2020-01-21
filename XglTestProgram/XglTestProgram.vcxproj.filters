@@ -63,12 +63,6 @@
     <ClCompile Include="src\XglNodeProgram.cpp">
       <Filter>node</Filter>
     </ClCompile>
-    <ClCompile Include="src\XglNodeNot.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
-    <ClCompile Include="src\XglNodeNeg.cpp">
-      <Filter>node</Filter>
-    </ClCompile>
     <ClCompile Include="src\XglNodeEnd.cpp">
       <Filter>node</Filter>
     </ClCompile>
@@ -174,6 +168,9 @@
     <ClCompile Include="src\XglNodeBinaryOperator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\XglNodeUnaryOperator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -216,12 +213,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeProgram.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeNot.h">
-      <Filter>node</Filter>
-    </ClInclude>
-    <ClInclude Include="src\XglNodeNeg.h">
       <Filter>node</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeEnd.h">
@@ -330,6 +321,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\XglNodeBinaryOperator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\XglNodeUnaryOperator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

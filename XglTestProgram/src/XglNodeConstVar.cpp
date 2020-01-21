@@ -24,7 +24,7 @@ XglValue *XglNodeConstVar::execute(XglContext *context)
 
 	XglValue *initialize = expression->execute(context);
 
-	symbolTable->add(type, variable, initialize);
+	symbolTable->declareConstant(type, variable, initialize);
 
 	return(NULL);
 }

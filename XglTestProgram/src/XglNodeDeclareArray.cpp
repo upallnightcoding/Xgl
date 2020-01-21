@@ -31,26 +31,25 @@ XglValue *XglNodeDeclareArray::execute(XglContext *context)
 {
 	XglSymbolTable *symbolTable = context->getSymbolTable();
 
-	XglSymbolTableRecDesType designation = XglSymbolTableRecDesType::ARRAY;
+	XglValue *value = (initialize != NULL) ? initialize->execute(context) : NULL;
 
-	XglValue *value = NULL;
+	vector<int> arraryElements = declareArraySize(context);
 
-	if (initialize != NULL) {
-		value = initialize->execute(context);
-	}
-
-	symbolTable->add(designation, type, variable, calcArraySize(context), value);
+	symbolTable->declareArray(type, variable, arraryElements, value);
 
 	return(NULL);
 }
 
-int XglNodeDeclareArray::calcArraySize(XglContext *context)
+/*****************************************************************************
+calcArraySize() -
+*****************************************************************************/
+vector<int> XglNodeDeclareArray::declareArraySize(XglContext *context)
 {
-	int size = 1;
+	vector<int> elements;
 
 	for (XglNode *arrayElement : getAttributes()) {
-		size *= arrayElement->execute(context)->getInteger();
+		elements.push_back(arrayElement->execute(context)->getInteger());
 	}
 
-	return(size);
+	return(elements);
 }

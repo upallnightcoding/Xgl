@@ -40,7 +40,11 @@ XglProgram::XglProgram()
 	this->currentChar = 0;
 	this->currentLine = 0;
 
-	add("program ;");
+	string path = "C:\\Users\\Ken\\Desktop\\SandBox\\programming\\c++\\Xgl\\XglTestProgram\\XglTestProgram\\examples\\";
+
+	readFile(path + "Example01_Expressions.xgl");
+
+	//add("program ;");
 
 	/*add("	print '123=', 123;");
 	add("	print '87=', 12 + 45 + 30;");
@@ -140,7 +144,7 @@ XglProgram::XglProgram()
 	add("	        integer y[m * m, 3],");
 	add("	        integer z[4, m, m];");*/
 
-	add("	const integer mc = 2, integer mr = 3;");
+	/*add("	const integer mc = 2, integer mr = 3;");
 	add("	declare integer aaa[mc, mr], integer count = 0;");
 	add("	for integer c = 0, mc-1, 1;");
 	add("		for integer r = 0, mr-1, 1;");
@@ -148,7 +152,7 @@ XglProgram::XglProgram()
 	add("			count = count + 1;");
 	add("			print 'Value, c, r: ', aaa[c, r], ' ', c, ' ', r;");
 	add("		end;");
-	add("	end;");
+	add("	end;");*/
 
 	/*add("	for integer n = 1, 2, 1;");
 	add("		declare integer y = n;");
@@ -180,7 +184,7 @@ XglProgram::XglProgram()
 
 	//add("  print c[10 * 4], d[ c[10], d[1, 2]];");
 
-	add("end;");
+	//add("end;");
 
 	skipBlanks();
 }
@@ -461,7 +465,27 @@ XglNumber XglProgram::getInteger()
 }
 
 /*****************************************************************************
-add() -
+readFile() - 
+*****************************************************************************/
+void XglProgram::readFile(string pathName)
+{
+	ifstream infile(pathName);
+	string line;
+	int lineNumber = 1;
+
+	while (getline(infile, line)) {
+		cout << "(" << lineNumber++ << ") " << line << "\n";
+		add(line);
+	}
+
+	cout << "\n";
+
+	infile.close();
+}
+
+/*****************************************************************************
+add() - Receives a line of source code and appends it to the current 
+program source.
 *****************************************************************************/
 void XglProgram::add(string sourceCode)
 {

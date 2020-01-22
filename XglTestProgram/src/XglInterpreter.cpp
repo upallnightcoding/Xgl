@@ -17,7 +17,7 @@
 #include "XglCmdElseIf.h"
 
 
-XglInterpreter::XglInterpreter(XglProgram &program)
+XglInterpreter::XglInterpreter(XglProgram *program)
 {
 	this->program = program;
 	this->nErrors = 0;
@@ -45,7 +45,7 @@ XglNode *XglInterpreter::parseStatement()
 {
 	XglNode *node = NULL;
 
-	XglToken *token = program.getToken();
+	XglToken *token = program->getToken();
 
 	if (token != NULL) {
 		string keyword = token->getString();
@@ -90,11 +90,11 @@ XglNode *XglInterpreter::assign(string variableName)
 	XglNodeAssignVar *variable = new XglNodeAssignVar(variableName);
 
 	// Skip over assignment operator
-	XglToken *separator = program.getToken();
+	XglToken *separator = program->getToken();
 
 	if (separator->isLeftBracket()) {
 		parseArray(variable);
-		separator = program.getToken();
+		separator = program->getToken();
 	}
 
 	// Parse and assignment expression
@@ -119,7 +119,7 @@ getToken() - Returns a pointer to the next source token object.
 *****************************************************************************/
 XglToken *XglInterpreter::getToken()
 {
-	return(program.getToken());
+	return(program->getToken());
 }
 
 /*****************************************************************************
@@ -127,7 +127,7 @@ skipOver() -
 *****************************************************************************/
 bool XglInterpreter::skipOver(XglTokenSymbolType symbol)
 {
-	XglToken *token = program.getToken();
+	XglToken *token = program->getToken();
 
 	bool check = token->is(symbol);
 
@@ -142,7 +142,7 @@ to a node representing the expression.
 *****************************************************************************/
 XglExpParse *XglInterpreter::parseExpression()
 {
-	return(expression.parse(program));
+	return(expression.parse(*program));
 }
 
 /*****************************************************************************
@@ -176,7 +176,7 @@ void XglInterpreter::error(XglErrorMessageType type)
 {
 	nErrors++; 
 
-	cout << program.getErrorLine() << "\n";
+	cout << program->getErrorLine() << "\n";
 	cout << "Error: " << getErrorMessage(type) << "\n";
 }
 

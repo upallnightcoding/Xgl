@@ -260,6 +260,9 @@
     <ClCompile Include="src\XglNodeBinaryOperator.cpp" />
     <ClCompile Include="src\XglNodeUnaryOperator.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="examples\Example01_Expressions.xgl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

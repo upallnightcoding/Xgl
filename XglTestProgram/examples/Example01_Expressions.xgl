@@ -1,0 +1,6 @@
+# This is a test #
+program;
+	print '123=', 123;
+	print '87=', 12 + 45 + 30;
+	print '3=', (10 - 9) * 3;
+end;

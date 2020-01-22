@@ -35,6 +35,7 @@ public:
 	XglToken *getToken();
 	string getErrorLine();
 	bool isChar(char character);
+	void readFile(string pathName);
 
 private:
 	void moveToNextChar();

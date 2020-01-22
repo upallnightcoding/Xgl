@@ -327,4 +327,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="examples\Example01_Expressions.xgl" />
+  </ItemGroup>
 </Project>

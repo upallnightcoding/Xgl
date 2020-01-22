@@ -11,7 +11,7 @@
 int main()
 {
 	XglContext context(new XglSymbolTable());
-	XglProgram program;
+	XglProgram *program = new XglProgram();
 	XglInterpreter interpreter(program);
 	XglNode *node = NULL;
 

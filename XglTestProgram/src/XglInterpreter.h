@@ -18,7 +18,7 @@ class XglSyntax;
 class XglInterpreter 
 {
 public:
-	XglInterpreter(XglProgram &program);
+	XglInterpreter(XglProgram *program);
 	virtual ~XglInterpreter();
 
 public:
@@ -41,7 +41,7 @@ private:
 	string getErrorMessage(XglErrorMessageType type);
 
 private:
-	XglProgram program;
+	XglProgram *program;
 	map<string, XglCmd*> commandMap;
 	XglExpression expression;
 	int nErrors;

@@ -2,6 +2,8 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <math.h>
 #include <list>
 #include <map>

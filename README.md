@@ -6,7 +6,7 @@ Xgl is the integration language used by the Xg Game Engine.  It is a free format
 
 Xgl is not a compiled or interpreted language, but is translated into a in-memory tree structured that can be executed.  The tree structure can actually be created by either translating the Xgl code or programmatically by invoking the correct library classes to build the in-memory tree structure.
 
-<img src="images/SampleNodeBased.png width=100>
+<img src="images/SampleNodeBased.PNG width=100>
 
 ## First Program - Hello World
 
